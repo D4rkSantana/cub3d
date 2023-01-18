@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 14:49:20 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/01/18 00:14:20 by esilva-s         ###   ########.fr       */
+/*   Created: 2020/03/25 13:21:41 by esilva-s          #+#    #+#             */
+/*   Updated: 2020/03/25 13:22:03 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	ft_putendl_fd(char *s, int fd)
 {
-	t_map	*map;
-
-	if (check_args(argc, argv))
-		return (0);
-	map = malloc(sizeof(t_map));
-	map->patch = ft_strdup(argv[1]);
-	read_map(map);
-	printf("Hello!\n");
-	return (0);
+	if (s)
+	{
+		ft_putstr_fd(s, fd);
+		ft_putchar_fd('\n', fd);
+	}
 }

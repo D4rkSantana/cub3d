@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: esilva-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 14:49:20 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/01/18 00:14:20 by esilva-s         ###   ########.fr       */
+/*   Created: 2020/02/02 16:55:47 by esilva-s          #+#    #+#             */
+/*   Updated: 2020/02/02 16:55:49 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+int	ft_isalnum(int c)
 {
-	t_map	*map;
-
-	if (check_args(argc, argv))
-		return (0);
-	map = malloc(sizeof(t_map));
-	map->patch = ft_strdup(argv[1]);
-	read_map(map);
-	printf("Hello!\n");
+	if (ft_isalpha(c) || ft_isdigit(c))
+		return (1);
 	return (0);
 }

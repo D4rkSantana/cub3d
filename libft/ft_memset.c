@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 14:49:20 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/01/18 00:14:20 by esilva-s         ###   ########.fr       */
+/*   Created: 2020/02/02 18:29:15 by esilva-s          #+#    #+#             */
+/*   Updated: 2021/03/09 11:53:53 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	t_map	*map;
+	unsigned int	i;
+	unsigned char	*new;
 
-	if (check_args(argc, argv))
-		return (0);
-	map = malloc(sizeof(t_map));
-	map->patch = ft_strdup(argv[1]);
-	read_map(map);
-	printf("Hello!\n");
-	return (0);
+	new = (unsigned char *)b;
+	i = 0;
+	while (i < len)
+	{
+		new[i] = (unsigned char)c;
+		i++;
+	}
+	return (b);
 }

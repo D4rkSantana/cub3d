@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 14:49:20 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/01/18 00:14:20 by esilva-s         ###   ########.fr       */
+/*   Created: 2020/03/25 13:17:04 by esilva-s          #+#    #+#             */
+/*   Updated: 2020/05/26 00:54:20 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_map	*map;
+	t_list	*tmp;
+	t_list	*tmp2;
 
-	if (check_args(argc, argv))
-		return (0);
-	map = malloc(sizeof(t_map));
-	map->patch = ft_strdup(argv[1]);
-	read_map(map);
-	printf("Hello!\n");
-	return (0);
+	if (!lst || !*lst || !del)
+		return ;
+	tmp = *lst;
+	while (tmp)
+	{
+		tmp2 = tmp->next;
+		ft_lstdelone(tmp, del);
+		tmp = tmp2;
+	}
+	*lst = NULL;
 }

@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strindexcpy.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 14:49:20 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/01/18 00:14:20 by esilva-s         ###   ########.fr       */
+/*   Created: 2021/03/09 12:01:12 by esilva-s          #+#    #+#             */
+/*   Updated: 2022/03/06 19:14:40 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strindexcpy(char **save, char *str, size_t index)
 {
-	t_map	*map;
+	size_t			count;
+	char			*dst;
+	size_t			size;
 
-	if (check_args(argc, argv))
-		return (0);
-	map = malloc(sizeof(t_map));
-	map->patch = ft_strdup(argv[1]);
-	read_map(map);
-	printf("Hello!\n");
-	return (0);
+	count = 0;
+	size = ft_strlen(str);
+	dst = (char *)ft_calloc(sizeof(char), (size - (index)) + 1);
+	while (count < size && index < size)
+	{
+		dst[count] = str[index];
+		index++;
+		count++;
+	}
+	dst[count] = '\0';
+	*save = dst;
+	return (dst);
 }

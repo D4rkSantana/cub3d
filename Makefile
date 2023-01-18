@@ -1,8 +1,33 @@
+NAME = cub3d
 CC = gcc
+RM = rm -rf
 FLAGS = -Wall -Wextra -Werro
-MAIN = main.c
-HEAD = cub3d.h
-SRC = check.c ft_strlen.c ft_memcmp.c ft_strrchr.c
+LIBS = -I ./libft/libft.a
+SRC = main.c check.c read_map.c
 
-all:
-	$(CC) $(FLAGS) $(MAIN) $(HEAD) $(SRC)
+OBG = $(SRC:.c=.o)
+
+all: $(NAME)
+
+$(NAME): $(OBG)
+	$(CC) $(CFLAGS) $(INCLUDES) $(OBG)
+
+$(OBG): $(SRC) ./libft/libft.a
+	$(CC) $(CFLAGS) $(INCLUDES) -c $(SRC)
+
+./libft/libft.a:
+	@make -C libft
+
+clean:
+	@make clean -C libft
+	$(RM) *.o
+
+fclean:
+	@make fclean -C libft
+	$(RM) *.o
+	$(RM) cub3d
+
+re: fclean all
+
+cclean: all clean
+	clear

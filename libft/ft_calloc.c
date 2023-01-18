@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 14:49:20 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/01/18 00:14:20 by esilva-s         ###   ########.fr       */
+/*   Created: 2020/03/25 12:57:37 by esilva-s          #+#    #+#             */
+/*   Updated: 2022/03/06 18:59:32 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	*ft_calloc(size_t count, size_t size)
 {
-	t_map	*map;
+	char	*str;
+	size_t	x;
+	size_t	s_total;
 
-	if (check_args(argc, argv))
+	x = 0;
+	s_total = count * size;
+	str = NULL;
+	str = malloc(s_total);
+	if (str == NULL)
 		return (0);
-	map = malloc(sizeof(t_map));
-	map->patch = ft_strdup(argv[1]);
-	read_map(map);
-	printf("Hello!\n");
-	return (0);
+	if (s_total > 10000)
+		x = s_total - 9000;
+	while (x < s_total)
+	{
+		str[x] = 0;
+		x++;
+	}
+	return ((void *)str);
 }
