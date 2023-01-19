@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/01/19 00:41:21 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/01/20 00:05:18 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "./libs/minilibx/mlx.h"
+# include "../libs/minilibx/mlx.h"
 
 /* check.c */
 int	check_args(int argc, char **argv);

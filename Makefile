@@ -4,37 +4,41 @@ CC			= gcc
 RM			= rm -rf
 MKDIR		= mkdir -p
 
+vpath %.c src
+
 FLAGS = -Wall -Wextra -Werror
 MLXFLAGS = -Imlx -lX11 -lXext
 
 MINILIBX_PATH = ./libs/minilibx
 MINILIBX = ${MINILIBX_PATH}/libmlx_Linux.a
 
-HEAD = -I cub3d.h
+HEAD = -I./include
 SRC =  main.c check.c ft_strlen.c ft_memcmp.c ft_strrchr.c 
 
-OBG = $(SRC:.c=.o)
+OBJ_DIR	 =	obj
+OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 
 all: ${NAME} 
 
-
-${NAME}: ${MINILIBX} $(OBG)
-				$(CC) $(FLAGS) $(OBG) ${MINILIBX} ${MLXFLAGS} -o ${NAME}
+${NAME}: ${MINILIBX} $(OBJ) ${OBJ_DIR}
+		@ $(CC) $(FLAGS) $(OBJ) ${MINILIBX} ${MLXFLAGS} -o ${NAME}
 
 $(MINILIBX):
-			make -C ${MINILIBX_PATH}
+		@ make -C ${MINILIBX_PATH}
 
-$(OBG): $(SRC) 
-	$(CC) $(CFLAGS) $(HEAD) -c $(SRC)
+$(OBJ_DIR)/%.o: %.c
+	@ mkdir -p $(OBJ_DIR)
+	@ $(CC) $(CFLAGS) $(HEAD) -c $< -o $@
 
 clean:
-		${RM} *.o
-			
+		@ ${RM} ${OBJ_DIR}
+		@ echo "Objects removed."
+
 
 fclean:		clean
-			make clean -C $(MINILIBX_PATH)
-			${RM} *.o
-			${RM} cub3d
+			@make clean -C $(MINILIBX_PATH)
+			@${RM} ${NAME}
+			@ echo "Program has been cleaned!"
 			
 re:			fclean all
 
