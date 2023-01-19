@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 23:46:49 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/01/18 00:13:21 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/01/19 01:09:37 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ static int	load_map(int fd, t_map *map)
 	int		count;
 	char	*line;
 
-	count = ft_get_next_line(fd, &line);
+	count = get_next_line(fd, &line);
 	map->elements = ft_strdup(line);
 	while (count)
 	{
-		count = ft_get_next_line(fd, &line);
+		count = get_next_line(fd, &line);
 		map->elements = ft_strjoin_free2(map->elements, line, ft_strlen(line));
 		map->elements = ft_strjoin_free2(map->elements, "\n", 1);
 	}
