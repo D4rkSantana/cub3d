@@ -27,7 +27,7 @@ $(MINILIBX):
 		@ make -C ${MINILIBX_PATH}
 
 $(OBJ_DIR)/%.o: %.c
-	@ mkdir -p $(OBJ_DIR)
+	@ ${MKDIR} $(OBJ_DIR)
 	@ $(CC) $(CFLAGS) $(HEAD) -c $< -o $@
 
 clean:
