@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 23:46:49 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/01/19 01:09:37 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/01/20 00:00:23 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,15 @@ static int	load_map(int fd, t_map *map)
 
 	count = get_next_line(fd, &line);
 	map->elements = ft_strdup(line);
+	if (count)
+		map->elements = ft_strjoin_free1(map->elements, "\n", 1);
 	while (count)
 	{
 		count = get_next_line(fd, &line);
-		map->elements = ft_strjoin_free2(map->elements, line, ft_strlen(line));
-		map->elements = ft_strjoin_free2(map->elements, "\n", 1);
+		map->elements = ft_strjoin_free1(map->elements, line, ft_strlen(line));
+		map->elements = ft_strjoin_free1(map->elements, "\n", 1);
 	}
-	map->elements = ft_strjoin_free2(map->elements, "\0", 1);
+	map->elements = ft_strjoin_free1(map->elements, "\0", 1);
 	return (0);
 }
 
