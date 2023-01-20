@@ -27,6 +27,7 @@ fclean:
 	@make fclean -C libft
 	$(RM) *.o
 	$(RM) cub3d
+	$(RM) a.out
 
 re: fclean all
 

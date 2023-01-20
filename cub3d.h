@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/01/18 00:30:11 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/01/20 00:07:54 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
 typedef struct s_map
 {
 	char	*patch;
-	char	*elements;
+	char	**elements;
+	int		height;
 }			t_map;
 
 /* check.c */
