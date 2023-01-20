@@ -4,7 +4,7 @@ CC			= gcc
 RM			= rm -rf
 MKDIR		= mkdir -p
 
-vpath %.c src
+vpath %.c src ./src/parse
 
 FLAGS = -Wall -Wextra -Werror
 MLXFLAGS = -Imlx -lX11 -lXext
@@ -12,19 +12,26 @@ MLXFLAGS = -Imlx -lX11 -lXext
 MINILIBX_PATH = ./libs/minilibx
 MINILIBX = ${MINILIBX_PATH}/libmlx_Linux.a
 
+LIBFT_PATH = ./libft
+LIBFT = ${LIBFT_PATH}/libft.a
+
 HEAD = -I./include
-SRC =  main.c check.c ft_strlen.c ft_memcmp.c ft_strrchr.c 
+SRC =	main.c check.c ft_strlen.c ft_memcmp.c ft_strrchr.c read_map.c \
+		parse_map.c
 
 OBJ_DIR	 =	obj
 OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 
 all: ${NAME} 
 
-${NAME}: ${MINILIBX} $(OBJ) ${OBJ_DIR}
-		@ $(CC) $(FLAGS) $(OBJ) ${MINILIBX} ${MLXFLAGS} -o ${NAME}
+${NAME}: ${MINILIBX} $(OBJ) ${OBJ_DIR} ${LIBFT}
+		@ $(CC) $(FLAGS) $(OBJ) ${MINILIBX} ${LIBFT} ${MLXFLAGS} -o ${NAME}
 
 $(MINILIBX):
 		@ make -C ${MINILIBX_PATH}
+
+${LIBFT}:
+		@ make -C ${LIBFT_PATH}
 
 $(OBJ_DIR)/%.o: %.c
 	@ ${MKDIR} $(OBJ_DIR)
@@ -35,11 +42,12 @@ norm:
 
 clean:
 		@ ${RM} ${OBJ_DIR}
+		@make clean -C $(MINILIBX_PATH)
+		@make clean -C $(LIBFT_PATH)
 		@ echo "Objects removed."
 
 
 fclean:		clean
-			@make clean -C $(MINILIBX_PATH)
 			@${RM} ${NAME}
 			@ echo "Program has been cleaned!"
 			
