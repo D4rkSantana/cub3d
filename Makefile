@@ -12,12 +12,11 @@ MLXFLAGS = -Imlx -lX11 -lXext
 MINILIBX_PATH = ./libs/minilibx
 MINILIBX = ${MINILIBX_PATH}/libmlx_Linux.a
 
-LIBFT_PATH = ./libft
+LIBFT_PATH = ./libs/libft
 LIBFT = ${LIBFT_PATH}/libft.a
 
 HEAD = -I./include
-SRC =	main.c check.c ft_strlen.c ft_memcmp.c ft_strrchr.c read_map.c \
-		parse_map.c
+SRC =	main.c check.c read_map.c parse_map.c\
 
 OBJ_DIR	 =	obj
 OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))

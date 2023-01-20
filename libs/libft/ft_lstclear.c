@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/02 10:08:13 by jefernan          #+#    #+#             */
-/*   Updated: 2023/01/17 15:53:57 by jefernan         ###   ########.fr       */
+/*   Created: 2020/03/25 13:17:04 by esilva-s          #+#    #+#             */
+/*   Updated: 2020/05/26 00:54:20 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	int	i;
+	t_list	*tmp;
+	t_list	*tmp2;
 
-	i = 0;
-	while (s[i])
-		i++;
-	while (i > 0)
+	if (!lst || !*lst || !del)
+		return ;
+	tmp = *lst;
+	while (tmp)
 	{
-		if (s[i] == (char)c)
-			return ((char *)s + i);
-		i--;
+		tmp2 = tmp->next;
+		ft_lstdelone(tmp, del);
+		tmp = tmp2;
 	}
-	if (s[i] == (char)c)
-		return ((char *)s + i);
-	return (NULL);
+	*lst = NULL;
 }

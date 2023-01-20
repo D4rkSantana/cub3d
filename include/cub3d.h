@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/01/20 16:19:05 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/01/21 00:00:44 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include "../libs/minilibx/mlx.h"
-# include "../libft/libft.h"
+# include "../libs/libft/libft.h"
 
 typedef struct s_map
 {
@@ -35,10 +35,6 @@ int		parse_map(t_map *map);
 int		check_walls(t_map *map);
 int		check_chars(t_map *map);
 int		is_char_valid(t_map *map, int i, int j, char player);
-
-size_t	ft_strlen(const char *s);
-int		ft_memcmp(const void *s1, const void *s2, size_t n);
-char	*ft_strrchr(const char *s, int c);
 
 /*Read map*/
 int		read_map(t_map *map);
