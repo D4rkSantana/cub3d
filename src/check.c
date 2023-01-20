@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:52:07 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/01/17 16:04:46 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/01/20 01:03:39 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ int	check_args(int argc, char **argv)
 {
 	int		len;
 	char	*str;
-	
+
 	if (argc < 2)
 	{
 		printf("Wrong numbers of arguments\n");
 		return (1);
 	}
-	else 
+	else
 	{
 		len = 0;
 		str = ft_strrchr(argv[1], '.');

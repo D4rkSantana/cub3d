@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:20 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/01/19 02:15:22 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/01/20 01:04:14 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,17 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
-void	test_mlx()
+void	test_mlx(void)
 {
-	void *mlx = mlx_init();
+	void	*mlx;
+	void	*win;
+
+	mlx = mlx_init();
 	if (!mlx)
 	{
 		printf("Error\nNo graphical interface.\n");
 		exit(0);
 	}
-    void *win = mlx_new_window(mlx, 640, 360, "Cub3d");
-    mlx_loop(mlx);
+	win = mlx_new_window(mlx, 640, 360, "Cub3d");
+	mlx_loop(mlx);
 }

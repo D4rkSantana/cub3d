@@ -30,6 +30,9 @@ $(OBJ_DIR)/%.o: %.c
 	@ ${MKDIR} $(OBJ_DIR)
 	@ $(CC) $(CFLAGS) $(HEAD) -c $< -o $@
 
+norm:
+	@norminette ./src ./include | grep "Error" | cat
+
 clean:
 		@ ${RM} ${OBJ_DIR}
 		@ echo "Objects removed."
