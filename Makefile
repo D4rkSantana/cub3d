@@ -7,7 +7,7 @@ MKDIR		= mkdir -p
 vpath %.c src ./src/parse
 
 FLAGS = -Wall -Wextra -Werror
-MLXFLAGS = -Imlx -lX11 -lXext
+MLXFLAGS = -Imlx -lX11 -lXext -lm 
 
 MINILIBX_PATH = ./libs/minilibx
 MINILIBX = ${MINILIBX_PATH}/libmlx_Linux.a
@@ -24,7 +24,7 @@ OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 all: ${NAME} 
 
 ${NAME}: ${MINILIBX} $(OBJ) ${OBJ_DIR} ${LIBFT}
-		@ $(CC) $(FLAGS) $(OBJ) ${MINILIBX} ${LIBFT} ${MLXFLAGS} -o ${NAME}
+		@ $(CC) $(OBJ) ${LIBFT} ${MINILIBX} $(FLAGS) ${MLXFLAGS} -no-pie -o ${NAME}
 
 $(MINILIBX):
 		@ make -C ${MINILIBX_PATH}
