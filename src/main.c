@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:20 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/01/20 16:29:12 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/01/25 00:06:32 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int	main(int argc, char **argv)
 	map = malloc(sizeof(t_map));
 	map->patch = ft_strdup(argv[1]);
 	read_map(map);
-	if (parse_map(map))
-		return (0);
+	// if (parse_map(map))
+	// 	return (0);
 	test_mlx();
 	printf("Hello!\n");
 	return (0);

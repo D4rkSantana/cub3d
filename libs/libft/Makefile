@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/26 12:00:47 by esilva-s          #+#    #+#              #
-#    Updated: 2021/03/09 12:05:35 by esilva-s         ###   ########.fr        #
+#    Updated: 2023/01/25 02:23:22 by jefernan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ ft_isascii.c ft_isprint.c ft_toupper.c ft_tolower.c ft_calloc.c \
 ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c \
 ft_strmapi.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
 get_next_line.c ft_strdel.c ft_linebreak.c ft_strindexcpy.c ft_strjoin_free1.c \
+get_next_line1.c \
 
 OBJ = $(SRC:.c=.o)
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/01/21 00:00:44 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/01/25 02:34:07 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,32 @@ typedef struct s_map
 	int		height;
 	int		col;
 	int		player;
+	char	*no_path;
+	char	*so_path;
+	char	*we_path;
+	char	*ea_path;
 }			t_map;
+
 
 /* check.c */
 int		check_args(int argc, char **argv);
+
+/*Read map*/
+int		read_map(t_map *map);
+
+/*parse_map.c*/
 int		parse_map(t_map *map);
+int		check_texture(char *str);
 int		check_walls(t_map *map);
 int		check_chars(t_map *map);
 int		is_char_valid(t_map *map, int i, int j, char player);
 
-/*Read map*/
-int		read_map(t_map *map);
+/*get_texture.c*/
+void	get_texture(char *str);
+void	get_north(char *str);
+void	get_south(char *str);
+void	get_west(char *str);
+void	get_east(char *str);
 
 void	test_mlx(void);
 

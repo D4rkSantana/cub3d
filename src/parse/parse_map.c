@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:22:57 by jefernan          #+#    #+#             */
-/*   Updated: 2023/01/20 16:23:19 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/01/25 02:23:52 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,45 @@
 
 int	parse_map(t_map *map)
 {
-	if (check_walls(map))
+	char	*line;
+	int		fd;
+	int		ret;
+	
+	fd = open(map->patch, O_RDONLY);
+	if (fd < 0)
 		return (1);
-	if (check_chars(map))
-		return (1);
-	if (map->player != 1)
+	line = get_next_line1(fd);
+	while (line)
 	{
-		printf("Error\nInvalid number of player\n");
-		return (1);
+		if (check_texture(line))
+			printf("Invalid texture");
+		line = get_next_line1(fd);
 	}
+	close(fd);
+	// if (check_walls(map))
+	// 	return (1);
+	// if (check_chars(map))
+	// 	return (1);
+	// if (map->player != 1)
+	// {
+	// 	printf("Error\nInvalid number of player\n");
+	// 	return (1);
+	// }
 	return (0);
+}
+
+int	check_texture(char *str)
+{
+	if (ft_strncmp(str, "NO ", 3) || ft_strncmp(str, "SO ", 3)
+		|| ft_strncmp(str, "WE ", 3) || ft_strncmp(str, "EA ", 3))
+		return (1);
+	else if (ft_strncmp(str, "./textures/", 10))
+		return (1);
+	else if (ft_strncmp(str, ".xpm", 4))
+		return (1);
+	else
+		get_texture(str);
+	return (0);	
 }
 
 int	check_walls(t_map *map)
@@ -90,3 +119,4 @@ int	is_char_valid(t_map *map, int i, int j, char player)
 	}
 	return (0);
 }
+

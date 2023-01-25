@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 15:04:24 by esilva-s          #+#    #+#             */
-/*   Updated: 2022/03/06 19:13:18 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/01/25 02:29:26 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,5 @@ void				ft_strdel(char **pont);
 int					ft_linebreak(char *str);
 char				*ft_strindexcpy(char **save, char *str, size_t index);
 char				*ft_strjoin_free1(char *s1, char const *s2, size_t size2);
+char				*get_next_line1(int fd);
 #endif

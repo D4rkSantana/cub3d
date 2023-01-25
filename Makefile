@@ -16,12 +16,12 @@ LIBFT_PATH = ./libs/libft
 LIBFT = ${LIBFT_PATH}/libft.a
 
 HEAD = -I./include
-SRC =	main.c check.c read_map.c parse_map.c\
+SRC =	main.c check.c read_map.c parse_map.c get_texture.c\
 
 OBJ_DIR	 =	obj
 OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 
-all: ${NAME} 
+all: ${NAME}
 
 ${NAME}: ${MINILIBX} $(OBJ) ${OBJ_DIR} ${LIBFT}
 		@ $(CC) $(OBJ) ${LIBFT} ${MINILIBX} $(FLAGS) ${MLXFLAGS} -no-pie -o ${NAME}
