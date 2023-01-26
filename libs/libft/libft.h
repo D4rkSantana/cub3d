@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 15:04:24 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/01/25 02:29:26 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/01/26 18:50:26 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,8 @@ int					ft_linebreak(char *str);
 char				*ft_strindexcpy(char **save, char *str, size_t index);
 char				*ft_strjoin_free1(char *s1, char const *s2, size_t size2);
 char				*get_next_line1(int fd);
+int					ft_matrix_strlen(char **matrix);
+void				ft_matrix_strdel(char **matrix);
+char				**ft_matrix_join(char **matrix, char *str);
+char				**ft_matrix_strdup(char **matrix);
 #endif

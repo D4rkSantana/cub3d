@@ -52,4 +52,7 @@ fclean:		clean
 			
 re:			fclean all
 
+val:	fclean all
+		valgrind ./cub3d ./maps/map1.cub
+
 .PHONY: 	all clean fclean re 
