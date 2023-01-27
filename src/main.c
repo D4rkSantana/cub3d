@@ -6,11 +6,42 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:20 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/01/25 00:06:32 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:15:05 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static t_map *init_map(char *patch)
+{
+	t_map	*map;
+	
+	map = NULL;
+	map = ft_calloc(sizeof(t_map), 1);
+	map->patch = NULL;
+	map->patch = ft_strdup(patch);
+	map->elements = NULL;
+	map->height = 0;
+	map->col = 0;
+	map->player = 0;
+	map->no_path = NULL;
+	map->so_path = NULL;
+	map->we_path = NULL;
+	map->ea_path = NULL;
+	return (map);
+}
+
+static void	destroy_all(t_map *map)
+{
+	ft_strdel(&map->patch);
+	ft_strdel(&map->no_path);
+	ft_strdel(&map->so_path);
+	ft_strdel(&map->we_path);
+	ft_strdel(&map->ea_path);
+	ft_matrix_strdel(map->elements);
+	free(map);
+	map = NULL;
+}
 
 int	main(int argc, char **argv)
 {
@@ -18,13 +49,13 @@ int	main(int argc, char **argv)
 
 	if (check_args(argc, argv))
 		return (0);
-	map = malloc(sizeof(t_map));
-	map->patch = ft_strdup(argv[1]);
+	map = init_map(argv[1]);
 	read_map(map);
-	// if (parse_map(map))
-	// 	return (0);
-	test_mlx();
+	if (parse_map(map))
+ 		return (0);
+	//test_mlx();
 	printf("Hello!\n");
+	destroy_all(map);
 	return (0);
 }
 
@@ -42,3 +73,4 @@ void	test_mlx(void)
 	win = mlx_new_window(mlx, 640, 360, "Cub3d");
 	mlx_loop(mlx);
 }
+

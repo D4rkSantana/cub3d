@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/01/25 02:34:07 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/01/27 02:17:53 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_map
 	char	*ea_path;
 }			t_map;
 
+# define NO 1
 
 /* check.c */
 int		check_args(int argc, char **argv);
@@ -49,10 +50,10 @@ int		is_char_valid(t_map *map, int i, int j, char player);
 
 /*get_texture.c*/
 void	get_texture(char *str);
-void	get_north(char *str);
-void	get_south(char *str);
-void	get_west(char *str);
-void	get_east(char *str);
+void	get_north(char *str, t_map *map);
+void	get_south(char *str, t_map *map);
+void	get_west(char *str, t_map *map);
+void	get_east(char *str, t_map *map);
 
 void	test_mlx(void);
 

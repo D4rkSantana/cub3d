@@ -6,7 +6,7 @@ MKDIR		= mkdir -p
 
 vpath %.c src ./src/parse
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 MLXFLAGS = -Imlx -lX11 -lXext -lm 
 
 MINILIBX_PATH = ./libs/minilibx
@@ -16,7 +16,7 @@ LIBFT_PATH = ./libs/libft
 LIBFT = ${LIBFT_PATH}/libft.a
 
 HEAD = -I./include
-SRC =	main.c check.c read_map.c parse_map.c get_texture.c\
+SRC =	main.c check.c read_map.c parse_map.c get_texture.c \
 
 OBJ_DIR	 =	obj
 OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
