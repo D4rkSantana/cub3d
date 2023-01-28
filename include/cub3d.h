@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/01/28 19:28:56 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/01/28 19:30:27 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,12 @@ typedef struct s_data
 }			t_data;
 
 # define NO 1
+
+/* init.c */
+t_data	*init(char *patch);
+
+/* destroy.c */
+void	destroy(t_data *data);
 
 /* check.c */
 int		check_args(int argc, char **argv);
