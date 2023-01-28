@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 23:46:49 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/01/27 00:04:06 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/01/28 19:10:15 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,18 @@ static int	load_map(int fd, t_map *map)
 	int		count;
 	char	*line;
 
+	line = NULL;
 	count = get_next_line(fd, &line);
 	map->elements = ft_matrix_join(NULL, line);
+	ft_strdel(&line);
 	map->height = 1;
 	while (count)
 	{
+		line = NULL;
 		count = get_next_line(fd, &line);
 		map->height += 1;
 		map->elements = ft_matrix_join(map->elements, line);
+		ft_strdel(&line);
 	}
 	//map->elements = ft_matrix_join(map->elements, "\0");
 	return (0);
