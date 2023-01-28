@@ -99,7 +99,7 @@ make sanitaze
 
 ## Linguagens e libs utilizadas 
 
-- [Linguagem C](https://pt.wikipedia.org/wiki/C_(linguagem_de_programa%C3%A7%C3%A3o)
+- [Linguagem C]("https://pt.wikipedia.org/wiki/C_(linguagem_de_programa%C3%A7%C3%A3o")
 - [Minilibx](https://github.com/42Paris/minilibx-linux)
 
 
@@ -113,9 +113,9 @@ make sanitaze
 
 ## Desenvolvedores
 
-[Jessica Fernanda]("https://github.com/nandajfa")
+[Jessica Fernanda](https://github.com/nandajfa)
 
-[Emerson Santana]("https://github.com/D4rkSantana")
+[Emerson Santana](https://github.com/D4rkSantana)
 
 ## Licença 
 
