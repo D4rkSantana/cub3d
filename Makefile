@@ -6,7 +6,7 @@ MKDIR		= mkdir -p
 
 vpath %.c src ./src/parse
 
-FLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+FLAGS = -Wall -Wextra -Werror
 MLXFLAGS = -Imlx -lX11 -lXext -lm 
 
 MINILIBX_PATH = ./libs/minilibx
