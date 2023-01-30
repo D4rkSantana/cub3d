@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/01/28 19:53:59 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/01/30 16:29:27 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ typedef struct s_data
 	void	*mlx;
 	void	*win;
 	void	*image;
+	int		h_teste; // Variavel criada para testar a mlx_image
+	int		w_teste; // Variavel criada para testar a mlx_image
 	t_map	*map;
 	int		close_game;
 }			t_data;
