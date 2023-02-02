@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 00:44:38 by jefernan          #+#    #+#             */
-/*   Updated: 2023/01/27 02:34:05 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/02 00:41:30 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,11 @@ void	get_texture(char *str)
 void	get_north(char *str, t_map *map)
 {
 	char	*temp;
-	
+
 	temp = ft_strtrim(str, "NO \n");
-	if (map->no_path == NULL)
+	//if (map->no_path == NULL)
 		map->no_path = ft_strdup(temp);
+	printf("%s\n", map->no_path);
 	ft_strdel(&temp);
 }
 

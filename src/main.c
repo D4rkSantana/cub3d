@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:20 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/01/27 14:15:05 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/02 00:21:43 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static t_map *init_map(char *patch)
 	map = ft_calloc(sizeof(t_map), 1);
 	map->patch = NULL;
 	map->patch = ft_strdup(patch);
+	map->map_array = ft_strdup("");
 	map->elements = NULL;
 	map->height = 0;
 	map->col = 0;
@@ -38,6 +39,7 @@ static void	destroy_all(t_map *map)
 	ft_strdel(&map->so_path);
 	ft_strdel(&map->we_path);
 	ft_strdel(&map->ea_path);
+	ft_strdel(&map->map_array);
 	ft_matrix_strdel(map->elements);
 	free(map);
 	map = NULL;
@@ -52,10 +54,7 @@ int	main(int argc, char **argv)
 	map = init_map(argv[1]);
 	read_map(map);
 	if (parse_map(map))
- 		return (0);
-	//test_mlx();
-	printf("Hello!\n");
-	destroy_all(map);
+		return (0);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/01/27 02:17:53 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/02 00:21:55 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_map
 {
 	char	*patch;
 	char	**elements;
+	char	*map_array;
 	int		height;
 	int		col;
 	int		player;
@@ -43,17 +44,24 @@ int		read_map(t_map *map);
 
 /*parse_map.c*/
 int		parse_map(t_map *map);
-int		check_texture(char *str);
+int		check_texture(char *str, t_map *map);
 int		check_walls(t_map *map);
 int		check_chars(t_map *map);
 int		is_char_valid(t_map *map, int i, int j, char player);
+void	get_array_map(t_map *map, char *line);
 
 /*get_texture.c*/
 void	get_texture(char *str);
+
 void	get_north(char *str, t_map *map);
 void	get_south(char *str, t_map *map);
 void	get_west(char *str, t_map *map);
 void	get_east(char *str, t_map *map);
+
+/* Color.c */
+int		check_color(char *line);
+int		check_cl_floor(char *line, t_map *map, int i, int j);
+int 	check_cl_ceilling(char *line, t_map *map, int i, int j);
 
 void	test_mlx(void);
 

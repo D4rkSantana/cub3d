@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:22:57 by jefernan          #+#    #+#             */
-/*   Updated: 2023/01/27 00:48:46 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/02 00:54:02 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,25 @@ int	parse_map(t_map *map)
 		line = get_next_line1(fd);
 		if (!line)
 			break ;
-		if (check_texture(line))
-			printf("Invalid texture\n");
+		if (line[0] == 'N' || line[0] == 'S' || line[0] == 'W'
+			|| line[0] == 'E')
+		{
+			if (check_texture(line, map))
+				break ;	
+		}
+		if (line[0] == 'F' || line[0] == 'C')
+		{
+			if (check_color(line))
+				break ;
+		}
+		if (line[0] == '1' || line[0] == ' ')
+			get_array_map(map, line);
+		// // if (check_walls(line, map))
+		// 	return (1);
 		free(line);
 	}
+	free(line);
 	close(fd);
-	map->player = 0;
-
-
-	// if (check_walls(map))
-	// 	return (1);
 	// if (check_chars(map))
 	// 	return (1);
 	// if (map->player != 1)
@@ -45,48 +54,71 @@ int	parse_map(t_map *map)
 	return (0);
 }
 
-int	check_texture(char *str)
+void	get_array_map(t_map *map, char *line)
 {
-	int len;
 
-	len = ft_strlen(str);	
-	if (ft_strncmp(str, "NO ", len) == 0 || ft_strncmp(str, "SO ", len) == 0
-		|| ft_strncmp(str, "WE ", len) == 0 || ft_strncmp(str, "EA ", len) == 0)
-		return (1);
-	if (ft_strncmp(str, "./textures/", 11) == 0)
-		return (1);
-	if (ft_strncmp(str, ".xpm", 4) == 0)
-		return (1);
-	get_texture(str);
-	return (0);
+	char	*temp;
+
+	temp = ft_strdup(map->map_array);
+	map->map_array = ft_strjoin(temp, line);
+	ft_strdel(&temp);
 }
 
-int	check_walls(t_map *map)
+int	check_texture(char *str, t_map *map)
 {
-	int	i;
-	int	j;
+	char	*swap;
+	char	*temp;
 
-	map->col = ft_strlen(map->elements[0]);
-	i = 0;
-	while (map->elements[i])
+	temp = ft_strrchr(str, '.');
+	swap = ft_strrchr(str, ' ');
+	if (!(ft_strncmp(str, "NO ", 3) == 0 || ft_strncmp(str, "SO ", 3) == 0
+		|| ft_strncmp(str, "WE ", 3) == 0 || ft_strncmp(str, "EA ", 3) == 0))
 	{
-		j = 0;
-		while (map->elements[i][j])
-		{
-			if (map->elements[i][map->col - 1] != '1'
-				|| map->elements[i][0] != '1'
-				|| map->elements[map->height - 1][j] != '1'
-				|| map->elements[0][j] != '1')
-			{
-				printf("Error\nThe map is not surrounded by walls\n");
-				return (1);
-			}
-			j++;
-		}
-		i++;
+		printf("Error, invalid texture");
+		// ft_matrix_strdel(split);
+		return (1);
 	}
+	if (!(ft_strncmp(swap, "./textures/", 11) == 0)
+		|| !(ft_strncmp(temp, ".xpm", 4) == 0))
+	{
+		printf("Error, invalid texture");
+		// ft_matrix_strdel(split);	
+		return (1);
+	}
+	get_texture(str);
+	// ft_matrix_strdel(split);
 	return (0);
 }
+
+// int	check_walls(char *line, t_map *map)
+// {
+// 	int	i;
+// 	int	len;
+
+// 	len = ft_strlen(line);
+// 	i = 0;
+// 	while (i < len)
+// 	{
+// 		if (i == 0 || i == len - 1)
+// 		{
+// 			if (line[i] != "1" || line[i] != " ")
+// 		}
+// 		while (map->elements[i][j])
+// 		{
+// 			if (map->elements[i][map->col - 1] != '1'
+// 				|| map->elements[i][0] != '1'
+// 				|| map->elements[map->height - 1][j] != '1'
+// 				|| map->elements[0][j] != '1')
+// 			{
+// 				printf("Error\nThe map is not surrounded by walls\n");
+// 				return (1);
+// 			}
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// 	return (0);
+// }
 
 int	check_chars(t_map *map)
 {
