@@ -14,5 +14,5 @@ jobs:
     with:
       packages: norminette
       upgrade: true
-    -name: Check norm errors
+    - name: Check norm errors
     run: norminette ./src ./include
