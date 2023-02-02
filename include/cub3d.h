@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/02 00:21:55 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/02 18:39:05 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,24 @@ typedef struct s_map
 	char	*ea_path;
 }			t_map;
 
+typedef struct s_data
+{
+	void	*mlx;
+	void	*win;
+	void	*image;
+	int		h_teste; // Variavel criada para testar a mlx_image
+	int		w_teste; // Variavel criada para testar a mlx_image
+	t_map	*map;
+	int		close_game;
+}			t_data;
+
 # define NO 1
+
+/* init.c */
+t_data	*init(char *patch);
+
+/* destroy.c */
+void	destroy(t_data *data);
 
 /* check.c */
 int		check_args(int argc, char **argv);

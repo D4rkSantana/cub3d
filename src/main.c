@@ -6,70 +6,43 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:20 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/02 00:21:43 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/02 18:42:10 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "cub3d.h"
 
-static t_map *init_map(char *patch)
+static void	start_mlx(t_data *data)
 {
-	t_map	*map;
-	
-	map = NULL;
-	map = ft_calloc(sizeof(t_map), 1);
-	map->patch = NULL;
-	map->patch = ft_strdup(patch);
-	map->map_array = ft_strdup("");
-	map->elements = NULL;
-	map->height = 0;
-	map->col = 0;
-	map->player = 0;
-	map->no_path = NULL;
-	map->so_path = NULL;
-	map->we_path = NULL;
-	map->ea_path = NULL;
-	return (map);
-}
-
-static void	destroy_all(t_map *map)
-{
-	ft_strdel(&map->patch);
-	ft_strdel(&map->no_path);
-	ft_strdel(&map->so_path);
-	ft_strdel(&map->we_path);
-	ft_strdel(&map->ea_path);
-	ft_strdel(&map->map_array);
-	ft_matrix_strdel(map->elements);
-	free(map);
-	map = NULL;
+	data->mlx = mlx_init();
+	if (!data->mlx)
+	{
+		printf("Error\nNo graphical interface.\n");
+		destroy(data);
+		exit(0);
+	}
+	data->win = mlx_new_window(data->mlx, data->map->col * 50, data->map->height * 50, "Cub3d");
+	data->image = mlx_xpm_file_to_image(data->mlx, "coelho.xpm", &data->h_teste, &data->w_teste);
+	mlx_put_image_to_window(data->mlx, data->win, data->image, 0, 0);
 }
 
 int	main(int argc, char **argv)
 {
-	t_map	*map;
+	t_data	*data;
 
+	
 	if (check_args(argc, argv))
 		return (0);
-	map = init_map(argv[1]);
-	read_map(map);
-	if (parse_map(map))
-		return (0);
+	data = init(argv[1]);
+	read_map(data->map);
+	if (parse_map(data->map))
+	{
+		destroy(data);
+		return (0); 
+	}
+	//start_mlx(data);
+	//mlx_loop(data->mlx);
+	destroy(data);
 	return (0);
 }
-
-void	test_mlx(void)
-{
-	void	*mlx;
-	void	*win;
-
-	mlx = mlx_init();
-	if (!mlx)
-	{
-		printf("Error\nNo graphical interface.\n");
-		exit(0);
-	}
-	win = mlx_new_window(mlx, 640, 360, "Cub3d");
-	mlx_loop(mlx);
-}
-

@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:22:57 by jefernan          #+#    #+#             */
-/*   Updated: 2023/02/02 00:54:02 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/02 18:43:09 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,14 @@ int	check_texture(char *str, t_map *map)
 	if (!(ft_strncmp(str, "NO ", 3) == 0 || ft_strncmp(str, "SO ", 3) == 0
 		|| ft_strncmp(str, "WE ", 3) == 0 || ft_strncmp(str, "EA ", 3) == 0))
 	{
-		printf("Error, invalid texture");
+		printf("Error, invalid texture\n");
 		// ft_matrix_strdel(split);
 		return (1);
 	}
 	if (!(ft_strncmp(swap, "./textures/", 11) == 0)
 		|| !(ft_strncmp(temp, ".xpm", 4) == 0))
 	{
-		printf("Error, invalid texture");
+		printf("Error, invalid texture\n");
 		// ft_matrix_strdel(split);	
 		return (1);
 	}
