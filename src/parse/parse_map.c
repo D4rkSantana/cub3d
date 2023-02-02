@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:22:57 by jefernan          #+#    #+#             */
-/*   Updated: 2023/02/02 21:00:28 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/02 23:42:51 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	parse_map(t_map *map)
 {
 	char	*line;
 	int		fd;
-		
+	
 	fd = open(map->patch, O_RDONLY);
 	if (fd < 0)
 		return (1);
@@ -28,7 +28,7 @@ int	parse_map(t_map *map)
 		if (line[0] == 'N' || line[0] == 'S' || line[0] == 'W'
 			|| line[0] == 'E')
 			if (check_texture(line, map))
-				break ;	
+				break ;
 		if (line[0] == 'F' || line[0] == 'C')
 			if (check_color(line))
 				break ;
@@ -68,17 +68,15 @@ int	check_texture(char *str, t_map *map)
 	temp = ft_strrchr(str, '.');
 	swap = ft_strrchr(str, ' ');
 	if (!(ft_strncmp(str, "NO ", 3) == 0 || ft_strncmp(str, "SO ", 3) == 0
-		|| ft_strncmp(str, "WE ", 3) == 0 || ft_strncmp(str, "EA ", 3) == 0))
+			|| ft_strncmp(str, "WE ", 3) == 0 || ft_strncmp(str, "EA ", 3) == 0))
 	{
 		printf("Error, invalid texture\n");
 		return (1);
 	}
-	printf("%s\n", temp);
-	printf("%s\n", swap);
 	if (!(ft_strncmp(swap, " ./textures/", 12) == 0
-		|| ft_strncmp(temp, ".xpm", 4) == 0))
+			|| ft_strncmp(temp, ".xpm", 4) == 0))
 	{
-		printf("Error, invalid texture\n");	
+		printf("Error, invalid texture\n");
 		return (1);
 	}
 	get_texture(str);

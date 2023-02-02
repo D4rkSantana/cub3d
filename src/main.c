@@ -6,10 +6,9 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:20 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/02 20:42:40 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/02 23:31:54 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "cub3d.h"
 
@@ -31,7 +30,6 @@ int	main(int argc, char **argv)
 {
 	t_data	*data;
 
-	
 	if (check_args(argc, argv))
 		return (0);
 	data = init(argv[1]);
@@ -39,10 +37,10 @@ int	main(int argc, char **argv)
 	if (parse_map(data->map))
 	{
 		destroy(data);
-		return (0); 
+		return (0);
 	}
-	//start_mlx(data);
-	//mlx_loop(data->mlx);
+	start_mlx(data);
+	mlx_loop(data->mlx);
 	destroy(data);
 	return (0);
 }

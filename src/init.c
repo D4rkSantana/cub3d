@@ -6,16 +6,16 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:15:38 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/02 20:35:47 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/02 23:31:13 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static t_map *init_map(char *patch)
+static t_map	*init_map(char *patch)
 {
 	t_map	*map;
-	
+
 	map = NULL;
 	map = ft_calloc(sizeof(t_map), 1);
 	map->patch = NULL;
