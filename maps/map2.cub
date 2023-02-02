@@ -3,7 +3,7 @@ SO ./textures/teste.xpm
 WE ./textures/teste.xpm
 EA ./textures/teste.xmp
 
-F 255,600,0
+F 255,255,0
 C 225,30,0
 
         1111111111111111111111111

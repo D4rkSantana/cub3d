@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:51:55 by jefernan          #+#    #+#             */
-/*   Updated: 2023/02/01 21:50:45 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/02 18:59:59 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	check_cl_floor(char *line, t_map *map, int i, int j)
 
 	temp = ft_strtrim(line, "F \n");
 	rgb_color = ft_split(temp, ',');
+	free(temp);
 	while (rgb_color[i])
 	{
 		if (ft_atoi(rgb_color[i]) < 0 || ft_atoi(rgb_color[i]) > 255)
@@ -79,6 +80,7 @@ int	check_cl_ceilling(char *line, t_map *map, int i, int j)
 
 	temp = ft_strtrim(line, "C \n");
 	rgb_color = ft_split(temp, ',');
+	free(temp);
 	while (rgb_color[i])
 	{
 		if (ft_atoi(rgb_color[i]) < 0 || ft_atoi(rgb_color[i]) > 255)

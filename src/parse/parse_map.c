@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:22:57 by jefernan          #+#    #+#             */
-/*   Updated: 2023/02/02 18:43:09 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/02 21:00:28 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,11 @@ int	parse_map(t_map *map)
 			break ;
 		if (line[0] == 'N' || line[0] == 'S' || line[0] == 'W'
 			|| line[0] == 'E')
-		{
 			if (check_texture(line, map))
 				break ;	
-		}
 		if (line[0] == 'F' || line[0] == 'C')
-		{
 			if (check_color(line))
 				break ;
-		}
 		if (line[0] == '1' || line[0] == ' ')
 			get_array_map(map, line);
 		// // if (check_walls(line, map))
@@ -56,10 +52,10 @@ int	parse_map(t_map *map)
 
 void	get_array_map(t_map *map, char *line)
 {
-
 	char	*temp;
 
 	temp = ft_strdup(map->map_array);
+	free(map->map_array);
 	map->map_array = ft_strjoin(temp, line);
 	ft_strdel(&temp);
 }
@@ -75,18 +71,17 @@ int	check_texture(char *str, t_map *map)
 		|| ft_strncmp(str, "WE ", 3) == 0 || ft_strncmp(str, "EA ", 3) == 0))
 	{
 		printf("Error, invalid texture\n");
-		// ft_matrix_strdel(split);
 		return (1);
 	}
-	if (!(ft_strncmp(swap, "./textures/", 11) == 0)
-		|| !(ft_strncmp(temp, ".xpm", 4) == 0))
+	printf("%s\n", temp);
+	printf("%s\n", swap);
+	if (!(ft_strncmp(swap, " ./textures/", 12) == 0
+		|| ft_strncmp(temp, ".xpm", 4) == 0))
 	{
-		printf("Error, invalid texture\n");
-		// ft_matrix_strdel(split);	
+		printf("Error, invalid texture\n");	
 		return (1);
 	}
 	get_texture(str);
-	// ft_matrix_strdel(split);
 	return (0);
 }
 
@@ -157,4 +152,3 @@ int	is_char_valid(t_map *map, int i, int j, char player)
 	}
 	return (0);
 }
-

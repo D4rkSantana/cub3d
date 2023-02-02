@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 00:44:38 by jefernan          #+#    #+#             */
-/*   Updated: 2023/02/02 00:41:30 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/02 21:12:50 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ void	get_texture(char *str)
 
 	if (ft_strncmp(str, "NO ", 3) == 0)
 		get_north(str, map);
-	if (ft_strncmp(str, "SO ", 3) == 0)
-		get_south(str, map);
-	if (ft_strncmp(str, "WE ", 3) == 0)
-		get_west(str, map);
-	if (ft_strncmp(str, "EA ", 3) == 0)
-		get_east(str, map);
+	// if (ft_strncmp(str, "SO ", 3) == 0)
+	// 	get_south(str, map);
+	// if (ft_strncmp(str, "WE ", 3) == 0)
+	// 	get_west(str, map);
+	// if (ft_strncmp(str, "EA ", 3) == 0)
+	// 	get_east(str, map);
 }
 
 void	get_north(char *str, t_map *map)
@@ -31,9 +31,8 @@ void	get_north(char *str, t_map *map)
 	char	*temp;
 
 	temp = ft_strtrim(str, "NO \n");
-	//if (map->no_path == NULL)
+	if (map->no_path == NULL)
 		map->no_path = ft_strdup(temp);
-	printf("%s\n", map->no_path);
 	ft_strdel(&temp);
 }
 
