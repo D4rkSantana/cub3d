@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:22:57 by jefernan          #+#    #+#             */
-/*   Updated: 2023/02/03 14:34:12 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/02/04 00:00:22 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	check_texture(char *str, t_map *map)
 		return (1);
 	}
 	if (!(ft_strncmp(swap, " ./textures/", 12) == 0
-			|| ft_strncmp(temp, ".xpm", 4) == 0))
+			&& ft_strncmp(temp, ".xpm\n", 5) == 0))
 	{
 		printf("Error, invalid texture\n");
 		return (1);

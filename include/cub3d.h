@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/03 14:48:14 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/02/04 00:37:12 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_map
 	int		height;
 	int		col;
 	int		player;
+	int		check_color;
 	char	*no_path;
 	char	*so_path;
 	char	*we_path;
@@ -79,6 +80,7 @@ void	get_east(char *str, t_map *map);
 
 /* Color.c */
 int		check_color(char *line);
+void	get_color(char *line, t_map *map);
 int		check_cl_floor(char *line, t_map *map, int i, int j);
 int		check_cl_ceilling(char *line, t_map *map, int i, int j);
 

@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:51:55 by jefernan          #+#    #+#             */
-/*   Updated: 2023/02/03 18:58:41 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/04 00:37:02 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,36 +15,46 @@
 int	check_color(char *line)
 {
 	t_map	*map;
-	int		j;
-	int		i;
 
-	i = -1;
-	j = 0;
 	if (!(ft_strncmp(line, "F ", 2) == 0 || ft_strncmp(line, "C ", 2) == 0))
 	{
 		printf("Error, invalid color");
 		return (1);
 	}
 	if (ft_strchr(line, ','))
+		get_color(line, map);
+	else
 	{
-		if (ft_strncmp(line, "F ", 2) == 0)
-		{
-			if (check_cl_floor(line, map, i, j))
-				return (1);
-		}
-		if (ft_strncmp(line, "C ", 2) == 0)
-		{
-			if (check_cl_ceilling(line, map, i, j))
-				return (1);
-		}	
+		printf("Error, color\n");
+		return (1);
 	}
 	return (0);
+}
+
+void	get_color(char *line, t_map *map)
+{
+	int		j;
+	int		i;
+
+	i = -1;
+	j = 0;
+	if (ft_strncmp(line, "F ", 2) == 0)
+	{
+		check_cl_floor(line, map, i, j);
+		map->check_color++;
+	}
+	if (ft_strncmp(line, "C ", 2) == 0)
+	{
+		check_cl_ceilling(line, map, i, j);
+		map->check_color++;
+	}
 }
 
 int	check_cl_floor(char *line, t_map *map, int i, int j)
 {
 	char	**rgb_color;
 	char	*temp;
+	int		rgb;
 
 	temp = ft_strtrim(line, "F \n");
 	rgb_color = ft_split(temp, ',');

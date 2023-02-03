@@ -1,7 +1,7 @@
 NO ./textures/teste.xpm
 SO ./textures/teste.xpm
 WE ./textures/teste.xpm
-EA ./textures/teste.xmp
+EA ./textures/teste.xpm
 
 F 255,255,0
 C 225,30,0
