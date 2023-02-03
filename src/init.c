@@ -3,23 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:15:38 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/02 23:31:13 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/03 14:47:20 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static t_map	*init_map(char *patch)
+t_map	*init_map(char *patch)
 {
 	t_map	*map;
 
 	map = NULL;
 	map = ft_calloc(sizeof(t_map), 1);
 	map->patch = NULL;
-	map->patch = ft_strdup(patch);
+	if (patch != NULL)
+		map->patch = ft_strdup(patch);
 	map->map_array = ft_strdup("");
 	map->elements = NULL;
 	map->height = 0;

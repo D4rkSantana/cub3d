@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   destroy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:14:01 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/02 23:32:00 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/03 14:47:27 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	destroy_map(t_map *map)
+void	destroy_map(t_map *map)
 {
 	if (map == NULL)
 		return ;

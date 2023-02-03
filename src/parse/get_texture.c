@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_texture.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 00:44:38 by jefernan          #+#    #+#             */
-/*   Updated: 2023/02/02 23:32:35 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/03 14:48:28 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	get_texture(char *str)
 {
 	t_map	*map;
 
+	map = init_map(NULL);
 	if (ft_strncmp(str, "NO ", 3) == 0)
 		get_north(str, map);
 	if (ft_strncmp(str, "SO ", 3) == 0)
@@ -24,6 +25,7 @@ void	get_texture(char *str)
 		get_west(str, map);
 	if (ft_strncmp(str, "EA ", 3) == 0)
 		get_east(str, map);
+	destroy_map(map);
 }
 
 void	get_north(char *str, t_map *map)

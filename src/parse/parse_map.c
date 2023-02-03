@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:22:57 by jefernan          #+#    #+#             */
-/*   Updated: 2023/02/02 23:42:51 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/03 14:34:12 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	parse_map(t_map *map)
 	int		fd;
 	
 	fd = open(map->patch, O_RDONLY);
+	line = NULL;
 	if (fd < 0)
 		return (1);
 	while (1)
@@ -36,9 +37,9 @@ int	parse_map(t_map *map)
 			get_array_map(map, line);
 		// // if (check_walls(line, map))
 		// 	return (1);
-		free(line);
+		ft_strdel(&line);
 	}
-	free(line);
+	ft_strdel(&line);
 	close(fd);
 	// if (check_chars(map))
 	// 	return (1);

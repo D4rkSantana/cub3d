@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/02 23:34:03 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/03 14:48:14 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,11 @@ typedef struct s_data
 # define NO 1
 
 /* init.c */
+t_map	*init_map(char *patch);
 t_data	*init(char *patch);
 
 /* destroy.c */
+void	destroy_map(t_map *map);
 void	destroy(t_data *data);
 
 /* check.c */

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:20 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/02 23:31:54 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/03 13:54:01 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ int	main(int argc, char **argv)
 		destroy(data);
 		return (0);
 	}
-	start_mlx(data);
-	mlx_loop(data->mlx);
+	//start_mlx(data);
+	//mlx_loop(data->mlx);
 	destroy(data);
 	return (0);
 }
