@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:51:55 by jefernan          #+#    #+#             */
-/*   Updated: 2023/02/02 18:59:59 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/03 18:58:41 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	check_color(char *line)
 	int		j;
 	int		i;
 
-	i = 0;
+	i = -1;
 	j = 0;
 	if (!(ft_strncmp(line, "F ", 2) == 0 || ft_strncmp(line, "C ", 2) == 0))
 	{
@@ -49,7 +49,7 @@ int	check_cl_floor(char *line, t_map *map, int i, int j)
 	temp = ft_strtrim(line, "F \n");
 	rgb_color = ft_split(temp, ',');
 	free(temp);
-	while (rgb_color[i])
+	while (rgb_color[++i] != NULL)
 	{
 		if (ft_atoi(rgb_color[i]) < 0 || ft_atoi(rgb_color[i]) > 255)
 		{
@@ -57,6 +57,7 @@ int	check_cl_floor(char *line, t_map *map, int i, int j)
 			ft_matrix_strdel(rgb_color);
 			return (1);
 		}
+		j = 0;
 		while (j < ft_strlen(rgb_color[i]))
 		{
 			if (!ft_isdigit(rgb_color[i][j]))
@@ -67,7 +68,6 @@ int	check_cl_floor(char *line, t_map *map, int i, int j)
 			}
 			j++;
 		}
-		i++;
 	}
 	ft_matrix_strdel(rgb_color);
 	return (0);
@@ -81,7 +81,7 @@ int	check_cl_ceilling(char *line, t_map *map, int i, int j)
 	temp = ft_strtrim(line, "C \n");
 	rgb_color = ft_split(temp, ',');
 	free(temp);
-	while (rgb_color[i])
+	while (rgb_color[++i] != NULL)
 	{
 		if (ft_atoi(rgb_color[i]) < 0 || ft_atoi(rgb_color[i]) > 255)
 		{
@@ -89,6 +89,7 @@ int	check_cl_ceilling(char *line, t_map *map, int i, int j)
 			ft_matrix_strdel(rgb_color);
 			return (1);
 		}
+		j = 0;
 		while (j < ft_strlen(rgb_color[i]))
 		{
 			if (!ft_isdigit(rgb_color[i][j]))
@@ -99,7 +100,6 @@ int	check_cl_ceilling(char *line, t_map *map, int i, int j)
 			}
 			j++;
 		}
-		i++;
 	}
 	ft_matrix_strdel(rgb_color);
 	return (0);
