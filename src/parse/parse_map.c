@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:22:57 by jefernan          #+#    #+#             */
-/*   Updated: 2023/02/04 21:13:45 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/04 22:22:43 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,24 @@
 
 int	parse_map(t_map *map)
 {
-	char	*line;
-	int		fd;
-	
-	fd = open(map->patch, O_RDONLY);
-	line = NULL;
-	if (fd < 0)
-		return (1);
-	while (1)
+	int		i;
+
+	i = 0;
+	while (map->elements[i])
 	{
-		line = get_next_line1(fd);
-		if (!line)
-			break ;
-		if (line[0] == 'N' || line[0] == 'S' || line[0] == 'W'
-			|| line[0] == 'E')
-			if (check_texture(line, map))
-				break ;
-		if (line[0] == 'F' || line[0] == 'C')
-			if (color(line))
-				break ;
-		if (line[0] == '1' || line[0] == ' ')
-			get_array_map(map, line);
+		if (map->elements[i][0] == 'N' || map->elements[i][0] == 'S'
+			|| map->elements[i][0] == 'W' || map->elements[i][0] == 'E')
+			if (check_texture(map->elements[i], map))
+				return (1);
+		if (map->elements[i][0] == 'F' || map->elements[i][0] == 'C')
+			if (color(map->elements[i]))
+				return (1);
+		if (map->elements[i][0] == '1' || map->elements[i][0] == ' ')
+			get_array_map(map, map->elements[i]);
 		// // if (check_walls(line, map))
 		// 	return (1);
-		ft_strdel(&line);
+		i++;
 	}
-	ft_strdel(&line);
-	close(fd);
 	// if (check_chars(map))
 	// 	return (1);
 	// if (map->player != 1)
@@ -69,13 +60,14 @@ int	check_texture(char *str, t_map *map)
 	temp = ft_strrchr(str, '.');
 	swap = ft_strrchr(str, ' ');
 	if (!(ft_strncmp(str, "NO ", 3) == 0 || ft_strncmp(str, "SO ", 3) == 0
-			|| ft_strncmp(str, "WE ", 3) == 0 || ft_strncmp(str, "EA ", 3) == 0))
+			|| ft_strncmp(str, "WE ", 3) == 0
+				|| ft_strncmp(str, "EA ", 3) == 0))
 	{
 		printf("Error, invalid texture\n");
 		return (1);
 	}
 	if (!(ft_strncmp(swap, " ./textures/", 12) == 0
-			&& ft_strncmp(temp, ".xpm\n", 5) == 0))
+			&& ft_strncmp(temp, ".xpm", 4) == 0))
 	{
 		printf("Error, invalid texture\n");
 		return (1);
