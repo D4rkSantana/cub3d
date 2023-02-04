@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:22:57 by jefernan          #+#    #+#             */
-/*   Updated: 2023/02/04 00:00:22 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/04 21:13:45 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	parse_map(t_map *map)
 			if (check_texture(line, map))
 				break ;
 		if (line[0] == 'F' || line[0] == 'C')
-			if (check_color(line))
+			if (color(line))
 				break ;
 		if (line[0] == '1' || line[0] == ' ')
 			get_array_map(map, line);

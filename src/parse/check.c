@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:52:07 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/01/20 16:23:17 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/04 21:04:17 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,16 @@ int	check_args(int argc, char **argv)
 				return (0);
 		}
 		printf("Error\nInvalid map extension. Use .cub\n");
+		return (1);
+	}
+	return (0);
+}
+
+int	verify_count_rgb(int i)
+{
+	if (i != 3)
+	{
+		printf("Error, invalid color\n");
 		return (1);
 	}
 	return (0);

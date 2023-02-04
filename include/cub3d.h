@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/04 00:37:12 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/04 20:56:38 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,10 @@ void	get_west(char *str, t_map *map);
 void	get_east(char *str, t_map *map);
 
 /* Color.c */
-int		check_color(char *line);
-void	get_color(char *line, t_map *map);
+int		color(char *line);
+void	check_color(char *line);
+int		verify_count_rgb(int i);
+int		check_char(char *rgb, char c);
 int		check_cl_floor(char *line, t_map *map, int i, int j);
 int		check_cl_ceilling(char *line, t_map *map, int i, int j);
 
