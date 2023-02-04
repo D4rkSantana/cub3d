@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:22:57 by jefernan          #+#    #+#             */
-/*   Updated: 2023/02/04 22:22:43 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/04 22:24:39 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	check_texture(char *str, t_map *map)
 	swap = ft_strrchr(str, ' ');
 	if (!(ft_strncmp(str, "NO ", 3) == 0 || ft_strncmp(str, "SO ", 3) == 0
 			|| ft_strncmp(str, "WE ", 3) == 0
-				|| ft_strncmp(str, "EA ", 3) == 0))
+			|| ft_strncmp(str, "EA ", 3) == 0))
 	{
 		printf("Error, invalid texture\n");
 		return (1);
