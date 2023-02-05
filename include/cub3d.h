@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/05 21:12:22 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/05 21:17:33 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ t_data	*init(char *patch);
 /* destroy.c */
 void	destroy_map(t_map *map);
 void	destroy(t_data *data);
+void	destroy_image(t_image *image);
 
 /* check.c */
 int		check_args(int argc, char **argv);
