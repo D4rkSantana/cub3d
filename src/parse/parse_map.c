@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:22:57 by jefernan          #+#    #+#             */
-/*   Updated: 2023/02/05 21:06:55 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/05 22:12:30 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ int	parse_map(t_map *map)
 				return (1);
 		if (map->elements[i][0] == '1' || map->elements[i][0] == ' ')
 			get_array_map(map, map->elements[i]);
-		// // if (check_walls(line, map))
-		// 	return (1);
 		i++;
 	}
 	// if (map->check_color != 2)
@@ -49,60 +47,6 @@ void	get_array_map(t_map *map, char *line)
 	ft_strdel(&temp);
 }
 
-int	check_texture(char *str, t_map *map)
-{
-	char	*swap;
-	char	*temp;
-
-	temp = ft_strrchr(str, '.');
-	swap = ft_strrchr(str, ' ');
-	if (!(ft_strncmp(str, "NO ", 3) == 0 || ft_strncmp(str, "SO ", 3) == 0
-			|| ft_strncmp(str, "WE ", 3) == 0
-			|| ft_strncmp(str, "EA ", 3) == 0))
-	{
-		printf("Error, invalid texture\n");
-		return (1);
-	}
-	if (!(ft_strncmp(swap, " ./textures/", 12) == 0
-			&& ft_strncmp(temp, ".xpm", 4) == 0))
-	{
-		printf("Error, invalid texture\n");
-		return (1);
-	}
-	get_texture(str);
-	return (0);
-}
-
-// int	check_walls(char *line, t_map *map)
-// {
-// 	int	i;
-// 	int	len;
-
-// 	len = ft_strlen(line);
-// 	i = 0;
-// 	while (i < len)
-// 	{
-// 		if (i == 0 || i == len - 1)
-// 		{
-// 			if (line[i] != "1" || line[i] != " ")
-// 		}
-// 		while (map->elements[i][j])
-// 		{
-// 			if (map->elements[i][map->col - 1] != '1'
-// 				|| map->elements[i][0] != '1'
-// 				|| map->elements[map->height - 1][j] != '1'
-// 				|| map->elements[0][j] != '1')
-// 			{
-// 				printf("Error\nThe map is not surrounded by walls\n");
-// 				return (1);
-// 			}
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// 	return (0);
-// }
-
 int	check_array_map(t_map *map)
 {
 	char	**map_split;
@@ -115,6 +59,7 @@ int	check_array_map(t_map *map)
 		check_chars(map_split[i], map);
 		i++;
 	}
+	ft_strdel(map_split);
 	if (map->player != 1)
 	{
 		printf("Error\nInvalid number of player\n");
@@ -127,7 +72,7 @@ int	check_chars(char *map_line, t_map *map)
 {
 	char	player;
 	int		i;
-	
+
 	i = 0;
 	while (map_line[i] != '\0')
 	{

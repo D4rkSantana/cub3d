@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 23:46:49 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/05 18:38:58 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/02/05 21:27:14 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	read_map(t_data *data)
 	load_map(fd, data->map);
 	close(fd);
 	data->height = data->map->line * 50;
-	data->width =  data->map->col * 50;
+	data->width = data->map->col * 50;
 	print_matrix(data->map->elements, data->map->col);
 	return (0);
 }
