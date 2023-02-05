@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:20 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/03 13:54:01 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/02/05 18:00:44 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ static void	start_mlx(t_data *data)
 		destroy(data);
 		exit(0);
 	}
-	data->win = mlx_new_window(data->mlx, data->map->col * 50, data->map->height * 50, "Cub3d");
-	data->image = mlx_xpm_file_to_image(data->mlx, "coelho.xpm", &data->h_teste, &data->w_teste);
+	data->win = mlx_new_window(data->mlx, data->map->col * 50,
+			data->map->height * 50, "Cub3d");
+	data->image = mlx_xpm_file_to_image(data->mlx,
+			"coelho.xpm", &data->h_teste, &data->w_teste);
 	mlx_put_image_to_window(data->mlx, data->win, data->image, 0, 0);
 }
 

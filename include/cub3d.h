@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/04 22:02:40 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/05 18:04:08 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ typedef struct s_data
 	void	*mlx;
 	void	*win;
 	void	*image;
-	int		h_teste; // Variavel criada para testar a mlx_image
-	int		w_teste; // Variavel criada para testar a mlx_image
+	int		h_teste;
+	int		w_teste;
 	t_map	*map;
 	int		close_game;
 }			t_data;

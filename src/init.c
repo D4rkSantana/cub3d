@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:15:38 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/03 14:47:20 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/02/05 18:01:14 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ t_data	*init(char *patch)
 	data->mlx = NULL;
 	data->win = NULL;
 	data->image = NULL;
-	data->h_teste = 0; // Variavel criada para testar a mlx_image
-	data->w_teste = 0; // Variavel criada para testar a mlx_image
+	data->h_teste = 0;
+	data->w_teste = 0;
 	data->close_game = 0;
 	return (data);
 }
