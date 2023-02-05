@@ -6,14 +6,17 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:20 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/04 23:05:21 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/05 21:10:43 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "cub3d.h"
 
 static void	start_mlx(t_data *data)
 {
+	t_image	*image;
+
 	data->mlx = mlx_init();
 	if (!data->mlx)
 	{
@@ -21,9 +24,10 @@ static void	start_mlx(t_data *data)
 		destroy(data);
 		exit(0);
 	}
-	data->win = mlx_new_window(data->mlx, data->map->col * 50, data->map->height * 50, "Cub3d");
-	data->image = mlx_xpm_file_to_image(data->mlx, "coelho.xpm", &data->h_teste, &data->w_teste);
-	mlx_put_image_to_window(data->mlx, data->win, data->image, 0, 0);
+	image = init_image(data, "coelho.xpm");
+	data->win = mlx_new_window(data->mlx, data->width, data->height, "Cub3d");
+	mlx_put_image_to_window(data->mlx, data->win, image->pont, 0, 0);
+	destroy_image(image);
 }
 
 int	main(int argc, char **argv)
@@ -33,7 +37,7 @@ int	main(int argc, char **argv)
 	if (check_args(argc, argv))
 		return (0);
 	data = init(argv[1]);
-	read_map(data->map);
+	read_map(data);
 	if (parse_map(data->map))
 	{
 		destroy(data);

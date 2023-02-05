@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 23:46:49 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/01/28 20:03:02 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/02/05 18:38:58 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ static int	load_map(int fd, t_map *map)
 	map->col = ft_strlen(line);
 	map->elements = ft_matrix_join(NULL, line);
 	ft_strdel(&line);
-	map->height = 1;
+	map->line = 1;
 	while (count)
 	{
 		line = NULL;
 		count = get_next_line(fd, &line);
-		map->height += 1;
+		map->line += 1;
 		if (map->col < ft_strlen(line))
 			map->col = ft_strlen(line);
 		map->elements = ft_matrix_join(map->elements, line);
@@ -60,14 +60,16 @@ static int	load_map(int fd, t_map *map)
 	return (0);
 }
 
-int	read_map(t_map *map)
+int	read_map(t_data *data)
 {
 	int		fd;
 
-	if (open_map(map->patch, &fd))
+	if (open_map(data->map->patch, &fd))
 		return (1);
-	load_map(fd, map);
+	load_map(fd, data->map);
 	close(fd);
-	print_matrix(map->elements, map->height);
+	data->height = data->map->line * 50;
+	data->width =  data->map->col * 50;
+	print_matrix(data->map->elements, data->map->col);
 	return (0);
 }

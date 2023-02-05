@@ -6,9 +6,10 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/05 20:45:19 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/05 21:12:22 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef CUB3D_H
 # define CUB3D_H
@@ -20,12 +21,20 @@
 # include "../libs/minilibx/mlx.h"
 # include "../libs/libft/libft.h"
 
+typedef struct	s_image
+{
+	int		height;
+	int		width;
+	char	*patch;
+	void	*pont;
+}				t_image;
+
 typedef struct s_map
 {
 	char	*patch;
 	char	**elements;
 	char	*map_array;
-	int		height;
+	int		line;
 	int		col;
 	int		player;
 	int		check_color;
@@ -40,9 +49,8 @@ typedef struct s_data
 {
 	void	*mlx;
 	void	*win;
-	void	*image;
-	int		h_teste; // Variavel criada para testar a mlx_image
-	int		w_teste; // Variavel criada para testar a mlx_image
+	int		height;
+	int		width;
 	t_map	*map;
 	int		close_game;
 }			t_data;
@@ -50,6 +58,7 @@ typedef struct s_data
 # define NO 1
 
 /* init.c */
+t_image	*init_image(t_data *data, char *patch);
 t_map	*init_map(char *patch);
 t_data	*init(char *patch);
 
@@ -61,7 +70,7 @@ void	destroy(t_data *data);
 int		check_args(int argc, char **argv);
 
 /*Read map*/
-int		read_map(t_map *map);
+int		read_map(t_data *data);
 
 /*parse_map.c*/
 int		parse_map(t_map *map);

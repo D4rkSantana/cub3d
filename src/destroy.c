@@ -6,11 +6,17 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:14:01 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/03 14:47:27 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/02/05 18:39:08 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	destroy_image(t_image *image)
+{
+	ft_strdel(&image->patch);
+	free (image);
+}
 
 void	destroy_map(t_map *map)
 {

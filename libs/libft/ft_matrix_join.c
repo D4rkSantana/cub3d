@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 18:44:29 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/01/26 18:59:26 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/02/05 18:02:43 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,4 @@ char	**ft_matrix_join(char **matrix, char *str)
 	result[index] = ft_strdup(str);
 	ft_matrix_strdel(matrix);
 	return (result);
-	
 }
