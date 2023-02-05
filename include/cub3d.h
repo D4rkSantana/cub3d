@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/04 22:02:40 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/05 20:45:19 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_map
 	int		col;
 	int		player;
 	int		check_color;
+	int		check_texture;
 	char	*no_path;
 	char	*so_path;
 	char	*we_path;
@@ -64,11 +65,12 @@ int		read_map(t_map *map);
 
 /*parse_map.c*/
 int		parse_map(t_map *map);
+void	get_array_map(t_map *map, char *line);
+int		check_array_map(t_map *map);
 int		check_texture(char *str, t_map *map);
 int		check_walls(t_map *map);
-int		check_chars(t_map *map);
-int		is_char_valid(t_map *map, int i, int j, char player);
-void	get_array_map(t_map *map, char *line);
+int		check_chars(char *map_line, t_map *map);
+int		is_char_valid(char c, int i, char player);
 
 /*get_texture.c*/
 void	get_texture(char *str);

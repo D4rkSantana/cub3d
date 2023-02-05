@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:51:55 by jefernan          #+#    #+#             */
-/*   Updated: 2023/02/04 22:01:33 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/05 20:55:55 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,14 @@ void	check_color(char *line)
 	if (ft_strncmp(line, "F ", 2) == 0)
 	{
 		check_cl_floor(line, map, i, j);
-		map->check_color++;
+		map->check_color += 1;
 	}
 	if (ft_strncmp(line, "C ", 2) == 0)
 	{
 		check_cl_ceilling(line, map, i, j);
-		map->check_color++;
+		map->check_color += 1;
 	}
+	printf("%d\n", map->check_color);
 	destroy_map(map);
 }
 

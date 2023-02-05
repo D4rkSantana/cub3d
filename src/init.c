@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:15:38 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/03 14:47:20 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/02/05 20:53:55 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ t_map	*init_map(char *patch)
 	map->height = 0;
 	map->col = 0;
 	map->player = 0;
+	map->check_color = 0;
 	map->no_path = NULL;
 	map->so_path = NULL;
 	map->we_path = NULL;
