@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:20 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/05 18:37:17 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/02/05 19:33:12 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,7 @@ static void	start_mlx(t_data *data)
 		destroy(data);
 		exit(0);
 	}
-	image = init_image(data, "coelho.xpm");
 	data->win = mlx_new_window(data->mlx, data->width, data->height, "Cub3d");
-	mlx_put_image_to_window(data->mlx, data->win, image->pont, 0, 0);
-	destroy_image(image);
 }
 
 int	main(int argc, char **argv)
@@ -42,8 +39,10 @@ int	main(int argc, char **argv)
 		destroy(data);
 		return (0);
 	}
-	//start_mlx(data);
-	//mlx_loop(data->mlx);
+	start_mlx(data);
+	render(data);
+	mlx_loop(data->mlx);
+	
 	destroy(data);
 	return (0);
 }

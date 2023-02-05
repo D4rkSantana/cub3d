@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/05 18:37:55 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/02/05 19:27:20 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ typedef struct	s_image
 	void	*pont;
 }				t_image;
 
+typedef struct	s_person
+{
+	t_image	*sprite;
+	char	direction;
+}				t_person;
+
 typedef struct s_map
 {
 	char	*patch;
@@ -45,12 +51,13 @@ typedef struct s_map
 
 typedef struct s_data
 {
-	void	*mlx;
-	void	*win;
-	int		height;
-	int		width;
-	t_map	*map;
-	int		close_game;
+	void		*mlx;
+	void		*win;
+	int			height;
+	int			width;
+	t_map		*map;
+	t_person	*person;
+	int			close_game;
 }			t_data;
 
 # define NO 1
@@ -61,6 +68,7 @@ t_map	*init_map(char *patch);
 t_data	*init(char *patch);
 
 /* destroy.c */
+void	destroy_image(t_image *image);
 void	destroy_map(t_map *map);
 void	destroy(t_data *data);
 
@@ -93,6 +101,9 @@ int		verify_count_rgb(int i);
 int		check_char(char *rgb, char c);
 int		check_cl_floor(char *line, t_map *map, int i, int j);
 int		check_cl_ceilling(char *line, t_map *map, int i, int j);
+
+/* render.c */
+void	render(t_data *data);
 
 void	test_mlx(void);
 

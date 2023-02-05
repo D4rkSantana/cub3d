@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:15:38 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/05 18:39:16 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/02/05 19:23:38 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,10 @@ t_data	*init(char *patch)
 	if (data == NULL)
 		return (NULL);
 	data->map = init_map(patch);
+	data->person = NULL;
+	data->person = ft_calloc(sizeof(t_person), 1);
+	data->person->sprite = NULL;
+	data->person->sprite = ft_calloc(sizeof(t_image), 1);
 	data->mlx = NULL;
 	data->win = NULL;
 	data->height = 0;
