@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/08 12:42:39 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/08 17:51:38 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,19 @@
 # include <fcntl.h>
 # include "../libs/minilibx/mlx.h"
 # include "../libs/libft/libft.h"
+
+# define NO 1
+# define KEY_ESC 65307
+# define KEY_Q 113
+# define KEY_PRESS 2
+# define DESTROY_NOTIFY 17
+
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
+# define KEY_LEFT 65361
+# define KEY_RIGHT 65363
 
 typedef struct s_image
 {
@@ -53,10 +66,9 @@ typedef struct s_data
 	int		height;
 	int		width;
 	t_map	*map;
+	t_image	image;
 	int		close_game;
 }			t_data;
-
-# define NO 1
 
 /* init.c */
 t_image	*init_image(t_data *data, char *patch);
@@ -65,7 +77,7 @@ t_data	*init(char *patch);
 
 /* destroy.c */
 void	destroy_map(t_map *map);
-void	destroy(t_data *data);
+int		destroy(t_data *data);
 void	destroy_image(t_image *image);
 
 /* check.c */
@@ -89,7 +101,7 @@ void	get_north(char *str, t_map *map);
 void	get_south(char *str, t_map *map);
 void	get_west(char *str, t_map *map);
 void	get_east(char *str, t_map *map);
-void	get_color_floor(char	*color, t_map *map);
+void	get_color_floor(char *color, t_map *map);
 
 /* Color.c */
 int		color(char *line, t_map *map);
@@ -97,5 +109,12 @@ void	check_color(char *line, t_map *map);
 void	check_cl_floor(char *line, t_map *map, int i, int j);
 void	check_cl_ceilling(char *line, t_map *map, int i, int j);
 int		check_char(char *rgb, char c);
+
+/* utils.c*/
+void	get_color_floor(char *color, t_map *map);
+void	get_color_ceilling(char *color, t_map *map);
+
+/* key_hook.c*/
+int		key_hook(int key, t_data *data);
 
 #endif /* CUB3D_H */

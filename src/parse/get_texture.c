@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 00:44:38 by jefernan          #+#    #+#             */
-/*   Updated: 2023/02/08 12:42:49 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/08 17:51:15 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ void	get_north(char *str, t_map *map)
 
 	temp = ft_strtrim(str, "NO \n");
 	if (map->no_path == NULL)
+	{
 		map->no_path = ft_strdup(temp);
+		map->check_texture++;
+	}
 	ft_strdel(&temp);
 }
 
@@ -40,7 +43,10 @@ void	get_south(char *str, t_map *map)
 
 	temp = ft_strtrim(str, "SO \n");
 	if (map->so_path == NULL)
+	{
 		map->so_path = ft_strdup(temp);
+		map->check_texture++;
+	}
 	ft_strdel(&temp);
 }
 
@@ -50,7 +56,10 @@ void	get_west(char *str, t_map *map)
 
 	temp = ft_strtrim(str, "WE \n");
 	if (map->we_path == NULL)
+	{
 		map->we_path = ft_strdup(temp);
+		map->check_texture++;
+	}
 	ft_strdel(&temp);
 }
 
@@ -60,6 +69,9 @@ void	get_east(char *str, t_map *map)
 
 	temp = ft_strtrim(str, "EA \n");
 	if (map->ea_path == NULL)
+	{
 		map->ea_path = ft_strdup(temp);
+		map->check_texture++;
+	}
 	ft_strdel(&temp);
 }

@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:20 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/07 23:57:38 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/08 17:50:30 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static void	start_mlx(t_data *data)
 	image = init_image(data, "coelho.xpm");
 	data->win = mlx_new_window(data->mlx, data->width, data->height, "Cub3d");
 	mlx_put_image_to_window(data->mlx, data->win, image->pont, 0, 0);
+	mlx_hook(data->win, KEY_PRESS, 1L << 0, key_hook, data);
+	mlx_hook(data->win, DESTROY_NOTIFY, 0, destroy, data);
 	destroy_image(image);
 }
 
@@ -42,8 +44,8 @@ int	main(int argc, char **argv)
 		destroy(data);
 		return (0);
 	}
-	// start_mlx(data);
-	// mlx_loop(data->mlx);
+	start_mlx(data);
+	mlx_loop(data->mlx);
 	destroy(data);
 	return (0);
 }

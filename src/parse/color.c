@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:51:55 by jefernan          #+#    #+#             */
-/*   Updated: 2023/02/08 12:42:14 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/08 17:50:11 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ void	check_cl_ceilling(char *line, t_map *map, int i, int j)
 	ft_matrix_strdel(rgb_color);
 	if (verify_count_rgb(i))
 		return ;
+	get_color_ceilling(line, map);
 }
 
 int	check_char(char *rgb, char c)
@@ -117,14 +118,4 @@ int	check_char(char *rgb, char c)
 	else
 		return (1);
 	return (0);
-}
-
-void	get_color_floor(char *color, t_map *map)
-{
-	char	*temp;
-
-	temp = ft_strtrim(color, "F \n");
-	if (map->cl_floor == NULL)
-		map->cl_floor = ft_strdup(temp);
-	ft_strdel(&temp);
 }

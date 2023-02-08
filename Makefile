@@ -4,7 +4,7 @@ CC			= gcc
 RM			= rm -rf
 MKDIR		= mkdir -p
 
-vpath %.c src ./src/parse
+vpath %.c src ./src/parse ./src/key_hook
 
 FLAGS = -Wall -Wextra -Werror
 MLXFLAGS = -Imlx -lX11 -lXext -lm 
@@ -17,7 +17,7 @@ LIBFT = ${LIBFT_PATH}/libft.a
 
 HEAD = -I./include
 SRC =	main.c check.c read_map.c parse_map.c get_texture.c color.c destroy.c \
-		init.c  \
+		init.c  utils.c key_hook.c\
 
 OBJ_DIR	 =	obj
 OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))

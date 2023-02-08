@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:22:57 by jefernan          #+#    #+#             */
-/*   Updated: 2023/02/08 12:44:43 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/08 17:43:18 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,11 @@ int	parse_map(t_map *map)
 			get_array_map(map, map->elements[i]);
 		i++;
 	}
-	// if (map->check_color != 2)
-	// 	return (1);
+	if (map->check_color != 2 || map->check_texture != 4)
+	{
+		printf("Error, invalid map");
+		return (1);
+	}	
 	if (check_array_map(map, map->map_array))
 		return (1);
 	return (0);

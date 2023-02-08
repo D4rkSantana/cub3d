@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.c                                           :+:      :+:    :+:   */
+/*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/04 22:42:50 by jefernan          #+#    #+#             */
-/*   Updated: 2023/02/05 21:25:51 by jefernan         ###   ########.fr       */
+/*   Created: 2023/02/08 13:10:19 by jefernan          #+#    #+#             */
+/*   Updated: 2023/02/08 17:51:27 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	error(char *error_msg, t_data *data)
+int	key_hook(int key, t_data *data)
 {
-	printf("Error, %s\n", error_message);
-	if (data != NULL)
+	if (key == KEY_ESC || key == KEY_Q)
 		destroy(data);
-	exit(1);
+	return (0);
 }
