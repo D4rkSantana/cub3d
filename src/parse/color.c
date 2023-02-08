@@ -6,13 +6,13 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:51:55 by jefernan          #+#    #+#             */
-/*   Updated: 2023/02/05 20:55:55 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/08 12:42:14 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	color(char *line)
+int	color(char *line, t_map *map)
 {
 	if (!(ft_strncmp(line, "F ", 2) == 0 || ft_strncmp(line, "C ", 2) == 0))
 	{
@@ -20,7 +20,7 @@ int	color(char *line)
 		return (1);
 	}
 	if (ft_strchr(line, ','))
-		check_color(line);
+		check_color(line, map);
 	else
 	{
 		printf("Error, invalid color\n");
@@ -29,15 +29,13 @@ int	color(char *line)
 	return (0);
 }
 
-void	check_color(char *line)
+void	check_color(char *line, t_map *map)
 {
-	t_map	*map;
 	int		j;
 	int		i;
 
 	i = -1;
 	j = 0;
-	map = init_map(NULL);
 	if (ft_strncmp(line, "F ", 2) == 0)
 	{
 		check_cl_floor(line, map, i, j);
@@ -48,11 +46,9 @@ void	check_color(char *line)
 		check_cl_ceilling(line, map, i, j);
 		map->check_color += 1;
 	}
-	printf("%d\n", map->check_color);
-	destroy_map(map);
 }
 
-int	check_cl_floor(char *line, t_map *map, int i, int j)
+void	check_cl_floor(char *line, t_map *map, int i, int j)
 {
 	char	**rgb_color;
 	char	*temp;
@@ -67,20 +63,17 @@ int	check_cl_floor(char *line, t_map *map, int i, int j)
 		while (j < ft_strlen(rgb_color[i]))
 		{
 			if (check_char(rgb_color[i], rgb_color[i][j]))
-			{
 				ft_matrix_strdel(rgb_color);
-				return (1);
-			}
 			j++;
 		}
 	}
 	ft_matrix_strdel(rgb_color);
 	if (verify_count_rgb(i))
-		return (1);
-	return (0);
+		return ;
+	get_color_floor(line, map);
 }
 
-int	check_cl_ceilling(char *line, t_map *map, int i, int j)
+void	check_cl_ceilling(char *line, t_map *map, int i, int j)
 {
 	char	**rgb_color;
 	char	*temp;
@@ -96,15 +89,14 @@ int	check_cl_ceilling(char *line, t_map *map, int i, int j)
 			if (check_char(rgb_color[i], rgb_color[i][j]))
 			{
 				ft_matrix_strdel(rgb_color);
-				return (1);
+				return ;
 			}
 			j++;
 		}
 	}
 	ft_matrix_strdel(rgb_color);
 	if (verify_count_rgb(i))
-		return (1);
-	return (0);
+		return ;
 }
 
 int	check_char(char *rgb, char c)
@@ -125,4 +117,14 @@ int	check_char(char *rgb, char c)
 	else
 		return (1);
 	return (0);
+}
+
+void	get_color_floor(char *color, t_map *map)
+{
+	char	*temp;
+
+	temp = ft_strtrim(color, "F \n");
+	if (map->cl_floor == NULL)
+		map->cl_floor = ft_strdup(temp);
+	ft_strdel(&temp);
 }

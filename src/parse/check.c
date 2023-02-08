@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:52:07 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/05 22:09:04 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/08 12:43:08 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	check_texture(char *str, t_map *map)
 		printf("Error, invalid texture\n");
 		return (1);
 	}
-	get_texture(str);
+	get_texture(str, map);
 	return (0);
 }
 

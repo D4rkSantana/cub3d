@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:22:57 by jefernan          #+#    #+#             */
-/*   Updated: 2023/02/05 22:12:30 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/08 12:44:43 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	parse_map(t_map *map)
 			if (check_texture(map->elements[i], map))
 				return (1);
 		if (map->elements[i][0] == 'F' || map->elements[i][0] == 'C')
-			if (color(map->elements[i]))
+			if (color(map->elements[i], map))
 				return (1);
 		if (map->elements[i][0] == '1' || map->elements[i][0] == ' ')
 			get_array_map(map, map->elements[i]);
@@ -32,7 +32,7 @@ int	parse_map(t_map *map)
 	}
 	// if (map->check_color != 2)
 	// 	return (1);
-	if (check_array_map(map))
+	if (check_array_map(map, map->map_array))
 		return (1);
 	return (0);
 }
@@ -47,13 +47,13 @@ void	get_array_map(t_map *map, char *line)
 	ft_strdel(&temp);
 }
 
-int	check_array_map(t_map *map)
+int	check_array_map(t_map *map, char *map_array)
 {
 	char	**map_split;
 	int		i;
 
 	i = 0;
-	map_split = ft_split(map->map_array, '\n');
+	map_split = ft_split(map_array, '\n');
 	while (map_split[i])
 	{
 		check_chars(map_split[i], map);

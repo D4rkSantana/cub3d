@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:15:38 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/05 21:26:01 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/08 00:00:57 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ t_map	*init_map(char *patch)
 	map->so_path = NULL;
 	map->we_path = NULL;
 	map->ea_path = NULL;
+	map->cl_floor = NULL;
+	map->cl_ceilling = NULL;
 	return (map);
 }
 

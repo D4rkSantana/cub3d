@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/05 21:56:16 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/08 12:42:39 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ typedef struct s_map
 	char	*so_path;
 	char	*we_path;
 	char	*ea_path;
+	char	*cl_floor;
+	char	*cl_ceilling;
 }			t_map;
 
 typedef struct s_data
@@ -77,22 +79,23 @@ int		read_map(t_data *data);
 /*parse_map.c*/
 int		parse_map(t_map *map);
 void	get_array_map(t_map *map, char *line);
-int		check_array_map(t_map *map);
+int		check_array_map(t_map *map, char *map_array);
 int		check_chars(char *map_line, t_map *map);
 int		is_char_valid(char c, int i, char player);
 
 /*get_texture.c*/
-void	get_texture(char *str);
+void	get_texture(char *str, t_map *map);
 void	get_north(char *str, t_map *map);
 void	get_south(char *str, t_map *map);
 void	get_west(char *str, t_map *map);
 void	get_east(char *str, t_map *map);
+void	get_color_floor(char	*color, t_map *map);
 
 /* Color.c */
-int		color(char *line);
-void	check_color(char *line);
-int		check_cl_floor(char *line, t_map *map, int i, int j);
-int		check_cl_ceilling(char *line, t_map *map, int i, int j);
+int		color(char *line, t_map *map);
+void	check_color(char *line, t_map *map);
+void	check_cl_floor(char *line, t_map *map, int i, int j);
+void	check_cl_ceilling(char *line, t_map *map, int i, int j);
 int		check_char(char *rgb, char c);
 
 #endif /* CUB3D_H */
