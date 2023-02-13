@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:22:57 by jefernan          #+#    #+#             */
-/*   Updated: 2023/02/08 17:43:18 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/13 14:56:14 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,47 +27,18 @@ int	parse_map(t_map *map)
 			if (color(map->elements[i], map))
 				return (1);
 		if (map->elements[i][0] == '1' || map->elements[i][0] == ' ')
-			get_array_map(map, map->elements[i]);
+			check_array_map(map, map->elements[i]);
 		i++;
 	}
-	if (map->check_color != 2 || map->check_texture != 4)
-	{
-		printf("Error, invalid map");
-		return (1);
-	}	
-	if (check_array_map(map, map->map_array))
+	if (check_quantity(map))
 		return (1);
 	return (0);
 }
 
-void	get_array_map(t_map *map, char *line)
+int	check_array_map(t_map *map, char *map_line)
 {
-	char	*temp;
-
-	temp = ft_strdup(map->map_array);
-	free(map->map_array);
-	map->map_array = ft_strjoin(temp, line);
-	ft_strdel(&temp);
-}
-
-int	check_array_map(t_map *map, char *map_array)
-{
-	char	**map_split;
-	int		i;
-
-	i = 0;
-	map_split = ft_split(map_array, '\n');
-	while (map_split[i])
-	{
-		check_chars(map_split[i], map);
-		i++;
-	}
-	ft_strdel(map_split);
-	if (map->player != 1)
-	{
-		printf("Error\nInvalid number of player\n");
+	if (check_chars(map_line, map))
 		return (1);
-	}
 	return (0);
 }
 
@@ -85,14 +56,14 @@ int	check_chars(char *map_line, t_map *map)
 			map->player++;
 			player = map_line[i];
 		}
-		if (is_char_valid(map_line[i], i, player))
+		if (is_char_valid(map_line[i], player))
 			return (1);
 		i++;
 	}
 	return (0);
 }
 
-int	is_char_valid(char c, int i, char player)
+int	is_char_valid(char c, char player)
 {
 	if (c != '1' && c != '0' && c != ' ' && c != player)
 	{

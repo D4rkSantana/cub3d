@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 17:47:35 by jefernan          #+#    #+#             */
-/*   Updated: 2023/02/08 17:51:22 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/13 14:55:15 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,19 @@ void	get_color_ceilling(char *color, t_map *map)
 	if (map->cl_ceilling == NULL)
 		map->cl_ceilling = ft_strdup(temp);
 	ft_strdel(&temp);
+}
+
+int	check_quantity(t_map *map)
+{
+	if (map->check_color != 2 || map->check_texture != 4)
+	{
+		printf("Error, invalid map");
+		return (1);
+	}
+	if (map->player != 1)
+	{
+		printf("Error\nInvalid number of player\n");
+		return (1);
+	}
+	return (0);
 }

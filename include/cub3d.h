@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/08 17:51:38 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/13 14:53:30 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,10 @@ int		read_map(t_data *data);
 /*parse_map.c*/
 int		parse_map(t_map *map);
 void	get_array_map(t_map *map, char *line);
-int		check_array_map(t_map *map, char *map_array);
+int		check_array_map(t_map *map, char *map_line);
 int		check_chars(char *map_line, t_map *map);
-int		is_char_valid(char c, int i, char player);
+int		is_char_valid(char c, char player);
+int		check_around(t_map *map);
 
 /*get_texture.c*/
 void	get_texture(char *str, t_map *map);
@@ -101,7 +102,6 @@ void	get_north(char *str, t_map *map);
 void	get_south(char *str, t_map *map);
 void	get_west(char *str, t_map *map);
 void	get_east(char *str, t_map *map);
-void	get_color_floor(char *color, t_map *map);
 
 /* Color.c */
 int		color(char *line, t_map *map);
@@ -113,6 +113,7 @@ int		check_char(char *rgb, char c);
 /* utils.c*/
 void	get_color_floor(char *color, t_map *map);
 void	get_color_ceilling(char *color, t_map *map);
+int		check_quantity(t_map *map);
 
 /* key_hook.c*/
 int		key_hook(int key, t_data *data);
