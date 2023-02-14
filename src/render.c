@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 18:45:37 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/05 20:04:25 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/02/10 21:20:17 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	render(t_data *data)
 {
 	t_image	*person;
 	t_image *coelho;
-	
 
 	person = init_image(data, "crossbow.xpm");
 	coelho = init_image(data, "coelho.xpm");
