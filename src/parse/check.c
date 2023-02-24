@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:52:07 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/08 12:43:08 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/23 14:27:11 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int	check_texture(char *str, t_map *map)
 	char	*temp;
 	char	*extension;
 
-	extension = ft_strrchr(str, '.');
 	temp = ft_strrchr(str, ' ');
+	extension = ft_strrchr(str, '.');
 	if (!(ft_strncmp(str, "NO ", 3) == 0 || ft_strncmp(str, "SO ", 3) == 0
 			|| ft_strncmp(str, "WE ", 3) == 0
 			|| ft_strncmp(str, "EA ", 3) == 0))

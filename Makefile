@@ -1,4 +1,4 @@
-NAME		= cub3d
+NAME		= cub3D
 
 CC			= gcc
 RM			= rm -rf
@@ -45,7 +45,6 @@ clean:
 		@make clean -C $(MINILIBX_PATH)
 		@make clean -C $(LIBFT_PATH)
 		@ echo "Objects removed."
-
 
 fclean:		clean
 			@${RM} ${NAME}

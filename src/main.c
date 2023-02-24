@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:20 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/13 14:58:15 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/22 02:15:52 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ int	main(int argc, char **argv)
 		destroy(data);
 		return (0);
 	}
-	start_mlx(data);
-	mlx_loop(data->mlx);
+	// start_mlx(data);
+	// mlx_loop(data->mlx);
 	destroy(data);
 	return (0);
 }

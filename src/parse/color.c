@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:51:55 by jefernan          #+#    #+#             */
-/*   Updated: 2023/02/12 22:26:35 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/22 13:57:55 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,13 @@ void	check_color(char *line, t_map *map)
 {
 	int		j;
 	int		i;
+	char	*new_line;
 
 	i = -1;
 	j = 0;
 	if (ft_strncmp(line, "F ", 2) == 0)
 	{
+		
 		check_cl_floor(line, map, i, j);
 		map->check_color += 1;
 	}
@@ -63,14 +65,17 @@ void	check_cl_floor(char *line, t_map *map, int i, int j)
 		while (j < ft_strlen(rgb_color[i]))
 		{
 			if (check_char(rgb_color[i], rgb_color[i][j]))
+			{
 				ft_matrix_strdel(rgb_color);
+				return ;
+			}
 			j++;
 		}
 	}
 	ft_matrix_strdel(rgb_color);
 	if (verify_count_rgb(i))
 		return ;
-	map->cl_floor = ft_strtrim(line, "F \n");
+	get_color_floor(line, map);
 }
 
 void	check_cl_ceilling(char *line, t_map *map, int i, int j)
@@ -97,7 +102,7 @@ void	check_cl_ceilling(char *line, t_map *map, int i, int j)
 	ft_matrix_strdel(rgb_color);
 	if (verify_count_rgb(i))
 		return ;
-	map->cl_ceilling = ft_strtrim(line, "C \n");
+	get_color_ceilling(line, map);
 }
 
 int	check_char(char *rgb, char c)

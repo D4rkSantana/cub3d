@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:22:57 by jefernan          #+#    #+#             */
-/*   Updated: 2023/02/13 14:56:14 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/23 14:21:56 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	parse_map(t_map *map)
 			if (color(map->elements[i], map))
 				return (1);
 		if (map->elements[i][0] == '1' || map->elements[i][0] == ' ')
-			check_array_map(map, map->elements[i]);
+			check_line_map(map, map->elements[i]);
 		i++;
 	}
 	if (check_quantity(map))
@@ -35,14 +35,14 @@ int	parse_map(t_map *map)
 	return (0);
 }
 
-int	check_array_map(t_map *map, char *map_line)
+int	check_line_map(t_map *map, char *map_line)
 {
-	if (check_chars(map_line, map))
+	if (check_player(map_line, map))
 		return (1);
 	return (0);
 }
 
-int	check_chars(char *map_line, t_map *map)
+int	check_player(char *map_line, t_map *map)
 {
 	char	player;
 	int		i;

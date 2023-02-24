@@ -14,6 +14,3 @@ int	check_texture(char *str, t_map *map)
 	(NO | SO | WE | EA), e se o path para a textura é válido.
 
 ```
-void	get_array_map(t_map *map, char *line)
-```
-	Guarda o mapa em um array.

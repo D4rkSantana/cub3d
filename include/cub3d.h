@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/13 14:53:30 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/02/23 14:27:31 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <math.h>
 # include "../libs/minilibx/mlx.h"
 # include "../libs/libft/libft.h"
 
@@ -32,6 +33,8 @@
 # define KEY_D 100
 # define KEY_LEFT 65361
 # define KEY_RIGHT 65363
+
+# define PI 3.14159265
 
 typedef struct s_image
 {
@@ -91,10 +94,9 @@ int		read_map(t_data *data);
 /*parse_map.c*/
 int		parse_map(t_map *map);
 void	get_array_map(t_map *map, char *line);
-int		check_array_map(t_map *map, char *map_line);
-int		check_chars(char *map_line, t_map *map);
+int		check_line_map(t_map *map, char *map_line);
+int		check_player(char *map_line, t_map *map);
 int		is_char_valid(char c, char player);
-int		check_around(t_map *map);
 
 /*get_texture.c*/
 void	get_texture(char *str, t_map *map);
