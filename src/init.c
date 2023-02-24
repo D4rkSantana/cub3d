@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:15:38 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/05 19:23:38 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/02/17 19:21:43 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_image	*init_image(t_data *data, char *patch)
 		return (NULL);
 	image->patch = ft_strdup(patch);
 	image->pont = mlx_xpm_file_to_image(data->mlx, patch, &image->height, &image->width);
+	image->data_img = mlx_get_data_addr(image->pont, &image->bpp, &image->size_line, &image->endian);
 	return (image);
 }
 

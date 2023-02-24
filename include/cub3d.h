@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/05 19:27:20 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/02/17 19:20:28 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ typedef struct	s_image
 {
 	int		height;
 	int		width;
+	int		bpp;
+    int		size_line;
+    int		endian;
+	char	*data_img;
 	char	*patch;
 	void	*pont;
 }				t_image;
