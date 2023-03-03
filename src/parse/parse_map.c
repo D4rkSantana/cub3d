@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:22:57 by jefernan          #+#    #+#             */
-/*   Updated: 2023/02/23 14:21:56 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/03/02 23:58:16 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@ int	parse_map(t_map *map)
 	int		i;
 
 	i = 0;
-	while (map->elements[i] != (void *)0)
+	while (map->map_matrix[i] != (void *)0)
 	{
-		if (map->elements[i][0] == 'N' || map->elements[i][0] == 'S'
-			|| map->elements[i][0] == 'W' || map->elements[i][0] == 'E')
-			if (check_texture(map->elements[i], map))
+		if (map->map_matrix[i][0] == 'N' || map->map_matrix[i][0] == 'S'
+			|| map->map_matrix[i][0] == 'W' || map->map_matrix[i][0] == 'E')
+			if (check_texture(map->map_matrix[i], map))
 				return (1);
-		if (map->elements[i][0] == 'F' || map->elements[i][0] == 'C')
-			if (color(map->elements[i], map))
+		if (map->map_matrix[i][0] == 'F' || map->map_matrix[i][0] == 'C')
+			if (color(map->map_matrix[i], map))
 				return (1);
-		if (map->elements[i][0] == '1' || map->elements[i][0] == ' ')
-			check_line_map(map, map->elements[i]);
+		if (map->map_matrix[i][0] == '1' || map->map_matrix[i][0] == ' ')
+			check_line_map(map, map->map_matrix[i]);
 		i++;
 	}
 	if (check_quantity(map))

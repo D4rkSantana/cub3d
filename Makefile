@@ -16,7 +16,7 @@ LIBFT_PATH = ./libs/libft
 LIBFT = ${LIBFT_PATH}/libft.a
 
 HEAD = -I./include
-SRC =	main.c check.c read_map.c parse_map.c get_texture.c color.c destroy.c \
+SRC =	main.c check.c read_map.c build_map.c parse_map.c get_texture.c color.c destroy.c \
 		init.c  utils.c key_hook.c\
 
 OBJ_DIR	 =	obj

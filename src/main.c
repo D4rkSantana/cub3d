@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:20 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/22 02:15:52 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/03/03 00:03:07 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,19 @@ static void	start_mlx(t_data *data)
 	destroy_image(image);
 }
 
+static void	print_matrix(char **matrix)
+{
+	int	index;
+
+	index = 0;
+	printf(":Map:\n");
+	while (matrix[index] != NULL)
+	{
+		printf("%s\n", matrix[index]);
+		index++;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_data	*data;
@@ -38,7 +51,15 @@ int	main(int argc, char **argv)
 	if (check_args(argc, argv))
 		return (0);
 	data = init(argv[1]);
-	read_map(data);
+	//read_map(data);
+	
+	if (build_map(data))
+	{
+		destroy(data);
+		return (0);
+	}
+	print_matrix(data->map->map_matrix); 
+	printf(" X \n");
 	if (parse_map(data->map))
 	{
 		destroy(data);

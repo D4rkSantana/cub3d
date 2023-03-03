@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/23 14:27:31 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/03/02 23:56:08 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,24 @@ typedef struct s_image
 typedef struct s_map
 {
 	char	*patch;
+	char	**map_matrix;
+	int		line;
+	int		col;
+	int		player;
+	int		check_color;
+	int		check_texture;
+	char	*no_path;
+	char	*so_path;
+	char	*we_path;
+	char	*ea_path;
+	char	*cl_floor;
+	char	*cl_ceilling;
+}			t_map;
+
+/*
+typedef struct s_map
+{
+	char	*patch;
 	char	**elements;
 	char	*map_array;
 	int		line;
@@ -61,6 +79,8 @@ typedef struct s_map
 	char	*cl_floor;
 	char	*cl_ceilling;
 }			t_map;
+*/
+
 
 typedef struct s_data
 {
@@ -88,8 +108,9 @@ int		check_args(int argc, char **argv);
 int		check_texture(char *str, t_map *map);
 int		verify_count_rgb(int i);
 
-/*Read map*/
-int		read_map(t_data *data);
+/*Build map*/
+char	**read_map(t_data *data);
+int	build_map(t_data *data);
 
 /*parse_map.c*/
 int		parse_map(t_map *map);

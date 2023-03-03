@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 23:46:49 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/10 13:09:28 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/03/02 23:59:23 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,53 +23,36 @@ static int	open_map(char *patch, int *fd)
 	return (0);
 }
 
-void	print_matrix(char **matrix, int height)
-{
-	int	index;
-
-	index = 0;
-	printf(":Map:\n");
-	while (matrix[index] != NULL)
-	{
-		printf("%s\n", matrix[index]);
-		index++;
-	}
-}
-
-static int	load_map(int fd, t_map *map)
+static char	**load_map(int fd)
 {
 	int		count;
 	char	*line;
+	char	**elements;
 
 	line = NULL;
+	elements = NULL;
 	count = get_next_line(fd, &line);
-	map->col = ft_strlen(line);
-	map->elements = ft_matrix_join(NULL, line);
+	elements = ft_matrix_join(NULL, line);
 	ft_strdel(&line);
-	map->line = 1;
 	while (count)
 	{
 		line = NULL;
 		count = get_next_line(fd, &line);
-		map->line += 1;
-		if (map->col < ft_strlen(line))
-			map->col = ft_strlen(line);
-		map->elements = ft_matrix_join(map->elements, line);
+		elements = ft_matrix_join(elements, line);
 		ft_strdel(&line);
 	}
-	return (0);
+	return (elements);
 }
 
-int	read_map(t_data *data)
+char	**read_map(t_data *data)
 {
 	int		fd;
+	char	**elements;
 
+	elements = NULL;
 	if (open_map(data->map->patch, &fd))
-		return (1);
-	load_map(fd, data->map);
+		return (NULL);
+	elements = load_map(fd);
 	close(fd);
-	data->height = data->map->line * 50;
-	data->width = data->map->col * 50;
-	print_matrix(data->map->elements, data->map->col);
-	return (0);
+	return (elements);
 }

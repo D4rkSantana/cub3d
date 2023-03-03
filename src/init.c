@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:15:38 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/08 00:00:57 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/03/02 23:59:01 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@ t_map	*init_map(char *patch)
 	map->patch = NULL;
 	if (patch != NULL)
 		map->patch = ft_strdup(patch);
-	map->map_array = ft_strdup("");
-	map->elements = NULL;
+	map->map_matrix = NULL;
 	map->line = 0;
 	map->col = 0;
 	map->player = 0;

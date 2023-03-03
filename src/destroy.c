@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   destroy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:14:01 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/02/08 17:50:54 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/03/02 23:58:43 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ void	destroy_map(t_map *map)
 	ft_strdel(&map->so_path);
 	ft_strdel(&map->we_path);
 	ft_strdel(&map->ea_path);
-	ft_strdel(&map->map_array);
-	ft_matrix_strdel(map->elements);
+	ft_matrix_strdel(map->map_matrix);
 	free(map);
 	map = NULL;
 }
