@@ -1,0 +1,19 @@
+Verifica se o parametro do map foi passado -- OK
+verifica se o mapa é .cub -- OK
+
+verifica se existe o arquivo -- OK
+
+Verifica se existem as texturas (NO, EA, WE, SO) -- OK
+verificar se existem texturas repetidas -- OK
+
+verifica se existem as cores do ceu e chão (C, F) -- OK
+verifica se existem cores do ceu e chão repetidas -- OK
+
+verifica se existe um 1 mapa -- OK
+verifica se o map esta inteiro -- OK
+
+Verifica se as paredes do mapa estão fechadas -- OK
+verifica se os espaços vazios estão cercados por paredes -- OK
+
+verifica se um personagem foi passado
+verifica se tem personagens repetidos

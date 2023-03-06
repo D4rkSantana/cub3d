@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 22:52:11 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/06 23:40:14 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/07 00:38:11 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	build_map(t_data *data)
 		ft_matrix_strdel(elements);
 		return (1);
 	}
-	extract_contents(data, elements);	
+	extract_contents(data, elements);
 	if (check_integrity_map(elements))
 	{
 		ft_matrix_strdel(elements);

@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 21:49:39 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/06 22:06:05 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/07 00:38:53 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	check_contents(char **elements)
 	return (0);
 }
 
-static char *extraction(char *element, int size_key)
+static char	*extraction(char *element, int size_key)
 {
 	int		index;
 	int		size;
@@ -77,10 +77,10 @@ static char *extraction(char *element, int size_key)
 
 static char	*extract_cont(char **elements, char *key)
 {	
-	int	index;
-	int count;
-	int	size;
-	char *result;
+	int		index;
+	int		count;
+	int		size;
+	char	*result;
 
 	index = 0;
 	size = ft_strlen(key);
