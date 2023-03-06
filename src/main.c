@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:20 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/03 00:03:07 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/06 22:08:51 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static void	start_mlx(t_data *data)
 	destroy_image(image);
 }
 
+/*
 static void	print_matrix(char **matrix)
 {
 	int	index;
@@ -42,8 +43,7 @@ static void	print_matrix(char **matrix)
 		printf("%s\n", matrix[index]);
 		index++;
 	}
-}
-
+}*/
 int	main(int argc, char **argv)
 {
 	t_data	*data;
@@ -51,20 +51,20 @@ int	main(int argc, char **argv)
 	if (check_args(argc, argv))
 		return (0);
 	data = init(argv[1]);
-	//read_map(data);
-	
+	printf("X\n");
 	if (build_map(data))
 	{
 		destroy(data);
 		return (0);
 	}
-	print_matrix(data->map->map_matrix); 
-	printf(" X \n");
+	printf("X\n");
+	//print_matrix(data->map->map_matrix);
 	if (parse_map(data->map))
 	{
 		destroy(data);
 		return (0);
 	}
+	printf("X\n");
 	// start_mlx(data);
 	// mlx_loop(data->mlx);
 	destroy(data);

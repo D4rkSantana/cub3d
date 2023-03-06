@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/02 23:56:08 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/06 21:59:25 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,9 +108,21 @@ int		check_args(int argc, char **argv);
 int		check_texture(char *str, t_map *map);
 int		verify_count_rgb(int i);
 
+/* content_map.c */
+int		check_contents(char **elements);
+void	extract_contents(t_data *data, char **elements);
+
+/* extract_map.c */
+int		check_integrity_map(char **elements);
+void	extract_map(t_data *data, char **elements);
+
+/* new_parse_map.c */
+int		check_spaces(t_map *map);
+int		check_walls(t_map *map);
+
 /*Build map*/
 char	**read_map(t_data *data);
-int	build_map(t_data *data);
+int		build_map(t_data *data);
 
 /*parse_map.c*/
 int		parse_map(t_map *map);
