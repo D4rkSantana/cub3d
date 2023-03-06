@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:20 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/06 22:08:51 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/06 23:40:45 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,20 +51,11 @@ int	main(int argc, char **argv)
 	if (check_args(argc, argv))
 		return (0);
 	data = init(argv[1]);
-	printf("X\n");
 	if (build_map(data))
 	{
 		destroy(data);
 		return (0);
 	}
-	printf("X\n");
-	//print_matrix(data->map->map_matrix);
-	if (parse_map(data->map))
-	{
-		destroy(data);
-		return (0);
-	}
-	printf("X\n");
 	// start_mlx(data);
 	// mlx_loop(data->mlx);
 	destroy(data);

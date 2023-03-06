@@ -4,7 +4,7 @@ CC			= gcc
 RM			= rm -rf
 MKDIR		= mkdir -p
 
-vpath %.c src ./src/parse ./src/key_hook
+vpath %.c src ./src/build_map ./src/key_hook
 
 FLAGS = -Wall -Wextra -Werror
 MLXFLAGS = -Imlx -lX11 -lXext -lm 

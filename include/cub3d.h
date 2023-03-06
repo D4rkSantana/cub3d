@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/06 21:59:25 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/06 23:37:49 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,27 +60,6 @@ typedef struct s_map
 	char	*cl_floor;
 	char	*cl_ceilling;
 }			t_map;
-
-/*
-typedef struct s_map
-{
-	char	*patch;
-	char	**elements;
-	char	*map_array;
-	int		line;
-	int		col;
-	int		player;
-	int		check_color;
-	int		check_texture;
-	char	*no_path;
-	char	*so_path;
-	char	*we_path;
-	char	*ea_path;
-	char	*cl_floor;
-	char	*cl_ceilling;
-}			t_map;
-*/
-
 
 typedef struct s_data
 {

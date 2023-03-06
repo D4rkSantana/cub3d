@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 22:52:11 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/06 22:00:19 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/06 23:40:14 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,14 @@ static void	print_matrix(char **matrix)
 /* REMOVER ANTES DE FINALIZAR O PROJETO !!!! */
 static void	print_contents(t_map *map)
 {
+	printf(":Contents:\n");
 	printf("NO: %s\n", map->no_path);
 	printf("SO: %s\n", map->so_path);
 	printf("WE: %s\n", map->we_path);
 	printf("EA: %s\n", map->ea_path);
 	printf("C: %s\n", map->cl_ceilling);
 	printf("F: %s\n", map->cl_floor);
+	print_matrix(map->map_matrix);
 }
 
 int	build_map(t_data *data)
@@ -61,6 +63,7 @@ int	build_map(t_data *data)
 		ft_matrix_strdel(elements);
 		return (1);
 	}
+	print_contents(data->map);
 	ft_matrix_strdel(elements);
 	return (0);
 }
