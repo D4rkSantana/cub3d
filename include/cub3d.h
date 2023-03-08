@@ -6,12 +6,15 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/08 01:40:19 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/09 00:13:33 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
+
+# include "structs.h"
+# include "defines.h"
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -20,57 +23,6 @@
 # include <math.h>
 # include "../libs/minilibx/mlx.h"
 # include "../libs/libft/libft.h"
-
-# define NO 1
-# define KEY_ESC 65307
-# define KEY_Q 113
-# define KEY_PRESS 2
-# define DESTROY_NOTIFY 17
-
-# define KEY_W 119
-# define KEY_A 97
-# define KEY_S 115
-# define KEY_D 100
-# define KEY_LEFT 65361
-# define KEY_RIGHT 65363
-
-# define PI 3.14159265
-
-typedef struct s_image
-{
-	int		height;
-	int		width;
-	char	*patch;
-	void	*pont;
-}				t_image;
-
-typedef struct s_map
-{
-	char	*patch;
-	char	**map_matrix;
-	int		line;
-	int		col;
-	int		player;
-	int		check_color;
-	int		check_texture;
-	char	*no_path;
-	char	*so_path;
-	char	*we_path;
-	char	*ea_path;
-	char	*cl_floor;
-	char	*cl_ceilling;
-}			t_map;
-
-typedef struct s_data
-{
-	void	*mlx;
-	void	*win;
-	int		height;
-	int		width;
-	t_map	*map;
-	t_image	image;
-	int		close_game;
-}			t_data;
 
 /* init.c */
 t_image	*init_image(t_data *data, char *patch);
