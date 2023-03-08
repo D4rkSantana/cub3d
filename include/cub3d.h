@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/06 23:37:49 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/08 01:40:19 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,18 +82,23 @@ void	destroy_map(t_map *map);
 int		destroy(t_data *data);
 void	destroy_image(t_image *image);
 
-/* check.c */
-int		check_args(int argc, char **argv);
-int		check_texture(char *str, t_map *map);
-int		verify_count_rgb(int i);
+/* check_color.c */
+int	check_color (char *color);
 
-/* content_map.c */
+/* check_content.c */
 int		check_contents(char **elements);
+int		check_extencion(t_map *map);
+
+/* extract_content.c */
 void	extract_contents(t_data *data, char **elements);
 
 /* extract_map.c */
 int		check_integrity_map(char **elements);
 void	extract_map(t_data *data, char **elements);
+
+/* check_player.c */
+int		check_player(char **map);
+int		check_map(char **map);
 
 /* new_parse_map.c */
 int		check_spaces(t_map *map);
@@ -102,32 +107,6 @@ int		check_walls(t_map *map);
 /*Build map*/
 char	**read_map(t_data *data);
 int		build_map(t_data *data);
-
-/*parse_map.c*/
-int		parse_map(t_map *map);
-void	get_array_map(t_map *map, char *line);
-int		check_line_map(t_map *map, char *map_line);
-int		check_player(char *map_line, t_map *map);
-int		is_char_valid(char c, char player);
-
-/*get_texture.c*/
-void	get_texture(char *str, t_map *map);
-void	get_north(char *str, t_map *map);
-void	get_south(char *str, t_map *map);
-void	get_west(char *str, t_map *map);
-void	get_east(char *str, t_map *map);
-
-/* Color.c */
-int		color(char *line, t_map *map);
-void	check_color(char *line, t_map *map);
-void	check_cl_floor(char *line, t_map *map, int i, int j);
-void	check_cl_ceilling(char *line, t_map *map, int i, int j);
-int		check_char(char *rgb, char c);
-
-/* utils.c*/
-void	get_color_floor(char *color, t_map *map);
-void	get_color_ceilling(char *color, t_map *map);
-int		check_quantity(t_map *map);
 
 /* key_hook.c*/
 int		key_hook(int key, t_data *data);

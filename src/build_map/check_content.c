@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   content_map.c                                      :+:      :+:    :+:   */
+/*   check_content.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/06 21:49:39 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/07 00:38:53 by esilva-s         ###   ########.fr       */
+/*   Created: 2023/03/07 22:59:52 by esilva-s          #+#    #+#             */
+/*   Updated: 2023/03/08 00:42:06 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,59 +56,33 @@ int	check_contents(char **elements)
 	return (0);
 }
 
-static char	*extraction(char *element, int size_key)
+static int	check_path(char *path)
 {
-	int		index;
-	int		size;
-	char	*result;
-
-	index = 0;
-	size = ft_strlen(element);
-	result = NULL;
-	result = ft_calloc(sizeof(char), size - size_key + 1);
-	while (index < size -1)
+	if (!(ft_strncmp(path, "./textures/", 11) == 0))
 	{
-		result[index] = element[index + size_key];
-		index++;
+		printf("Error, invalid texture dir\n");
+		return (1);
 	}
-	result[index] = '\0';
-	return (result);
+	if (!(ft_strncmp(path + ft_strlen(path) - 4, ".xpm", 4) == 0))
+	{
+		printf("Error, invalid texture extencion\n");
+		return (1);
+	}
+	return (0);
 }
 
-static char	*extract_cont(char **elements, char *key)
-{	
-	int		index;
-	int		count;
-	int		size;
-	char	*result;
-
-	index = 0;
-	size = ft_strlen(key);
-	result = NULL;
-	while (elements[index] != NULL)
-	{
-		count = 0;
-		if (size + 1 < ft_strlen(elements[index]))
-		{
-			while (key[count] == elements[index][count] && count < size)
-				count++;
-			if (count == size && elements[index][count] == ' ')
-			{
-				result = extraction(elements[index], size);
-				break ;
-			}
-		}
-		index++;
-	}
-	return (result);
-}
-
-void	extract_contents(t_data *data, char **elements)
+int	check_extencion(t_map *map)
 {
-	data->map->no_path = extract_cont(elements, "NO");
-	data->map->so_path = extract_cont(elements, "SO");
-	data->map->we_path = extract_cont(elements, "WE");
-	data->map->ea_path = extract_cont(elements, "EA");
-	data->map->cl_ceilling = extract_cont(elements, "C");
-	data->map->cl_floor = extract_cont(elements, "F");
+	int	status;
+
+	status = 0;
+	status += check_path(map->no_path);
+	status += check_path(map->so_path);
+	status += check_path(map->we_path);
+	status += check_path(map->ea_path);
+	status += check_color(map->cl_ceilling);
+	status += check_color(map->cl_floor);
+	if (status != 0)
+		return (1);
+	return (0);
 }

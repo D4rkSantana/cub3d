@@ -16,8 +16,8 @@ LIBFT_PATH = ./libs/libft
 LIBFT = ${LIBFT_PATH}/libft.a
 
 HEAD = -I./include
-SRC =	main.c check.c read_map.c build_map.c content_map.c extract_map.c parse_map.c get_texture.c color.c destroy.c \
-		init.c new_parse_map.c utils.c key_hook.c\
+SRC =	main.c read_map.c build_map.c extract_content.c check_content.c extract_map.c destroy.c \
+		init.c new_parse_map.c check_player.c key_hook.c check_color.c\
 
 OBJ_DIR	 =	obj
 OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))

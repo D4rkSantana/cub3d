@@ -5,9 +5,11 @@ verifica se existe o arquivo -- OK
 
 Verifica se existem as texturas (NO, EA, WE, SO) -- OK
 verificar se existem texturas repetidas -- OK
+verificar se as texturas terminam com ".xpm"
 
 verifica se existem as cores do ceu e chão (C, F) -- OK
 verifica se existem cores do ceu e chão repetidas -- OK
+Verifica se a cor é Valida
 
 verifica se existe um 1 mapa -- OK
 verifica se o map esta inteiro -- OK
@@ -17,3 +19,10 @@ verifica se os espaços vazios estão cercados por paredes -- OK
 
 verifica se um personagem foi passado
 verifica se tem personagens repetidos
+
+
+Check=.c limpo!
+color=.c limpo!
+get_texture=.c limpo!
+parse_map=.c
+utils=.c limpo!
