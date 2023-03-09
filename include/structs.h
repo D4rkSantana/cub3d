@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 00:10:56 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/09 20:11:52 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/03/09 20:40:40 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,6 @@ typedef struct s_map
 	char	**map_matrix;
 	int		line;
 	int		col;
-	int		player;
-	int		check_color;
-	int		check_texture;
 	char	*no_path;
 	char	*so_path;
 	char	*we_path;
@@ -46,6 +43,7 @@ typedef struct s_data
 	int		width;
 	t_map	*map;
 	t_image	image;
+	t_player	*player;
 	int		close_game;
 }			t_data;
 
