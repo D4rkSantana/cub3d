@@ -65,7 +65,7 @@ static int	check_path(char *path)
 	}
 	if (!(ft_strncmp(path + ft_strlen(path) - 4, ".xpm", 4) == 0))
 	{
-		printf("Error, invalid texture extencion\n");
+		printf("Error, invalid texture extension\n");
 		return (1);
 	}
 	return (0);
