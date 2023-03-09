@@ -71,7 +71,7 @@ static int	check_path(char *path)
 	return (0);
 }
 
-int	check_extencion(t_map *map)
+int	check_extension(t_map *map)
 {
 	int	status;
 
