@@ -39,7 +39,7 @@ int	check_color (char *color);
 
 /* check_content.c */
 int		check_contents(char **elements);
-int		check_extencion(t_map *map);
+int		check_extension(t_map *map);
 
 /* extract_content.c */
 void	extract_contents(t_data *data, char **elements);
