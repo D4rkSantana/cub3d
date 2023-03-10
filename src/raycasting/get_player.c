@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 20:17:06 by jefernan          #+#    #+#             */
-/*   Updated: 2023/03/09 20:47:33 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/03/10 19:20:11 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ void	init_player(t_data *data, int x, int y)
 	data->player->pos_x = x;
 	data->player->pos_y = y;
 	if (data->map->map_matrix[y][x] == 'N')
-		set_value(0, -1, 0.66, 0)
+		set_value(0, -1, 0.66, 0);
 	if (data->map->map_matrix[y][x] == 'S')
-		set_value(0, 1, -0.66, 0)
+		set_value(0, 1, -0.66, 0);
 	if (data->map->map_matrix[y][x] == 'E')
-		set_value(1, 0, 0, 0.66)
+		set_value(1, 0, 0, 0.66);
 	if (data->map->map_matrix[y][x] == 'W')
-		set_value(-1, 0, 0, -0.66)
+		set_value(-1, 0, 0, -0.66);
 }
 
 void	set_value(double dir_x, double dir_y, double pl_x, double pl_y)

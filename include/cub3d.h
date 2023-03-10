@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/09 20:15:00 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/03/09 20:59:03 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		destroy(t_data *data);
 void	destroy_image(t_image *image);
 
 /* check_color.c */
-int		check_color (char *color);
+int		check_color(char *color);
 
 /* check_content.c */
 int		check_contents(char **elements);
