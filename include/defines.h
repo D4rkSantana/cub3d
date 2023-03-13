@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   defines.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 00:13:09 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/09 20:14:06 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/03/11 01:11:11 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINES_H
 # define DEFINES_H
+
+# define PROP 10
 
 # define NO 1
 # define KEY_ESC 65307

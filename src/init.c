@@ -6,13 +6,13 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:15:38 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/07 00:36:35 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/14 00:25:38 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_image	*init_image(t_data *data, char *patch)
+t_image	*init_image_xpm(t_data *data, char *patch)
 {
 	t_image	*image;
 
@@ -32,6 +32,21 @@ t_image	*init_image(t_data *data, char *patch)
 	return (image);
 }
 
+static t_image	*init_image(void)
+{
+	t_image	*image;
+
+	image = NULL;
+	image = ft_calloc(sizeof(t_image), 1);
+	if (image == NULL)
+		return (NULL);
+	image->width = 0;
+	image->height = 0;
+	image->pont = NULL;
+	image->patch = NULL;
+	return (image);
+}
+
 t_map	*init_map(char *patch)
 {
 	t_map	*map;
@@ -44,8 +59,6 @@ t_map	*init_map(char *patch)
 	map->map_matrix = NULL;
 	map->line = 0;
 	map->col = 0;
-	map->player = 0;
-	map->check_color = 0;
 	map->no_path = NULL;
 	map->so_path = NULL;
 	map->we_path = NULL;
@@ -64,6 +77,7 @@ t_data	*init(char *patch)
 	if (data == NULL)
 		return (NULL);
 	data->map = init_map(patch);
+	data->image = init_image();
 	data->mlx = NULL;
 	data->win = NULL;
 	data->height = 0;

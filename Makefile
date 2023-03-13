@@ -4,7 +4,7 @@ CC			= gcc
 RM			= rm -rf
 MKDIR		= mkdir -p
 
-vpath %.c src ./src/build_map ./src/key_hook
+vpath %.c src ./src/build_map ./src/key_hook ./src/raycasting
 
 FLAGS = -Wall -Wextra -Werror
 MLXFLAGS = -Imlx -lX11 -lXext -lm 
@@ -17,7 +17,7 @@ LIBFT = ${LIBFT_PATH}/libft.a
 
 HEAD = -I./include
 SRC =	main.c read_map.c build_map.c extract_content.c check_content.c extract_map.c destroy.c \
-		init.c new_parse_map.c check_player.c key_hook.c check_color.c\
+		init.c new_parse_map.c check_player.c render.c key_hook.c check_color.c minimap.c \
 
 OBJ_DIR	 =	obj
 OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_player.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 20:17:06 by jefernan          #+#    #+#             */
-/*   Updated: 2023/03/10 19:20:11 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/03/14 00:31:58 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@ void	get_player(t_data *data)
 		j = 0;
 		while (data->map->map_matrix[i][j])
 		{
-			if (data->map->map_matrix[i][j] == 'N' || data->map->map_matrix[i][j] == 'S'
-				|| data->map->map_matrix[i][j] == 'E' || data->map->map_matrix[i][j] == 'W')
+			if (data->map->map_matrix[i][j] == 'N'
+				|| data->map->map_matrix[i][j] == 'S'
+				|| data->map->map_matrix[i][j] == 'E'
+				|| data->map->map_matrix[i][j] == 'W')
 				init_player(data, j, i);
 			j++;
 		}

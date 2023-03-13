@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 13:10:19 by jefernan          #+#    #+#             */
-/*   Updated: 2023/03/09 20:58:06 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/03/14 00:31:56 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	key_hook(int key, t_data *data)
 {
+	/*
 	if (key == KEY_W)
 		moviments(data, UP);
 	if (key == KEY_S)
@@ -27,6 +28,7 @@ int	key_hook(int key, t_data *data)
 	if (key == KEY_RIGHT)
 		rotate(data);
 	if (key == KEY_ESC || key == KEY_Q)
-		destroy(data)
+		destroy(data);
+	*/
 	return (0);
 }
