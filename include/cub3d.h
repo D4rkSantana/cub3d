@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/09 20:15:00 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/03/14 00:15:26 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@
 # include "../libs/libft/libft.h"
 
 /* init.c */
-t_image	*init_image(t_data *data, char *patch);
+t_image	*init_image_xpm(t_data *data, char *patch);
+//t_image	*init_image(t_data *data);
 t_map	*init_map(char *patch);
 t_data	*init(char *patch);
 
@@ -62,5 +63,12 @@ int		build_map(t_data *data);
 
 /* key_hook.c*/
 int		key_hook(int key, t_data *data);
+
+/* minimap.c */
+int		draw_minimap(t_data *data, t_image *img);
+
+/* render.c */
+void	draw_pixel_color(t_image *img, int x, int y, char *color);
+void	render(t_data *data);
 
 #endif /* CUB3D_H */

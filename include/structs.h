@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 00:10:56 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/09 20:40:40 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/03/14 00:20:20 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@ typedef struct s_image
 	int		width;
 	char	*patch;
 	void	*pont;
+	int		bpp;
+    int		size_line;
+    int		endian;
+	char	*data_img;
 }				t_image;
 
 typedef struct s_map
@@ -35,18 +39,6 @@ typedef struct s_map
 	char	*cl_ceilling;
 }			t_map;
 
-typedef struct s_data
-{
-	void	*mlx;
-	void	*win;
-	int		height;
-	int		width;
-	t_map	*map;
-	t_image	image;
-	t_player	*player;
-	int		close_game;
-}			t_data;
-
 typedef struct s_player
 {
 	double	pos_x;
@@ -56,5 +48,17 @@ typedef struct s_player
 	double	plane_x;
 	double	plane_y;
 }		t_player;
+
+typedef struct s_data
+{
+	void	*mlx;
+	void	*win;
+	int		height;
+	int		width;
+	t_map	*map;
+	t_image	*image;
+	t_player	*player;
+	int		close_game;
+}			t_data;
 
 #endif /* CUB3D_H */

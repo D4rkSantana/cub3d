@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 22:52:11 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/08 01:39:53 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/13 22:24:31 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,38 @@ static void	print_contents(t_map *map)
 	print_matrix(map->map_matrix);
 }
 
+void	configure_aux(t_data *data)
+{
+	int	index;
+	int	height;
+	int	temp;
+
+	temp = 0;
+	height = 0;
+	data->map->line = ft_matrix_strlen(data->map->map_matrix);
+	data->width = data->map->line * PROP;
+	while (data->map->map_matrix[index])
+	{
+		temp = ft_strlen(data->map->map_matrix[index]);
+		if (temp > height)
+			height = temp;
+		index++;
+	}
+	data->map->col = height;
+	data->height = height * PROP;
+}
+
+static int	check_refined_map(t_data *data)
+{
+	if (check_walls(data->map) || check_spaces(data->map)
+		|| check_player(data->map->map_matrix)
+		|| check_map(data->map->map_matrix))
+	{
+		return (1);
+	}
+	return (0);
+}
+
 int	build_map(t_data *data)
 {
 	char	**elements;
@@ -52,20 +84,18 @@ int	build_map(t_data *data)
 		return (1);
 	}
 	extract_contents(data, elements);
-	if (check_extencion(data->map) || check_integrity_map(elements))
+	if (check_extension(data->map) || check_integrity_map(elements))
 	{
 		ft_matrix_strdel(elements);
 		return (1);
 	}
 	extract_map(data, elements);
-	if (check_walls(data->map) || check_spaces(data->map)
-		|| check_player(data->map->map_matrix)
-		|| check_map(data->map->map_matrix))
+	if (check_refined_map(data))
 	{
 		ft_matrix_strdel(elements);
 		return (1);
 	}
-	print_contents(data->map);
+	configure_aux(data);
 	ft_matrix_strdel(elements);
 	return (0);
 }
