@@ -1,11 +1,9 @@
-NO ./textures/teste.xpm
 SO ./textures/teste.xpm
 WE ./textures/teste.xpm
 EA ./textures/teste.xpm
-
+EA ./textures/teste.xpm
+F 255,255,0
 C 225,255,0
-F 255,c
-
 
         1111111111111111111111111
         1000000000110000000000001
