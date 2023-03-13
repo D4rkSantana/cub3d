@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:20 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/14 00:23:40 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/14 00:42:57 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int	main(int argc, char **argv)
 {
 	t_data	*data;
 
+	printf("Inicio\n");
 	if (check_args(argc, argv))
 		return (0);
 	data = init(argv[1]);
