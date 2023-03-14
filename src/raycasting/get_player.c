@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_player.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 20:17:06 by jefernan          #+#    #+#             */
-/*   Updated: 2023/03/14 00:31:58 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/14 11:15:29 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,43 +17,27 @@ void	get_player(t_data *data)
 	int	i;
 	int	j;
 
-	i = 0;
-	while (data->map->map_matrix[i])
+	y = 0;
+	while (data->map->map_matrix[y])
 	{
-		j = 0;
-		while (data->map->map_matrix[i][j])
+		x = 0;
+		while (data->map->map_matrix[y][x])
 		{
-			if (data->map->map_matrix[i][j] == 'N'
-				|| data->map->map_matrix[i][j] == 'S'
-				|| data->map->map_matrix[i][j] == 'E'
-				|| data->map->map_matrix[i][j] == 'W')
-				init_player(data, j, i);
-			j++;
+			if (ft_strchr("NSWE", data->map.map[y][x]))
+			{
+				data->player->pos_x = x * SPRITE + SPRITE / 2;
+				data->player->pos_y = y * SPRITE + SPRITE / 2;
+			}
+			if (data->map->map_matrix[y][x] == 'N')
+				data->player->angle = PI / 2;
+			if (data->map->map_matrix[y][x] == 'S')
+				data->player->angle = (PI * 3) / 2;
+			if (data->map->map_matrix[y][x] == 'E')
+				data->player->angle = 0;
+			if (data->map->map_matrix[y][x] == 'W')
+				data->player->angle = PI;
+			x++;
 		}
-		i++;
+		y++;
 	}
-}
-
-void	init_player(t_data *data, int x, int y)
-{
-	data->player->pos_x = x;
-	data->player->pos_y = y;
-	if (data->map->map_matrix[y][x] == 'N')
-		set_value(0, -1, 0.66, 0);
-	if (data->map->map_matrix[y][x] == 'S')
-		set_value(0, 1, -0.66, 0);
-	if (data->map->map_matrix[y][x] == 'E')
-		set_value(1, 0, 0, 0.66);
-	if (data->map->map_matrix[y][x] == 'W')
-		set_value(-1, 0, 0, -0.66);
-}
-
-void	set_value(double dir_x, double dir_y, double pl_x, double pl_y)
-{
-	t_player	*player;
-
-	player->dir_x = dir_x;
-	player->dir_y = dir_y;
-	player->plane_x = pl_x;
-	player->plane_y = pl_y;
 }
