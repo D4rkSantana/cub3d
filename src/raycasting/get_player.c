@@ -3,14 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   get_player.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 20:17:06 by jefernan          #+#    #+#             */
-/*   Updated: 2023/03/14 11:20:37 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/03/14 22:23:27 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	set_angle(t_data *data, int y, int x)
+{
+	if (data->map->map_matrix[y][x] == 'N')
+		data->player->angle = PI / 2;
+	if (data->map->map_matrix[y][x] == 'S')
+		data->player->angle = (PI * 3) / 2;
+	if (data->map->map_matrix[y][x] == 'E')
+		data->player->angle = 0;
+	if (data->map->map_matrix[y][x] == 'W')
+		data->player->angle = PI;
+}
 
 void	get_player(t_data *data)
 {
@@ -33,16 +45,4 @@ void	get_player(t_data *data)
 		}
 		y++;
 	}
-}
-
-void	set_angle(t_data *data, int y, int x)
-{
-	if (data->map->map_matrix[y][x] == 'N')
-		data->player->angle = PI / 2;
-	if (data->map->map_matrix[y][x] == 'S')
-		data->player->angle = (PI * 3) / 2;
-	if (data->map->map_matrix[y][x] == 'E')
-		data->player->angle = 0;
-	if (data->map->map_matrix[y][x] == 'W')
-		data->player->angle = PI;
 }

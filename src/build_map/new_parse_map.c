@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 21:57:37 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/13 22:43:41 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/14 22:37:37 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int	check_walls(t_map *map)
 	int	len;
 	int	size_map;
 
+	j = 0;
 	size_map = ft_matrix_strlen(map->map_matrix);
 	if (check_walls_aux(map->map_matrix))
 		return (1);

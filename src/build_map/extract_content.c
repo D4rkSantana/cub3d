@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 21:49:39 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/14 01:39:36 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/14 22:33:47 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static char	*extraction(char *element, int size_key)
 	index = 0;
 	size = ft_strlen(element);
 	result = NULL;
-	result = ft_calloc(sizeof(char), size - size_key + 1);
-	while (index < size -1)
+	result = ft_calloc(sizeof(char), size - size_key + 2);
+	while (index < size -1 && index + size_key < size)
 	{
 		result[index] = element[index + size_key];
 		index++;

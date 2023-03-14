@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 22:52:11 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/13 22:24:31 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/14 22:38:00 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	configure_aux(t_data *data)
 	int	height;
 	int	temp;
 
+	index = 0;
 	temp = 0;
 	height = 0;
 	data->map->line = ft_matrix_strlen(data->map->map_matrix);
