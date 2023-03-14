@@ -6,13 +6,13 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:20 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/14 00:42:57 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/14 01:30:20 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	start_mlx(t_data *data)
+static int	start_mlx(t_data *data)
 {
 	t_image	*image;
 
@@ -21,11 +21,12 @@ static void	start_mlx(t_data *data)
 	{
 		printf("Error\nNo graphical interface.\n");
 		destroy(data);
-		exit(0);
+		exit(1);
 	}
 	data->win = mlx_new_window(data->mlx, data->width, data->height, "Cub3d");
 	mlx_hook(data->win, KEY_PRESS, 1L << 0, key_hook, data);
 	mlx_hook(data->win, DESTROY_NOTIFY, 0, destroy, data);
+	return (0);
 }
 
 static int	check_args(int argc, char **argv)
@@ -67,7 +68,8 @@ int	main(int argc, char **argv)
 		destroy(data);
 		return (0);
 	}
-	start_mlx(data);
+	if (start_mlx(data))
+		return (0);
 	render(data);
 	mlx_loop(data->mlx);
 	destroy(data);
