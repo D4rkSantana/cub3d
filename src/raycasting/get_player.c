@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 20:17:06 by jefernan          #+#    #+#             */
-/*   Updated: 2023/03/14 11:15:29 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/03/14 11:20:37 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	get_player(t_data *data)
 {
-	int	i;
-	int	j;
+	int	y;
+	int	x;
 
 	y = 0;
 	while (data->map->map_matrix[y])
@@ -23,21 +23,26 @@ void	get_player(t_data *data)
 		x = 0;
 		while (data->map->map_matrix[y][x])
 		{
-			if (ft_strchr("NSWE", data->map.map[y][x]))
+			if (ft_strchr("NSWE", data->map->map_matrix[y][x]))
 			{
 				data->player->pos_x = x * SPRITE + SPRITE / 2;
 				data->player->pos_y = y * SPRITE + SPRITE / 2;
+				set_angle(data, y, x);
 			}
-			if (data->map->map_matrix[y][x] == 'N')
-				data->player->angle = PI / 2;
-			if (data->map->map_matrix[y][x] == 'S')
-				data->player->angle = (PI * 3) / 2;
-			if (data->map->map_matrix[y][x] == 'E')
-				data->player->angle = 0;
-			if (data->map->map_matrix[y][x] == 'W')
-				data->player->angle = PI;
 			x++;
 		}
 		y++;
 	}
+}
+
+void	set_angle(t_data *data, int y, int x)
+{
+	if (data->map->map_matrix[y][x] == 'N')
+		data->player->angle = PI / 2;
+	if (data->map->map_matrix[y][x] == 'S')
+		data->player->angle = (PI * 3) / 2;
+	if (data->map->map_matrix[y][x] == 'E')
+		data->player->angle = 0;
+	if (data->map->map_matrix[y][x] == 'W')
+		data->player->angle = PI;
 }

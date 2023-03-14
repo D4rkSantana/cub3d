@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   defines.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 00:13:09 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/11 01:11:11 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/14 11:16:20 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 # define LEFT 3
 # define RIGHT 4
 
+# define SPRITE 64
 # define PI 3.14159265
 
 #endif /* DEFINES_H */

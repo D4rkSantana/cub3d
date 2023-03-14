@@ -7,7 +7,7 @@ MKDIR		= mkdir -p
 vpath %.c src ./src/build_map ./src/key_hook ./src/raycasting
 
 FLAGS = -Wall -Wextra -Werror
-MLXFLAGS = -Imlx -lX11 -lXext -lm 
+MLXFLAGS = -Imlx -lX11 -lXext -lm
 
 MINILIBX_PATH = ./libs/minilibx
 MINILIBX = ${MINILIBX_PATH}/libmlx_Linux.a
@@ -18,6 +18,7 @@ LIBFT = ${LIBFT_PATH}/libft.a
 HEAD = -I./include
 SRC =	main.c read_map.c build_map.c extract_content.c check_content.c extract_map.c destroy.c \
 		init.c new_parse_map.c check_player.c render.c key_hook.c check_color.c minimap.c \
+		get_player.c
 
 OBJ_DIR	 =	obj
 OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
@@ -49,7 +50,7 @@ clean:
 fclean:		clean
 			@${RM} ${NAME}
 			@ echo "Program has been cleaned!"
-			
+
 re:			fclean all
 
-.PHONY: 	all clean fclean re 
+.PHONY: 	all clean fclean re

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/14 00:31:43 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/14 11:16:46 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,8 @@ int		draw_minimap(t_data *data, t_image *img);
 /* render.c */
 void	draw_pixel_color(t_image *img, int x, int y, char *color);
 void	render(t_data *data);
+
+/* get_player*/
+void	get_player(t_data *data);
 
 #endif /* CUB3D_H */
