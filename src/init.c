@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:15:38 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/15 00:31:04 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/15 00:45:34 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ t_map	*init_map(char *patch)
 	return (map);
 }
 
-t_player	*init_player()
+t_player	*init_player(void)
 {
 	t_player	*player;
 
