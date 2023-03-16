@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 00:13:09 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/14 11:16:20 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/03/15 22:18:49 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@
 
 # define SPRITE 64
 # define PI 3.14159265
+# define MOVE_SPEED 2
 
 #endif /* DEFINES_H */

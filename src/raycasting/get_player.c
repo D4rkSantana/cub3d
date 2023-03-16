@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_player.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 20:17:06 by jefernan          #+#    #+#             */
-/*   Updated: 2023/03/14 22:23:27 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/15 20:36:50 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	get_player(t_data *data)
 		{
 			if (ft_strchr("NSWE", data->map->map_matrix[y][x]))
 			{
-				data->player->pos_x = x * SPRITE + SPRITE / 2;
-				data->player->pos_y = y * SPRITE + SPRITE / 2;
+				data->player->pos_x = x * SPRITE;
+				data->player->pos_y = y * SPRITE;
 				set_angle(data, y, x);
 			}
 			x++;
