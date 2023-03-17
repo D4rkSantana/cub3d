@@ -6,14 +6,14 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 00:13:09 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/14 23:20:09 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/17 01:16:28 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINES_H
 # define DEFINES_H
 
-# define PROP 10
+# define PROP 20
 
 # define NO 1
 # define KEY_ESC 65307
