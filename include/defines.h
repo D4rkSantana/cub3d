@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 00:13:09 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/17 01:16:28 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/21 01:35:29 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@
 
 # define SPRITE 64
 # define PI 3.14159265
+# define MOVE_SPEED 2
 
 #endif /* DEFINES_H */

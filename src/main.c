@@ -6,11 +6,17 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:20 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/17 01:26:57 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/21 01:36:16 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	render_loop(t_data **data)
+{
+	render(*data);
+	return (0);
+}
 
 static int	start_mlx(t_data *data)
 {
@@ -23,9 +29,18 @@ static int	start_mlx(t_data *data)
 		destroy(data);
 		exit(1);
 	}
-	data->win = mlx_new_window(data->mlx, data->width, data->height, "Cub3d");
-	mlx_hook(data->win, KEY_PRESS, 1L << 0, key_hook, data);
-	mlx_hook(data->win, DESTROY_NOTIFY, 0, destroy, data);
+	data->win = mlx_new_window(data->mlx, data->width * 2, data->height * 2, "Cub3d");
+	if (!data->win)
+	{
+		printf("Error\nNo graphical interface.\n");
+		destroy(data);
+		exit(1);
+	}
+	data->image->width = data->width;
+	data->image->height = data->height;
+	data->image->pont = mlx_new_image(data->mlx, data->width * PROP, data->height * PROP);
+	data->image->patch = mlx_get_data_addr(data->image->pont, &data->image->bpp,
+			&data->image->size_line, &data->image->endian);
 	return (0);
 }
 
@@ -55,6 +70,13 @@ static int	check_args(int argc, char **argv)
 	return (0);
 }
 
+static int	close_game(t_data *data)
+{
+	mlx_loop_end(data->mlx);
+	destroy(data);
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_data	*data;
@@ -69,8 +91,14 @@ int	main(int argc, char **argv)
 	}
 	if (start_mlx(data))
 		return (0);
-	render(data);
+
+	mlx_hook(data->win, KEY_PRESS, 1L << 0, key_hook, data);
+	mlx_hook(data->win, DESTROY_NOTIFY, 0, close_game, data);
+
+	mlx_loop_hook(data->mlx, &render_loop, &data);
+	
 	mlx_loop(data->mlx);
+	
 	destroy(data);
 	return (0);
 }
