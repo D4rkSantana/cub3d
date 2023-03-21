@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 13:10:19 by jefernan          #+#    #+#             */
-/*   Updated: 2023/03/21 23:48:32 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/21 23:49:51 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,9 @@ int	key_hook(int key, t_data *data)
 	if (key == KEY_D)
 		moviments(data, RIGHT);
 	if (key == KEY_LEFT)
-<<<<<<< HEAD
-		rotate(data, key);
-	if (key == KEY_RIGHT)
-		rotate(data, key);
-=======
 		rotate(data, LEFT);
 	if (key == KEY_RIGHT)
 		rotate(data, RIGHT);
->>>>>>> render_loop
 	if (key == KEY_ESC || key == KEY_Q)
 		destroy(data);
 	return (0);
