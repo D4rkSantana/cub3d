@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:14:01 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/14 23:14:16 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/17 01:23:30 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,19 @@ void	destroy_map(t_map *map)
 	map = NULL;
 }
 
+static void	destroy_player(t_player *player)
+{
+	if (player == NULL)
+		return ;
+	free (player);
+}
+
 int	destroy(t_data *data)
 {
+	data->close_game = 1;
 	if (data == NULL)
 		return (1);
+	destroy_player(data->player);
 	destroy_map(data->map);
 	if (data->image->pont)
 		mlx_destroy_image(data->mlx, data->image->pont);

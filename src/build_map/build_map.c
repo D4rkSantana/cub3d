@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 22:52:11 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/14 22:38:00 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/15 00:45:46 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,33 @@ static void	print_contents(t_map *map)
 	print_matrix(map->map_matrix);
 }
 
+void	configure_player(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (data->map->map_matrix[i])
+	{
+		j = 0;
+		while (data->map->map_matrix[i][j])
+		{
+			if (data->map->map_matrix[i][j] == 'N'
+					|| data->map->map_matrix[i][j] == 'W'
+					|| data->map->map_matrix[i][j] == 'E'
+					|| data->map->map_matrix[i][j] == 'S')
+			{
+				data->map->map_matrix[i][j] = '0';
+				data->player->pos_x = j;
+				data->player->pos_y = i;
+				return ;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
 void	configure_aux(t_data *data)
 {
 	int	index;
@@ -59,6 +86,7 @@ void	configure_aux(t_data *data)
 	}
 	data->map->col = height;
 	data->height = height * PROP;
+	configure_player(data);
 }
 
 static int	check_refined_map(t_data *data)

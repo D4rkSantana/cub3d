@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:15:38 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/14 00:25:38 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/15 00:45:34 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,20 @@ t_map	*init_map(char *patch)
 	return (map);
 }
 
+t_player	*init_player(void)
+{
+	t_player	*player;
+
+	player = NULL;
+	player = ft_calloc(sizeof(t_player), 1);
+	if (player == NULL)
+		return (NULL);
+	player->pos_x = 0;
+	player->pos_y = 0;
+	player->angle = 0;
+	return (player);
+}
+
 t_data	*init(char *patch)
 {
 	t_data	*data;
@@ -78,6 +92,7 @@ t_data	*init(char *patch)
 		return (NULL);
 	data->map = init_map(patch);
 	data->image = init_image();
+	data->player = init_player();
 	data->mlx = NULL;
 	data->win = NULL;
 	data->height = 0;
