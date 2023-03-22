@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 22:52:11 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/22 22:45:18 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/22 22:50:30 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ void	configure_aux(t_data *data)
 		index++;
 	}
 	data->width = width * PROP;
-	printf("alt:%d larg:%d\n", data->height, data->width);
 	configure_player(data);
 }
 
