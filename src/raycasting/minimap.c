@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 00:10:36 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/22 01:14:15 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/22 22:47:28 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ static void	draw_element(t_image *img, char element, int index, int count)
 		j = 0;
 		while (j < PROP)
 		{
-			//inverter x + i e y + j
 			draw_pixel_color(img, x + i, y + j, color);
 			j++;
 		}

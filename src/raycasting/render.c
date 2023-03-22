@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 18:45:37 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/22 01:02:20 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/03/22 22:47:49 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	draw_pixel_color(t_image *img, int x, int y, char *color)
 {
 	int	pos;
 
-	pos = (x * 4) + (img->size_line * y);
+	pos = (y * 4) + (img->size_line * x);
 	img->patch[pos] = color[0];
 	img->patch[pos + 1] = color[1];
 	img->patch[pos + 2] = color[2];
@@ -72,7 +72,7 @@ static void	render_player(t_data *data, t_image *img)
 		while (j < PROP)
 		{
 			draw_pixel_color(img, data->player->pos_y * PROP + j,
-				data->player->pos_x * PROP + i, color);
+					data->player->pos_x * PROP + i, color);
 			j++;
 		}
 		i++;
@@ -81,7 +81,7 @@ static void	render_player(t_data *data, t_image *img)
 
 void	render(t_data *data)
 {
-	printf("x:%f y:%f angle:%f\n", data->player->pos_x, data->player->pos_y, data->player->angle);
+	//printf("x:%f y:%f angle:%f\n", data->player->pos_x, data->player->pos_y, data->player->angle);
 	draw_minimap(data, data->image);
 	render_player(data, data->image);
 	mlx_put_image_to_window(data->mlx, data->win, data->image->pont, 0, 0);

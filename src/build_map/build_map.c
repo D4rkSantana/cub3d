@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 22:52:11 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/15 00:45:46 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/22 22:45:18 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,23 +69,22 @@ void	configure_player(t_data *data)
 void	configure_aux(t_data *data)
 {
 	int	index;
-	int	height;
+	int	width;
 	int	temp;
 
 	index = 0;
 	temp = 0;
-	height = 0;
-	data->map->line = ft_matrix_strlen(data->map->map_matrix);
-	data->width = data->map->line * PROP;
+	width = 0;
+	data->height = ft_matrix_strlen(data->map->map_matrix) * PROP;
 	while (data->map->map_matrix[index])
 	{
 		temp = ft_strlen(data->map->map_matrix[index]);
-		if (temp > height)
-			height = temp;
+		if (temp > width)
+			width = temp;
 		index++;
 	}
-	data->map->col = height;
-	data->height = height * PROP;
+	data->width = width * PROP;
+	printf("alt:%d larg:%d\n", data->height, data->width);
 	configure_player(data);
 }
 

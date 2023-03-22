@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:20 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/22 01:06:31 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/03/22 22:45:41 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	start_mlx(t_data *data)
 		destroy(data);
 		exit(1);
 	}
-	data->win = mlx_new_window(data->mlx, data->width * 2, data->height * 2, "Cub3d");
+	data->win = mlx_new_window(data->mlx, data->width,  data->height, "Cub3d");
 	if (!data->win)
 	{
 		printf("Error\nNo graphical interface.\n");

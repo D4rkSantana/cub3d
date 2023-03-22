@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:15:38 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/15 00:45:34 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/22 22:48:28 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,6 @@ t_map	*init_map(char *patch)
 	if (patch != NULL)
 		map->patch = ft_strdup(patch);
 	map->map_matrix = NULL;
-	map->line = 0;
-	map->col = 0;
 	map->no_path = NULL;
 	map->so_path = NULL;
 	map->we_path = NULL;
