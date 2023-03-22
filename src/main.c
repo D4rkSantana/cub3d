@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:20 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/21 01:36:16 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/22 01:06:31 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,9 @@ int	main(int argc, char **argv)
 	mlx_hook(data->win, DESTROY_NOTIFY, 0, close_game, data);
 
 	mlx_loop_hook(data->mlx, &render_loop, &data);
-	
+
 	mlx_loop(data->mlx);
-	
+
 	destroy(data);
 	return (0);
 }

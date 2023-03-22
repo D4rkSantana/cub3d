@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/21 23:52:20 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/22 01:05:03 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,10 @@ t_data	*init(char *patch);
 int		render_loop(t_data **data);
 
 /* moviments.c */
-void	moviments(t_data *data, int key);
+void	moviments_up_down(t_data *data, int key);
+void	moviments_left_right(t_data *data, int key);
 void	rotate(t_data *data, int key);
+int		check_player_position(t_data *data, double x, double y);
 
 /* destroy.c */
 void	destroy_map(t_map *map);

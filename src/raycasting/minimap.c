@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 00:10:36 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/21 01:29:06 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/22 01:01:38 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ static void	draw_line_map(char *line, t_image *img, int index)
 
 int	draw_minimap(t_data *data, t_image *img)
 {
-	int	index;
-	char **map;
+	int		index;
+	char	**map;
 
 	index = 0;
 	while (data->map->map_matrix[index] != NULL)

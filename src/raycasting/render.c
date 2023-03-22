@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 18:45:37 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/21 01:46:05 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/22 01:02:20 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,10 @@ static void	render_player(t_data *data, t_image *img)
 	while (i < PROP)
 	{
 		j = 0;
-		while(j < PROP)
+		while (j < PROP)
 		{
 			draw_pixel_color(img, data->player->pos_y * PROP + j,
-					data->player->pos_x * PROP + i, color);
+				data->player->pos_x * PROP + i, color);
 			j++;
 		}
 		i++;
@@ -85,5 +85,4 @@ void	render(t_data *data)
 	draw_minimap(data, data->image);
 	render_player(data, data->image);
 	mlx_put_image_to_window(data->mlx, data->win, data->image->pont, 0, 0);
-
 }
