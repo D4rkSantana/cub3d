@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:19:43 by jefernan          #+#    #+#             */
-/*   Updated: 2023/03/22 22:39:26 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/26 01:00:48 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,17 @@ void	moviments_left_right(t_data *data, int key)
 void	rotate(t_data *data, int key)
 {
 	if (key == KEY_LEFT)
-		data->player->angle += PI / 180;
+	{
+		data->player->angle += SENS * (PI / 180);
+		if (data->player->angle > 2 * PI)
+			data->player->angle = 0;
+	}
 	if (key == KEY_RIGHT)
-		data->player->angle -= PI / 180;
+	{
+		data->player->angle -= SENS * (PI / 180);
+		if (data->player->angle < 0)
+			data->player->angle = 2 * PI;
+	}
 }
 
 int	check_player_position(t_data *data, double x, double y)

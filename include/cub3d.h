@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/22 01:05:03 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/03/23 21:32:47 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ t_image	*init_image_xpm(t_data *data, char *patch);
 //t_image	*init_image(t_data *data);
 t_map	*init_map(char *patch);
 t_data	*init(char *patch);
+
+/* ray.c */
+int		ray(t_data *data);
 
 int		render_loop(t_data **data);
 

@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 18:45:37 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/22 22:55:58 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/23 21:34:17 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,6 @@ void	render(t_data *data)
 	//printf("x:%f y:%f angle:%f\n", data->player->pos_x, data->player->pos_y, data->player->angle);
 	draw_minimap(data, data->image);
 	render_player(data, data->image);
+	ray(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->image->pont, 0, 0);
 }

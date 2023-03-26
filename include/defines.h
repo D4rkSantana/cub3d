@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 00:13:09 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/22 22:56:49 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/26 01:01:30 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,8 @@
 # define SPRITE 64
 # define PI 3.14159265
 # define MOVE_SPEED 1
+# define SENS 5
+
+// SENS é a sensibilidade de movimento
 
 #endif /* DEFINES_H */
