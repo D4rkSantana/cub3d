@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 00:10:56 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/22 22:44:04 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/28 15:38:27 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_player
 {
 	double	pos_x;
 	double	pos_y;
+	double	turn_speed;
 	float	angle;
 }	t_player;
 
@@ -54,6 +55,39 @@ typedef struct s_data
 	t_map		*map;
 	t_image		*image;
 	t_player	*player;
+	t_ray		rays[NUM_RAYS];
 }	t_data;
+
+typedef struct s_ray
+{
+	double	ray_angle;
+	double	hrz_wall_x;
+	double	hrz_wall_y;
+	double	y_hrz_step;
+	double	x_hrz_step;
+	double	x_vert_step;
+	double	y_vert_step;
+	double	vert_wall_x;
+	double	vert_wall_y;
+	double	hrz_dist;
+	double	vert_dist;
+	double	wall_hitx;
+	double	wall_hity;
+	double	distance;
+	int		was_hit_vert;
+	int		found_vert_wall;
+	int		found_hrz_wall;
+	int		is_facing_down;
+	int		is_facing_up;
+	int		is_facing_right;
+	int		is_facing_left;
+}	t_ray;
+
+typedef struct s_render
+{
+	double	correct_wall_dist;
+	double	dist_proj_plane;
+	double	wall_stripe_height;
+}	t_render
 
 #endif /* CUB3D_H */

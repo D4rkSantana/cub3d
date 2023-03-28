@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   defines.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 00:13:09 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/22 22:56:49 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/28 14:27:00 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,10 @@
 # define SPRITE 64
 # define PI 3.14159265
 # define MOVE_SPEED 1
+
+# define FOV_ANGLE 1,0471975511965976
+# define NUM_RAYS 320
+# define TILE_SIZE 32
+# define MAX_INT 2147483647
 
 #endif /* DEFINES_H */
