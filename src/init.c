@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:15:38 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/23 23:20:49 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/03/31 01:36:16 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,15 @@ t_player	*init_player(void)
 	player->angle = 0;
 	player->turn_speed = (PI / 180);
 	return (player);
+}
+static void	init_ray(t_data *data)
+{
+	data->rays->found_vert_wall = 0;
+	data->rays->found_hrz_wall = 0;
+	data->rays->hrz_wall_x = 0;
+	data->rays->hrz_wall_y = 0;
+	data->rays->vert_wall_x = 0;
+	data->rays->vert_wall_y = 0;
 }
 
 t_data	*init(char *patch)

@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 18:45:37 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/22 22:55:58 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/31 03:39:32 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,5 @@ void	render(t_data *data)
 	draw_minimap(data, data->image);
 	render_player(data, data->image);
 	mlx_put_image_to_window(data->mlx, data->win, data->image->pont, 0, 0);
+	raycasting(data);
 }

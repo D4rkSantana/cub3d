@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   defines.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 00:13:09 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/28 14:27:00 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/03/31 03:30:52 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINES_H
 # define DEFINES_H
 
-# define PROP 20
+# define PROP 32
 
 # define NO 1
 # define KEY_ESC 65307
@@ -37,7 +37,7 @@
 # define PI 3.14159265
 # define MOVE_SPEED 1
 
-# define FOV_ANGLE 1,0471975511965976
+# define FOV_ANGLE 1.0471975511965976
 # define NUM_RAYS 320
 # define TILE_SIZE 32
 # define MAX_INT 2147483647

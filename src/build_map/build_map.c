@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 22:52:11 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/22 22:50:30 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/03/31 03:54:51 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,18 @@ void	configure_player(t_data *data)
 					|| data->map->map_matrix[i][j] == 'E'
 					|| data->map->map_matrix[i][j] == 'S')
 			{
+				if (data->map->map_matrix[i][j] == 'N')
+					data->player->angle = PI / 2;
+				if (data->map->map_matrix[i][j] == 'W')
+					data->player->angle = PI;
+				if (data->map->map_matrix[i][j] == 'E')
+					data->player->angle = 0;
+				if (data->map->map_matrix[i][j] == 'S')
+					data->player->angle = PI * 1.5;
 				data->map->map_matrix[i][j] = '0';
 				data->player->pos_x = j;
 				data->player->pos_y = i;
+					
 				return ;
 			}
 			j++;

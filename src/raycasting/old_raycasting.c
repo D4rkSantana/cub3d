@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycasting.c                                       :+:      :+:    :+:   */
+/*   old_raycasting.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 17:46:07 by jefernan          #+#    #+#             */
-/*   Updated: 2023/03/28 15:56:42 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/03/31 01:13:48 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,9 +180,9 @@ int	wall_collision(double x, double y, t_data *data)
 	int	j;
 
 	i = floor(x / TILE_SIZE);
-	j = floor(y / TILE_SIZE);
+	j = floor(y / TILE_SIZE );
 	if (x < 0 || x > WINDOW_WIDTH || y < 0 || WINDOW_HEIGHT)
-		return (true);
+		return (-1);
 	return (data->map->map_matrix[j][i]);
 }
 

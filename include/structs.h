@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 00:10:56 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/28 15:38:27 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/03/31 01:35:22 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,19 +45,6 @@ typedef struct s_player
 	float	angle;
 }	t_player;
 
-typedef struct s_data
-{
-	void		*mlx;
-	void		*win;
-	int			height;
-	int			width;
-	int			close_game;
-	t_map		*map;
-	t_image		*image;
-	t_player	*player;
-	t_ray		rays[NUM_RAYS];
-}	t_data;
-
 typedef struct s_ray
 {
 	double	ray_angle;
@@ -88,6 +75,20 @@ typedef struct s_render
 	double	correct_wall_dist;
 	double	dist_proj_plane;
 	double	wall_stripe_height;
-}	t_render
+}	t_render;
+
+typedef struct s_data
+{
+	void		*mlx;
+	void		*win;
+	int			height;
+	int			width;
+	int			close_game;
+	t_map		*map;
+	t_image		*image;
+	t_player	*player;
+	//corrigir para NUM_RAY
+	t_ray		rays[320];
+}	t_data;
 
 #endif /* CUB3D_H */
