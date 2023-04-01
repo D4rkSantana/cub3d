@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moviments.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:19:43 by jefernan          #+#    #+#             */
-/*   Updated: 2023/04/01 03:06:51 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/01 03:47:18 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ void	moviments_up_down(t_data *data, int key)
 
 	if (key == UP)
 	{
-		new_x = data->player->pos_x - sin(data->player->angle) * MOVE_SPEED;
-		new_y = data->player->pos_y - cos(data->player->angle) * MOVE_SPEED;
+		new_x = data->player->pos_x - cos(data->player->angle) * MOVE_SPEED;
+		new_y = data->player->pos_y - sin(data->player->angle) * MOVE_SPEED;
 	}
 	if (key == DOWN)
 	{
-		new_x = data->player->pos_x + sin(data->player->angle) * MOVE_SPEED;
-		new_y = data->player->pos_y + cos(data->player->angle) * MOVE_SPEED;
+		new_x = data->player->pos_x + cos(data->player->angle) * MOVE_SPEED;
+		new_y = data->player->pos_y + sin(data->player->angle) * MOVE_SPEED;
 	}
 	if (check_player_position(data, new_x, new_y) != 1)
 	{
@@ -41,13 +41,13 @@ void	moviments_left_right(t_data *data, int key)
 
 	if (key == LEFT)
 	{
-		new_x = data->player->pos_x - cos(data->player->angle) * MOVE_SPEED;
-		new_y = data->player->pos_y + sin(data->player->angle) * MOVE_SPEED;
+		new_x = data->player->pos_x - sin(data->player->angle) * MOVE_SPEED;
+		new_y = data->player->pos_y + cos(data->player->angle) * MOVE_SPEED;
 	}
 	if (key == RIGHT)
 	{
-		new_x = data->player->pos_x + cos(data->player->angle) * MOVE_SPEED;
-		new_y = data->player->pos_y - sin(data->player->angle) * MOVE_SPEED;
+		new_x = data->player->pos_x + sin(data->player->angle) * MOVE_SPEED;
+		new_y = data->player->pos_y - cos(data->player->angle) * MOVE_SPEED;
 	}
 	if (check_player_position(data, new_x, new_y) != 1)
 	{
