@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:19:43 by jefernan          #+#    #+#             */
-/*   Updated: 2023/04/01 03:06:51 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/01 23:51:55 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,17 @@ void	moviments_up_down(t_data *data, int key)
 
 	if (key == UP)
 	{
-		new_x = data->player->pos_x - sin(data->player->angle) * MOVE_SPEED;
-		new_y = data->player->pos_y - cos(data->player->angle) * MOVE_SPEED;
+		new_y = data->player->pos_y - 10;
+		//new_x = data->player->pos_x - sin(data->player->angle) * MOVE_SPEED;
+		//new_y = data->player->pos_y - cos(data->player->angle) * MOVE_SPEED;
 	}
 	if (key == DOWN)
 	{
-		new_x = data->player->pos_x + sin(data->player->angle) * MOVE_SPEED;
-		new_y = data->player->pos_y + cos(data->player->angle) * MOVE_SPEED;
+		new_y = data->player->pos_y + 10;
+		//new_x = data->player->pos_x + sin(data->player->angle) * MOVE_SPEED;
+		//new_y = data->player->pos_y + cos(data->player->angle) * MOVE_SPEED;
 	}
+	new_x = data->player->pos_x;
 	if (check_player_position(data, new_x, new_y) != 1)
 	{
 		data->player->pos_x = new_x;
@@ -41,14 +44,17 @@ void	moviments_left_right(t_data *data, int key)
 
 	if (key == LEFT)
 	{
-		new_x = data->player->pos_x - cos(data->player->angle) * MOVE_SPEED;
-		new_y = data->player->pos_y + sin(data->player->angle) * MOVE_SPEED;
+		new_x = data->player->pos_x - 10;
+		//new_x = data->player->pos_x - cos(data->player->angle) * MOVE_SPEED;
+		//new_y = data->player->pos_y + sin(data->player->angle) * MOVE_SPEED;
 	}
 	if (key == RIGHT)
 	{
-		new_x = data->player->pos_x + cos(data->player->angle) * MOVE_SPEED;
-		new_y = data->player->pos_y - sin(data->player->angle) * MOVE_SPEED;
+		new_x = data->player->pos_x + 10;
+		//new_x = data->player->pos_x + cos(data->player->angle) * MOVE_SPEED;
+		//new_y = data->player->pos_y - sin(data->player->angle) * MOVE_SPEED;
 	}
+	new_y = data->player->pos_y;
 	if (check_player_position(data, new_x, new_y) != 1)
 	{
 		data->player->pos_x = new_x;
@@ -63,13 +69,14 @@ void	rotate(t_data *data, int key)
 	if (key == KEY_LEFT)
 	{
 		new_angle = data->player->angle + PI / 180;
-		if (new_angle > 360)
+		if (new_angle > 2 * PI)
 			new_angle = 0;
 		data->player->angle = new_angle;
 	}
 	if (key == KEY_RIGHT)
 	{
 		new_angle = data->player->angle - PI / 180;
+
 		if (new_angle < 0)
 			new_angle = 2 * PI;
 		data->player->angle = new_angle;
@@ -81,8 +88,8 @@ int	check_player_position(t_data *data, double x, double y)
 	int	map_x;
 	int	map_y;
 
-	map_x = (int)x;
-	map_y = (int)y;
+	map_x = (int)x / TILE_SIZE;
+	map_y = (int)y / TILE_SIZE;
 	if (data->map->map_matrix[map_y][map_x] == '1')
 		return (1);
 	return (0);

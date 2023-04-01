@@ -6,12 +6,13 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 00:10:36 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/22 22:54:38 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/01 19:52:25 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/*
 static char	*creat_color(char element)
 {
 	char	*color;
@@ -90,4 +91,4 @@ int	draw_minimap(t_data *data, t_image *img)
 		index++;
 	}
 	return (0);
-}
+}*/

@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 00:10:56 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/01 00:56:14 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/01 19:11:39 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 typedef struct s_image
 {
-	int		height;
-	int		width;
 	char	*patch;
 	void	*pont;
 	int		bpp;
@@ -29,6 +27,8 @@ typedef struct s_map
 {
 	char	*patch;
 	char	**map_matrix;
+	int		height_px;
+	int		width_px;
 	char	*no_path;
 	char	*so_path;
 	char	*we_path;
@@ -84,8 +84,6 @@ typedef struct s_data
 {
 	void		*mlx;
 	void		*win;
-	int			height;
-	int			width;
 	int			close_game;
 	t_render	*render;
 	t_map		*map;

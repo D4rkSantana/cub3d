@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/31 01:33:02 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/01 20:15:44 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,6 @@
 # include "../libs/libft/libft.h"
 
 /* init.c */
-t_image	*init_image_xpm(t_data *data, char *patch);
-//t_image	*init_image(t_data *data);
-t_map	*init_map(char *patch);
 t_data	*init(char *patch);
 
 int		render_loop(t_data **data);
@@ -73,7 +70,7 @@ int		build_map(t_data *data);
 int		key_hook(int key, t_data *data);
 
 /* minimap.c */
-int		draw_minimap(t_data *data, t_image *img);
+//int		draw_minimap(t_data *data, t_image *img);
 
 /* render.c */
 void	draw_pixel_color(t_image *img, int x, int y, char *color);
@@ -81,6 +78,11 @@ void	render(t_data *data);
 
 /* get_player*/
 void	get_player(t_data *data);
+
+/* intersection.c */
+int		wall_collision(double x, double y, t_data *data);
+void	vertical_intersection(double ray_angle, t_data *data, t_ray *ray);
+void	horizontal_intersection(double ray_angle, t_data *data, t_ray *ray);
 
 /* new_raycastin */
 void	raycasting(t_data *data);

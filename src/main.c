@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:20 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/01 02:19:57 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/01 19:44:58 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ static int	start_mlx(t_data *data)
 		destroy(data);
 		exit(1);
 	}
-	data->win = mlx_new_window(data->mlx, data->width, data->height, "Cub3d");
+	data->win = mlx_new_window(data->mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3d");
 	if (!data->win)
 	{
 		printf("Error\nNo graphical interface.\n");
 		destroy(data);
 		exit(1);
 	}
-	data->image->pont = mlx_new_image(data->mlx, data->width + 100, data->height + 100);
+	data->image->pont = mlx_new_image(data->mlx, WIN_WIDTH + 100, WIN_HEIGHT + 100);
 	data->image->patch = mlx_get_data_addr(data->image->pont, &data->image->bpp,
 			&data->image->size_line, &data->image->endian);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 18:45:37 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/01 02:20:30 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/01 23:53:54 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,31 +33,7 @@ void	draw_pixel_color(t_image *img, int x, int y, char *color)
 	img->patch[pos + 2] = color[2];
 }
 
-//Não concluida
-static void	render_background(t_data *data, t_image *img)
-{
-	int		index_y;
-	int		index_x;
-	char	*color;
-
-	color = ft_calloc(sizeof(char), 4);
-	color[0] = (char)255;
-	color[1] = (char)255;
-	color[2] = (char)255;
-	index_x = 0;
-	while (index_x < NUM_RAYS)
-	{
-		index_y = 0;
-		while (index_y < data->height)
-		{
-			draw_pixel_color(img, index_x, index_y, color);
-			index_y++;
-		}
-		index_x++;
-	}
-	//t_strdel(&color);
-}
-
+/*
 static void	render_player(t_data *data, t_image *img)
 {
 	int		i;
@@ -77,18 +53,19 @@ static void	render_player(t_data *data, t_image *img)
 		}
 		i++;
 	}
-}
+}*/
 
 void	render(t_data *data)
 {
-	//printf("x:%f y:%f angle:%f\n", data->player->pos_x, data->player->pos_y, data->player->angle);
-	//draw_minimap(data, data->image);
-	//render_player(data, data->image);
-	
-	//render_background(data, data->image);
 
+	int	x;
+	int	y;
+
+	x = data->player->pos_x /  TILE_SIZE;
+	y = data->player->pos_y /  TILE_SIZE;
+	printf("px:%f py:%f angle:%f\n", data->player->pos_x,
+			data->player->pos_y, data->player->angle * (180 / PI));
+	printf("mx:%d my:%d\n", x, y);
 	raycasting(data);
-
 	mlx_put_image_to_window(data->mlx, data->win, data->image->pont, 0, 0);
-	printf("4\n");
 }
