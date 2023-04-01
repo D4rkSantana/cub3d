@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   moviments.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:19:43 by jefernan          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/04/01 23:51:55 by esilva-s         ###   ########.fr       */
+=======
+/*   Updated: 2023/04/01 03:47:18 by jefernan         ###   ########.fr       */
+>>>>>>> 6a0108ac9e11985a748d238dfa5bc83aaa2e3dea
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +23,7 @@ void	moviments_up_down(t_data *data, int key)
 
 	if (key == UP)
 	{
+<<<<<<< HEAD
 		new_y = data->player->pos_y - 10;
 		//new_x = data->player->pos_x - sin(data->player->angle) * MOVE_SPEED;
 		//new_y = data->player->pos_y - cos(data->player->angle) * MOVE_SPEED;
@@ -28,6 +33,15 @@ void	moviments_up_down(t_data *data, int key)
 		new_y = data->player->pos_y + 10;
 		//new_x = data->player->pos_x + sin(data->player->angle) * MOVE_SPEED;
 		//new_y = data->player->pos_y + cos(data->player->angle) * MOVE_SPEED;
+=======
+		new_x = data->player->pos_x - cos(data->player->angle) * MOVE_SPEED;
+		new_y = data->player->pos_y - sin(data->player->angle) * MOVE_SPEED;
+	}
+	if (key == DOWN)
+	{
+		new_x = data->player->pos_x + cos(data->player->angle) * MOVE_SPEED;
+		new_y = data->player->pos_y + sin(data->player->angle) * MOVE_SPEED;
+>>>>>>> 6a0108ac9e11985a748d238dfa5bc83aaa2e3dea
 	}
 	new_x = data->player->pos_x;
 	if (check_player_position(data, new_x, new_y) != 1)
