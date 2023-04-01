@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 18:45:37 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/31 03:39:32 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/01 02:20:30 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,21 @@ static void	render_background(t_data *data, t_image *img)
 	char	*color;
 
 	color = ft_calloc(sizeof(char), 4);
-	color[0] = 0;
-	color[1] = 0;
-	color[2] = 0;
-	index_y = 0;
-	while (index_y < img->height)
+	color[0] = (char)255;
+	color[1] = (char)255;
+	color[2] = (char)255;
+	index_x = 0;
+	while (index_x < NUM_RAYS)
 	{
-		index_x = 0;
-		while (index_x < img->width)
+		index_y = 0;
+		while (index_y < data->height)
 		{
 			draw_pixel_color(img, index_x, index_y, color);
-			index_x++;
+			index_y++;
 		}
-		index_y++;
+		index_x++;
 	}
-	ft_strdel(&color);
+	//t_strdel(&color);
 }
 
 static void	render_player(t_data *data, t_image *img)
@@ -82,8 +82,13 @@ static void	render_player(t_data *data, t_image *img)
 void	render(t_data *data)
 {
 	//printf("x:%f y:%f angle:%f\n", data->player->pos_x, data->player->pos_y, data->player->angle);
-	draw_minimap(data, data->image);
-	render_player(data, data->image);
-	mlx_put_image_to_window(data->mlx, data->win, data->image->pont, 0, 0);
+	//draw_minimap(data, data->image);
+	//render_player(data, data->image);
+	
+	//render_background(data, data->image);
+
 	raycasting(data);
+
+	mlx_put_image_to_window(data->mlx, data->win, data->image->pont, 0, 0);
+	printf("4\n");
 }

@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 00:10:56 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/31 01:35:22 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/01 00:56:14 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,12 @@ typedef struct s_ray
 
 typedef struct s_render
 {
-	double	correct_wall_dist;
+	double	perp_dist;
 	double	dist_proj_plane;
-	double	wall_stripe_height;
+	double	proj_wall_height;
+	int		wall_strip_height;
+	int		wall_bottom_pixel;
+	int		wall_top_pixel;
 }	t_render;
 
 typedef struct s_data
@@ -84,6 +87,7 @@ typedef struct s_data
 	int			height;
 	int			width;
 	int			close_game;
+	t_render	*render;
 	t_map		*map;
 	t_image		*image;
 	t_player	*player;

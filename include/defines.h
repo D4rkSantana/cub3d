@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 00:13:09 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/31 03:30:52 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/01 02:59:20 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,11 @@
 
 # define SPRITE 64
 # define PI 3.14159265
-# define MOVE_SPEED 1
+# define MOVE_SPEED 5
 
 # define FOV_ANGLE 1.0471975511965976
+# define WIN_WIDTH 320
+# define WIN_HEIGHT 220
 # define NUM_RAYS 320
 # define TILE_SIZE 32
 # define MAX_INT 2147483647

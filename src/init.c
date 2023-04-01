@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:15:38 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/31 01:36:16 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/01 01:22:31 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ static t_image	*init_image(void)
 	image = ft_calloc(sizeof(t_image), 1);
 	if (image == NULL)
 		return (NULL);
-	image->width = 0;
-	image->height = 0;
+	image->width = WIN_WIDTH;
+	image->height = WIN_HEIGHT;
 	image->pont = NULL;
 	image->patch = NULL;
 	return (image);
@@ -101,10 +101,11 @@ t_data	*init(char *patch)
 	data->map = init_map(patch);
 	data->image = init_image();
 	data->player = init_player();
+	data->render = ft_calloc(sizeof(t_render), 1);
 	data->mlx = NULL;
 	data->win = NULL;
-	data->height = 0;
-	data->width = 0;
+	data->height = WIN_HEIGHT;
+	data->width = WIN_WIDTH;
 	data->close_game = 0;
 	return (data);
 }

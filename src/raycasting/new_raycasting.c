@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 00:54:38 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/31 03:47:51 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/01 03:18:05 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,12 @@ int	wall_collision(double x, double y, t_data *data)
 
 	i = floor(x / TILE_SIZE);
 	j = floor(y / TILE_SIZE);
-	if (x < 0 || x > data->width || y < 0 || data->height)
+	if (x < 0 || x > data->width || y < 0 || y > data->height)
 		return (-1);
-	return (data->map->map_matrix[j][i]);
+	if (data->map->map_matrix[i][j] == '1')
+		return (1);
+	else
+		return (0);
 }
 
 void	horizontal_intersection(double ray_angle, t_data *data, t_ray *ray)
@@ -65,7 +68,7 @@ void	horizontal_intersection(double ray_angle, t_data *data, t_ray *ray)
 		if (ray->is_facing_up)
 			intercep_y -= 1;
 		//verificar se não há colisão com uma parede nos lados horizontais
-		if (wall_collision(intercep_x, intercep_y, data) == '1')
+		if (wall_collision(intercep_x, intercep_y, data) == 1)
 		{
 			//encontrou parede -> ponto de colisão - hrz_wall_x - y
 			ray->hrz_wall_x = intercep_x;
@@ -77,7 +80,6 @@ void	horizontal_intersection(double ray_angle, t_data *data, t_ray *ray)
 		intercep_y += ray->y_hrz_step;
 	}
 }
-
 
 void	vertical_intersection(double ray_angle, t_data *data, t_ray *ray)
 {
@@ -107,7 +109,7 @@ void	vertical_intersection(double ray_angle, t_data *data, t_ray *ray)
 		//diminuir 1 pixel para garantir que o ponto de verificação esteja dentro da matriz.
 		if (ray->is_facing_left)
 			intercep_x -= 1;
-		if (wall_collision(intercep_x, intercep_y, data) == '1')
+		if (wall_collision(intercep_x, intercep_y, data) == 1)
 		{
 			ray->vert_wall_x = intercep_x;
 			ray->vert_wall_y = intercep_y;
@@ -142,6 +144,8 @@ double	dist_between_points(double x1, double y1, double x2, double y2)
 
 void	calc_dist(t_data *data, double ray_angle, t_ray *ray)
 {
+	printf("vert x:%.2f y:%.2f \nhoriz x:%.2f y:%.2f\n", ray->vert_wall_x, ray->vert_wall_y, ray->hrz_wall_x, ray->hrz_wall_x);
+	printf("vert_c:%d horiz_c:%d\n", wall_collision(ray->vert_wall_x, ray->vert_wall_y, data), wall_collision(ray->hrz_wall_x, ray->hrz_wall_y, data));
 	if (ray->found_hrz_wall)
 		ray->hrz_dist = dist_between_points(data->player->pos_x, data->player->pos_y, ray->hrz_wall_x, ray->hrz_wall_y);
 	else
@@ -169,6 +173,170 @@ void	calc_dist(t_data *data, double ray_angle, t_ray *ray)
 	ray->ray_angle = ray_angle;
 }
 
+static char	*creat_color(void)
+{
+	char	*color;
+
+	color = ft_calloc(sizeof(char), 4);
+	color[0] = (char)154;
+	color[1] = (char)205;
+	color[2] = (char)50;
+	return (color);
+}
+
+static char	*creat_color1(void)
+{
+	char	*color;
+
+	color = ft_calloc(sizeof(char), 4);
+	color[0] = (char)255;
+	color[1] = 0;
+	color[2] = 0;
+	return (color);
+}
+
+static char	*creat_color2(void)
+{
+	char	*color;
+
+	color = ft_calloc(sizeof(char), 4);
+	color[0] = (char)255;
+	color[1] = (char)255;
+	color[2] = (char)50;
+	return (color);
+}
+
+static char	*creat_color3(void)
+{
+	char	*color;
+
+	color = ft_calloc(sizeof(char), 4);
+	color[0] = (char)50;
+	color[1] = (char)50;
+	color[2] = (char)50;
+	return (color);
+}
+
+void	draw_lines(t_data *data)
+{
+	int	teste;
+	int	index;
+	int	j;
+	char *color;
+
+
+	teste = 0;
+
+	index = 0;
+	color = creat_color();
+
+	double step_1;
+	double step_2;
+	double size_total;
+
+	while (index < NUM_RAYS)
+	{
+		j = 0;
+		step_1 = data->height / 4;
+		size_total = data->height - data->height / 2;
+		step_2 = size_total + step_1;
+		//printf("altura:%d dist:%f dist_total:%f s1:%f s2:%f \n", data->height, data->rays[index].distance, size_total, step_1, step_2);
+		while (j < step_1)
+			j++;
+		while (j < step_2)
+		{
+			draw_pixel_color(data->image, j, index, color);
+			j++;
+		}
+		index++;
+	}
+	/*
+	while (index < NUM_RAYS)
+	{
+		j = 0;
+		step_1 = (data->rays[index].distance * 5) / 2;
+		size_total = data->height - (data->rays[index].distance * 5);
+		step_2 = size_total + step_1;
+		printf("altura:%d dist:%f dist_total:%f s1:%f s2:%f \n", data->height, data->rays[index].distance, size_total, step_1, step_2);
+		while (j < step_1)
+			j++;
+		while (j < step_2)
+		{
+			draw_pixel_color(data->image, index, j, color);
+			j++;
+		}
+		index++;
+	}
+	*/
+	ft_strdel(&color);
+}
+
+void    render_3d_projected_walls(t_data *data)
+{
+    int    x;
+    int    y;
+    int    color_buffer;
+	char	*color1 = creat_color1();
+	char	*color2 = creat_color2();
+	char	*color3 = creat_color3();
+
+    x = 0;
+    while (x < NUM_RAYS)
+    {
+
+        data->render->perp_dist = data->rays[x].distance * cos(data->rays[x].ray_angle - data->player->angle);
+
+		if (tan(FOV_ANGLE / 2) != 0)
+        	data->render->dist_proj_plane = (data->width / 2) / tan(FOV_ANGLE / 2);
+
+        data->render->proj_wall_height = (TILE_SIZE / data->render->perp_dist);
+        data->render->wall_strip_height = (int)data->render->proj_wall_height;
+		
+        data->render->wall_top_pixel = (data->height / 2) - (data->render->wall_strip_height);
+
+        if (data->render->wall_top_pixel < 0)
+            data->render->wall_top_pixel = 0;
+        data->render->wall_bottom_pixel = (data->height / 2) + (data->render->wall_strip_height);
+        if (data->render->wall_bottom_pixel > data->height)
+            data->render->wall_bottom_pixel = data->height;
+
+		printf("Win W:%d H%d\n", data->width, data->height);
+		printf("Image W:%d H:%d\n", data->image->width, data->image->height);
+        // desenha o céu a partir da posição 0 até a posição wallTopPixel
+        y = 0;
+        while (y < data->render->wall_top_pixel )
+        {
+            //color_buffer[(data->width * y) + i] = 0xFF333333;
+			draw_pixel_color(data->image, y, x, color1);
+            y++;
+        }
+        // desenha a parede da posição wallTopPixel até a posição wallBottomPixel
+        y = data->render->wall_top_pixel;
+        while (y < data->render->wall_bottom_pixel)
+        {
+			/*
+            if (color_buffer[(data->width * y) + i] = data->rays[i].was_hit_vert)
+                color_buffer = 0xFFFFFFFF;
+            else
+                color_buffer = 0xFFCCCCCC;
+			*/
+			draw_pixel_color(data->image,y, x, color3);
+            y++;
+        }
+        // desenha o piso da posição wallBottomPixel até a posição data->height
+        y = data->render->wall_bottom_pixel;
+
+        while (y < data->height)
+        {
+            //color_buffer[(data->width * y) + i] = 0xFF777777;
+			draw_pixel_color(data->image,y, x, color2);
+            y++;
+        }
+
+        x++;
+    }
+}
+
 void	raycasting(t_data *data)
 {
 	double	ray_angle;
@@ -178,26 +346,37 @@ void	raycasting(t_data *data)
 	column_id = 0;
 	while (column_id < NUM_RAYS)
 	{
+
+		if (ray_angle < 0)
+			ray_angle = 2 * PI - ray_angle;
+		if (ray_angle > 2 * PI)
+			ray_angle = 0;
 		project_rays(data, ray_angle, &data->rays[column_id]);
 		calc_dist(data, ray_angle, &data->rays[column_id]);
-		printf("angle: %f ", ray_angle);
+		//printf("angle: %f ", ray_angle);
 		ray_angle += FOV_ANGLE / NUM_RAYS;
-		printf("new angle: %f em graus %f \n", ray_angle, ray_angle * (180 / PI));
+		//printf("new angle: %f em graus %f \n", ray_angle, ray_angle * (180 / PI));
 		column_id++;
 	}
+	//render_3d_projected_walls(data);
+
+	//draw_lines(data);
 	
 	//teste
+/*
 	double temp;
 
 	column_id = 0;
-	printf("inicio dos raios\n\n");
+	printf("inicio\n");
 	while (column_id < NUM_RAYS)
 	{
 		temp = data->rays[column_id].distance;
 		printf("ray[%d] dist: %f\n",column_id, temp);
 		column_id++;
 	}
-	printf("\nFim dos raios\n");
+	printf("\nFim\n");
+*/
 	close(1);
+
 	//fim teste
 }

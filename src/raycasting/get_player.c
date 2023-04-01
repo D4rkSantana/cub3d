@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_player.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 20:17:06 by jefernan          #+#    #+#             */
-/*   Updated: 2023/03/24 21:57:02 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/04/01 02:35:53 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	get_player(t_data *data)
 				data->player->pos_x = x * TILE_SIZE;
 				data->player->pos_y = y * TILE_SIZE;
 				set_angle(data, y, x);
-				data->map->map_matrix[y][x] = 0;
+				data->map->map_matrix[y][x] = '0';
 			}
 			x++;
 		}
