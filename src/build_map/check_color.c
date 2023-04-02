@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_color.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 23:29:59 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/08 01:29:44 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/02 15:44:31 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	check_color(char *color)
 	rgb_color = ft_split(color, ',');
 	if (ft_matrix_strlen(rgb_color) != 3)
 	{
+		printf("Error\nInvalid RGB color\n");
 		ft_matrix_strdel(rgb_color);
 		return (1);
 	}
@@ -48,6 +49,7 @@ int	check_color(char *color)
 		nb = ft_atoi(rgb_color[index]);
 		if (!(nb > -1 && nb < 256) || check_node(rgb_color[index]))
 		{
+			printf("Error\nInvalid RGB color\n");
 			ft_matrix_strdel(rgb_color);
 			return (1);
 		}

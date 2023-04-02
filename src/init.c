@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:15:38 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/01 19:51:18 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/02 14:52:15 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static t_player	*init_player(void)
 static t_render	*init_render(void)
 {
 	t_render	*render;
-	
+
 	render = NULL;
 	render = ft_calloc(sizeof(t_render), 1);
 	if (render == NULL)

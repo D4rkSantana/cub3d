@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 01:00:46 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/08 01:40:27 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/02 15:45:35 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,10 @@ int	check_player(char **map)
 		index++;
 	}
 	if (qt_persons != 1)
+	{
+		printf("Error\nInvalid number of player\n");
 		return (1);
+	}
 	return (0);
 }
 

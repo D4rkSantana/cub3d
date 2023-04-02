@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 00:54:38 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/02 03:20:13 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/02 14:55:49 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	project_rays(t_data *data, double ray_angle, t_ray *ray)
 	if (ray_angle >= 2 * PI)
 		ray_angle -= 2 * PI;
 	if (ray_angle < 0)
-		ray_angle += 2 * PI; 
+		ray_angle += 2 * PI;
 	where_is_looking(ray_angle, ray);
 	//intersecção horizontal
 	horizontal_intersection(ray_angle, data, ray);
@@ -36,8 +36,8 @@ void	project_rays(t_data *data, double ray_angle, t_ray *ray)
 
 double	dist_between_points(double x1, double y1, double x2, double y2)
 {
-	double ret;
-	
+	double	ret;
+
 	ret = sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
 	return (ret);	
 }
@@ -45,11 +45,13 @@ double	dist_between_points(double x1, double y1, double x2, double y2)
 void	calc_dist(t_data *data, double ray_angle, t_ray *ray)
 {
 	if (ray->found_hrz_wall)
-		ray->hrz_dist = dist_between_points(data->player->pos_x, data->player->pos_y, ray->hrz_wall_x, ray->hrz_wall_y);
+		ray->hrz_dist = dist_between_points(data->player->pos_x,
+			data->player->pos_y, ray->hrz_wall_x, ray->hrz_wall_y);
 	else
 		ray->hrz_dist = MAX_INT;
 	if (ray->found_vert_wall)
-		ray->vert_dist = dist_between_points(data->player->pos_x, data->player->pos_y, ray->vert_wall_x, ray->vert_wall_x);
+		ray->vert_dist = dist_between_points(data->player->pos_x,
+			data->player->pos_y, ray->vert_wall_x, ray->vert_wall_x);
 	else
 		ray->vert_dist = MAX_INT;
 	//calculamos a menor distância entre a colisão vertical e horizontal e armazenamos os valores 
@@ -117,10 +119,10 @@ static char	*creat_color3(void)
 
 void	draw_lines(t_data *data)
 {
-	int	teste;
-	int	index;
-	int	j;
-	char *color;
+	int		teste;
+	int		index;
+	int		j;
+	char 	*color;
 
 
 	teste = 0;

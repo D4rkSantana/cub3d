@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moviments.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:19:43 by jefernan          #+#    #+#             */
-/*   Updated: 2023/04/02 02:22:42 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/02 14:53:43 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ void	rotate(t_data *data, int key)
 	if (key == KEY_RIGHT)
 	{
 		new_angle = data->player->angle - PI / 180;
-
 		if (new_angle < 0)
 			new_angle = 2 * PI;
 		data->player->angle = new_angle;
