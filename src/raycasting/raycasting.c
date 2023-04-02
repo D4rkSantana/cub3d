@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 00:54:38 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/02 14:55:49 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/04/02 20:58:39 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,13 +248,14 @@ void	raycasting(t_data *data)
 		if (ray_angle < 0)
 			ray_angle = (2 * PI) - ray_angle;
 		else if (ray_angle > 2 * PI)
-			ray_angle = 0;
+			ray_angle = ray_angle - (2 * PI);
 		project_rays(data, ray_angle, &data->rays[column_id]);
 		calc_dist(data, ray_angle, &data->rays[column_id]);
 		ray_angle -= FOV_ANGLE / NUM_RAYS;
 		column_id++;
 	}
 	render_3d_projected_walls(data);
+	//printf("ray[169] dist: %f\n", data->rays[169].distance);
 	//close(1);
 /*
 	double temp;
