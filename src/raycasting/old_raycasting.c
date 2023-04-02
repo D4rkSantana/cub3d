@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   old_raycasting.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 17:46:07 by jefernan          #+#    #+#             */
-/*   Updated: 2023/03/31 01:13:48 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/02 17:08:53 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,6 @@ void	vertical_intersection(double ray_angle, t_data *data)
 		intercep_x += data->rays->x_vert_step;
 		intercep_y += data->rays->y_vert_step;
 	}
-
 }
 
 //teorema de pitágoras

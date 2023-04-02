@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:19:43 by jefernan          #+#    #+#             */
-/*   Updated: 2023/04/02 14:53:43 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/04/02 18:39:58 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ void	moviments_up_down(t_data *data, int key)
 	if (key == UP)
 	{
 		//new_y = data->player->pos_y - 10;
-		new_x = data->player->pos_x - cos(data->player->angle) * MOVE_SPEED;
+		new_x = data->player->pos_x + cos(data->player->angle) * MOVE_SPEED;
 		new_y = data->player->pos_y - sin(data->player->angle) * MOVE_SPEED;
 	}
 	if (key == DOWN)
 	{
 		//new_y = data->player->pos_y + 10;
-		new_x = data->player->pos_x + cos(data->player->angle) * MOVE_SPEED;
+		new_x = data->player->pos_x - cos(data->player->angle) * MOVE_SPEED;
 		new_y = data->player->pos_y + sin(data->player->angle) * MOVE_SPEED;
 	}
 	//new_x = data->player->pos_x;
@@ -46,13 +46,13 @@ void	moviments_left_right(t_data *data, int key)
 	{
 		//new_x = data->player->pos_x - 10;
 		new_x = data->player->pos_x - sin(data->player->angle) * MOVE_SPEED;
-		new_y = data->player->pos_y + cos(data->player->angle) * MOVE_SPEED;
+		new_y = data->player->pos_y - cos(data->player->angle) * MOVE_SPEED;
 	}
 	if (key == RIGHT)
 	{
 		//new_x = data->player->pos_x + 10;
 		new_x = data->player->pos_x + sin(data->player->angle) * MOVE_SPEED;
-		new_y = data->player->pos_y - cos(data->player->angle) * MOVE_SPEED;
+		new_y = data->player->pos_y + cos(data->player->angle) * MOVE_SPEED;
 	}
 	//new_y = data->player->pos_y;
 	if (check_player_position(data, new_x, new_y) != 1)
