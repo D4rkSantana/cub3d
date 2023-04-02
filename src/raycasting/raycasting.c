@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 00:54:38 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/02 00:21:19 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/02 03:20:13 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,7 +228,6 @@ void    render_3d_projected_walls(t_data *data)
 			draw_pixel_color(data->image,y, x, color2);
             y++;
         }
-
         x++;
     }
 }
@@ -238,24 +237,23 @@ void	raycasting(t_data *data)
 	double	ray_angle;
 	int		column_id;
 
-	ray_angle = data->player->angle - (FOV_ANGLE / 2);
-	
+	ray_angle = data->player->angle + (FOV_ANGLE / 2);
+	if (ray_angle > 2 * PI)
+		ray_angle = ray_angle - (2 * PI);
 	column_id = 0;
 	while (column_id < NUM_RAYS)
 	{
-
 		if (ray_angle < 0)
-			ray_angle = 2 * PI - ray_angle;
-		if (ray_angle > 2 * PI)
+			ray_angle = (2 * PI) - ray_angle;
+		else if (ray_angle > 2 * PI)
 			ray_angle = 0;
 		project_rays(data, ray_angle, &data->rays[column_id]);
 		calc_dist(data, ray_angle, &data->rays[column_id]);
-		printf("angle: %f\n", ray_angle * (180/PI));
-		ray_angle += FOV_ANGLE / NUM_RAYS;
+		ray_angle -= FOV_ANGLE / NUM_RAYS;
 		column_id++;
 	}
 	render_3d_projected_walls(data);
-	close(1);
+	//close(1);
 /*
 	double temp;
 
