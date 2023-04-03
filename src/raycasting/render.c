@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 18:45:37 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/02 21:26:42 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/03 02:14:35 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ void	render(t_data *data)
 
 	x = data->player->pos_x /  TILE_SIZE;
 	y = data->player->pos_y /  TILE_SIZE;
-	//printf("px:%f py:%f angle:%f\n", data->player->pos_x,
-			//data->player->pos_y, data->player->angle * (180 / PI));
-	//printf("mx:%d my:%d\n", x, y);
+	// printf("px:%d py:%d angle:%f\n", data->player->pos_x,
+			// data->player->pos_y, data->player->angle * (180 / PI));
+	// printf("mx:%d my:%d\n", x, y);
 	raycasting(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->image->pont, 0, 0);
 }

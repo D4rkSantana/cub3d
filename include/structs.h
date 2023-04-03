@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 00:10:56 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/01 19:11:39 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/03 00:25:35 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ typedef struct s_map
 
 typedef struct s_player
 {
-	double	pos_x;
-	double	pos_y;
+	int		pos_x;
+	int		pos_y;
 	double	turn_speed;
-	float	angle;
+	double	angle;
 }	t_player;
 
 typedef struct s_ray
@@ -50,10 +50,10 @@ typedef struct s_ray
 	double	ray_angle;
 	double	hrz_wall_x;
 	double	hrz_wall_y;
-	double	y_hrz_step;
-	double	x_hrz_step;
-	double	x_vert_step;
-	double	y_vert_step;
+	int		y_hrz_step;
+	int		x_hrz_step;
+	int		x_vert_step;
+	int		y_vert_step;
 	double	vert_wall_x;
 	double	vert_wall_y;
 	double	hrz_dist;

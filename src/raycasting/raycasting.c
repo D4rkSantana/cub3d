@@ -6,27 +6,22 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 00:54:38 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/02 20:58:39 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/03 02:15:48 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-//OK
 void	where_is_looking(double ray_angle, t_ray *ray)
 {
-	ray->is_facing_down = (ray_angle > 0 && ray_angle < PI);
-	ray->is_facing_up = !ray->is_facing_down;
-	ray->is_facing_right = (ray_angle < (PI / 2) || ray_angle > (1.5 * PI));
+	ray->is_facing_up = (ray_angle >= 0 && ray_angle <= PI);
+	ray->is_facing_down = !ray->is_facing_up;
+	ray->is_facing_right = (ray_angle <= (PI / 2) || ray_angle >= (1.5 * PI));
 	ray->is_facing_left = !ray->is_facing_right;
 }
 
 void	project_rays(t_data *data, double ray_angle, t_ray *ray)
 {
-	if (ray_angle >= 2 * PI)
-		ray_angle -= 2 * PI;
-	if (ray_angle < 0)
-		ray_angle += 2 * PI;
 	where_is_looking(ray_angle, ray);
 	//intersecção horizontal
 	horizontal_intersection(ray_angle, data, ray);
@@ -54,6 +49,7 @@ void	calc_dist(t_data *data, double ray_angle, t_ray *ray)
 			data->player->pos_y, ray->vert_wall_x, ray->vert_wall_x);
 	else
 		ray->vert_dist = MAX_INT;
+	// printf("v:%d h:%d\n", ray->found_vert_wall, ray->found_hrz_wall);
 	//calculamos a menor distância entre a colisão vertical e horizontal e armazenamos os valores 
 	//da menor delas, checando se a colisão foi vertical ou horizontal.
 	if (ray->vert_dist < ray->hrz_dist)
@@ -187,7 +183,10 @@ void    render_3d_projected_walls(t_data *data)
         data->render->perp_dist = data->rays[x].distance * cos(data->rays[x].ray_angle - data->player->angle);
 
 		if (tan(FOV_ANGLE / 2) != 0)
-        	data->render->dist_proj_plane = (WIN_WIDTH / 2) / tan(FOV_ANGLE / 2);
+			data->render->dist_proj_plane = (WIN_WIDTH / 2) / tan(FOV_ANGLE / 2);
+		else
+			data->render->dist_proj_plane = 0;
+		
 
         data->render->proj_wall_height = (TILE_SIZE / data->render->perp_dist);
         data->render->wall_strip_height = (int)data->render->proj_wall_height;
@@ -255,7 +254,7 @@ void	raycasting(t_data *data)
 		column_id++;
 	}
 	render_3d_projected_walls(data);
-	//printf("ray[169] dist: %f\n", data->rays[169].distance);
+	// printf("ray[169] dist: %f\n", data->rays[169].distance);
 	//close(1);
 /*
 	double temp;

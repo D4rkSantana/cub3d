@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 20:11:14 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/02 22:50:37 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/04/03 02:30:14 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	wall_collision(double x, double y, t_data *data)
 
 	i = floor(x / TILE_SIZE);
 	j = floor(y / TILE_SIZE);
-	if (x < 0 || x > WIN_WIDTH || y < 0 || y > WIN_HEIGHT)
+	if (x < 0 || x >= WIN_WIDTH || y < 0 || y >= WIN_HEIGHT)
 		return (-1);
 	if (data->map->map_matrix[i][j] == '1')
 		return (1);
@@ -36,37 +36,39 @@ void	horizontal_intersection(double ray_angle, t_data *data, t_ray *ray)
 	{
 		intercep_y = floor(data->player->pos_y / TILE_SIZE) * TILE_SIZE + 64;
 		intercep_x = data->player->pos_x + ((data->player->pos_y - intercep_y) / tan(ray_angle));
-		ray->y_hrz_step = TILE_SIZE;
-		ray->x_hrz_step = TILE_SIZE / tan(ray_angle);
+		// printf("DOWN\n");
 		/*
-		if (ray->is_facing_left && ray->x_hrz_step > 0)
-			ray->x_hrz_step *= -1;
-		if (ray->is_facing_right && ray->x_hrz_step < 0)
-			ray->x_hrz_step *= -1;
+		printf("ax:%d ay:%d\n", intercep_x, intercep_y);
+		printf("px:%d py:%d\n", data->player->pos_x, data->player->pos_y);
+		printf("x_hrz_step:%d y_hrz_step:%d\n",ray->x_hrz_step, ray->y_hrz_step);
 		*/
-
-		
 	}
 	else if (ray->is_facing_up)
 	{
-		intercep_y = floor(data->player->pos_y / TILE_SIZE) * TILE_SIZE - 1;
+		intercep_y = floor(data->player->pos_y / TILE_SIZE) * TILE_SIZE -1;
 		intercep_x = data->player->pos_x + ((data->player->pos_y - intercep_y) / tan(ray_angle));
-		ray->y_hrz_step = TILE_SIZE;
-		ray->x_hrz_step = TILE_SIZE / tan(ray_angle);
-	
-		// if (ray->is_facing_up)
-		// 	ray->y_hrz_step *= -1;
-		// if (ray->is_facing_left && ray->x_hrz_step > 0)
-		// 	ray->x_hrz_step *= -1;
-		// if (ray->is_facing_right && ray->x_hrz_step < 0)
-		// 	ray->x_hrz_step *= -1;
 
+		// printf("UP\n");
+		/*
+		printf("px:%d py:%d\n", data->player->pos_x, data->player->pos_y);
+		printf("x_hrz_step:%d y_hrz_step:%d\n",ray->x_hrz_step, ray->y_hrz_step);
+		*/
 	}
-	// printf("interx:%d intery:%d\n", intercep_x, intercep_y);
-	while (intercep_x >= 0 && intercep_x < (WIN_HEIGHT * TILE_SIZE) && intercep_y >= 0 && intercep_y < (WIN_WIDTH * TILE_SIZE))
+	ray->y_hrz_step = TILE_SIZE;
+	ray->x_hrz_step = TILE_SIZE / tan(ray_angle);
+	if (ray->is_facing_up)
+		ray->y_hrz_step *= -1;
+	if (ray->is_facing_left && ray->x_hrz_step > 0)
+		ray->x_hrz_step *= -1;
+	if (ray->is_facing_right && ray->x_hrz_step < 0)
+		ray->x_hrz_step *= -1;
+	printf("antes\n");
+	while (intercep_x >= 0 && intercep_x < (WIN_WIDTH * TILE_SIZE) && intercep_y >= 0 && intercep_y < (WIN_HEIGHT * TILE_SIZE))
 	{
+		printf("entrou\n");
 		if (wall_collision(intercep_x, intercep_y, data) == 1)
 		{
+			printf("aaaa\n");
 			//encontrou parede -> ponto de colisão - hrz_wall_x - y
 			ray->hrz_wall_x = intercep_x;
 			ray->hrz_wall_y = intercep_y;
@@ -74,8 +76,10 @@ void	horizontal_intersection(double ray_angle, t_data *data, t_ray *ray)
 			printf("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n");
 			break ;
 		}
+		printf("passou1\n");
 		if (wall_collision(intercep_x, intercep_y, data) == -1)
 			break ;
+		printf("passou2\n");
 		intercep_x += ray->x_hrz_step;
 		intercep_y += ray->y_hrz_step;
 	}
@@ -103,16 +107,16 @@ void	vertical_intersection(double ray_angle, t_data *data, t_ray *ray)
 
 
 	//se left -> inverter o xstep para negativo para voltar e não ir para frente no grid.
-	// if (ray->is_facing_left)
-	// 	ray->x_vert_step *= -1;
+	if (ray->is_facing_left)
+		ray->x_vert_step *= -1;
 	
-	// if (ray->is_facing_up && ray->y_vert_step > 0)
-	// 	ray->y_vert_step *= -1;
-	// if (ray->is_facing_down && ray->y_vert_step < 0)
-	// 	ray->y_vert_step *= -1;
+	if (ray->is_facing_up && ray->y_vert_step > 0)
+	 	ray->y_vert_step *= -1;
+	if (ray->is_facing_down && ray->y_vert_step < 0)
+	 	ray->y_vert_step *= -1;
 
-	while (intercep_x >= 0 && intercep_x < (WIN_HEIGHT * TILE_SIZE) &&
-			intercep_y >= 0 && intercep_y < (WIN_WIDTH * TILE_SIZE))
+	while (intercep_x >= 0 && intercep_x < (WIN_WIDTH * TILE_SIZE) &&
+			intercep_y >= 0 && intercep_y < (WIN_HEIGHT * TILE_SIZE))
 	{
 		if (wall_collision(intercep_x, intercep_y, data) == 1)
 		{
