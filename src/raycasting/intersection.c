@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 20:11:14 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/04 02:19:58 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/04 03:15:41 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int	wall_collision(double x, double y, t_data *data)
 
 void	horizontal_intersection(double ray_angle, t_data *data, t_ray *ray)
 {
-	int	intercep_x;
-	int	intercep_y;
+	double	intercep_x;
+	double	intercep_y;
 	
 	if (ray->is_facing_down)
 	{
@@ -87,8 +87,8 @@ void	horizontal_intersection(double ray_angle, t_data *data, t_ray *ray)
 
 void	vertical_intersection(double ray_angle, t_data *data, t_ray *ray)
 {
-	int	intercep_x;
-	int	intercep_y;
+	double	intercep_x;
+	double	intercep_y;
 
 	if (ray->is_facing_right)
 	{

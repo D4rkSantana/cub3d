@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 00:10:56 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/03 00:25:35 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/04 03:15:56 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ typedef struct s_map
 
 typedef struct s_player
 {
-	int		pos_x;
-	int		pos_y;
+	double	pos_x;
+	double	pos_y;
 	double	turn_speed;
 	double	angle;
 }	t_player;
@@ -64,10 +64,10 @@ typedef struct s_ray
 	int		was_hit_vert;
 	int		found_vert_wall;
 	int		found_hrz_wall;
-	int		is_facing_down;
-	int		is_facing_up;
-	int		is_facing_right;
-	int		is_facing_left;
+	double	is_facing_down;
+	double	is_facing_up;
+	double	is_facing_right;
+	double	is_facing_left;
 }	t_ray;
 
 typedef struct s_render
