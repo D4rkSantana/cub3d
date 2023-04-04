@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 00:54:38 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/03 02:15:48 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/04 02:26:48 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,7 +191,7 @@ void    render_3d_projected_walls(t_data *data)
         data->render->proj_wall_height = (TILE_SIZE / data->render->perp_dist);
         data->render->wall_strip_height = (int)data->render->proj_wall_height;
 		
-        data->render->wall_top_pixel = (WIN_HEIGHT / 2) - (data->render->wall_strip_height);
+        data->render->wall_top_pixel = (WIN_HEIGHT / 2) - (data->render->wall_strip_height / 2);
 
         if (data->render->wall_top_pixel < 0)
             data->render->wall_top_pixel = 0;

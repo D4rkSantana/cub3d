@@ -1,0 +1,15 @@
+- tratar erro onde o mapa não é o ultimo elemento
+
+- tratar tamanho diferentes das linhas (completar os espaços vazios com algo)
+
+- adicionar o tamanho da linha e das colunas na struct do map
+
+- corrigir o wall colligion
+
+- separar as funções do raycasting
+
+- voltar as interseção para double
+
+- cores em hexadecimal
+
+- criar uma função para normalizar os angulos

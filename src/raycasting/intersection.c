@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 20:11:14 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/03 02:30:14 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/04 02:19:58 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	wall_collision(double x, double y, t_data *data)
 
 	i = floor(x / TILE_SIZE);
 	j = floor(y / TILE_SIZE);
+	
 	if (x < 0 || x >= WIN_WIDTH || y < 0 || y >= WIN_HEIGHT)
 		return (-1);
 	if (data->map->map_matrix[i][j] == '1')
@@ -47,7 +48,6 @@ void	horizontal_intersection(double ray_angle, t_data *data, t_ray *ray)
 	{
 		intercep_y = floor(data->player->pos_y / TILE_SIZE) * TILE_SIZE -1;
 		intercep_x = data->player->pos_x + ((data->player->pos_y - intercep_y) / tan(ray_angle));
-
 		// printf("UP\n");
 		/*
 		printf("px:%d py:%d\n", data->player->pos_x, data->player->pos_y);
