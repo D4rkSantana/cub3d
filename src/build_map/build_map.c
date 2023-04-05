@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 22:52:11 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/01 23:15:05 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/05 17:09:49 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	print_matrix(char **matrix)
 	printf(":Map:\n");
 	while (matrix[index] != NULL)
 	{
-		printf("[%d]%s\n", index, matrix[index]);
+		printf("[%d]%s|\n", index, matrix[index]);
 		index++;
 	}
 }
@@ -39,6 +39,7 @@ static void	print_contents(t_map *map)
 	print_matrix(map->map_matrix);
 }
 
+/*
 void	configure_player(t_data *data)
 {
 	int	i;
@@ -83,7 +84,7 @@ void	configure_aux(t_data *data)
 	index = 0;
 	temp = 0;
 	width = 0;
-	data->map->height_px = ft_matrix_strlen(data->map->map_matrix) * TILE_SIZE;
+	data->map->height_px = data->map->nb_lines * TILE_SIZE;
 	while (data->map->map_matrix[index])
 	{
 		temp = ft_strlen(data->map->map_matrix[index]);
@@ -94,6 +95,7 @@ void	configure_aux(t_data *data)
 	data->map->width_px = width * TILE_SIZE;
 	configure_player(data);
 }
+*/
 
 static int	check_refined_map(t_data *data)
 {
@@ -130,7 +132,8 @@ int	build_map(t_data *data)
 		ft_matrix_strdel(elements);
 		return (1);
 	}
-	configure_aux(data);
+	print_matrix(data->map->map_matrix);
+	//configure_aux(data);
 	ft_matrix_strdel(elements);
 	return (0);
 }

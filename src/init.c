@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:15:38 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/02 14:52:15 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/04/04 22:46:13 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static t_map	*init_map(char *patch)
 	if (patch != NULL)
 		map->patch = ft_strdup(patch);
 	map->map_matrix = NULL;
+	map->nb_lines = 0;
+	map->nb_columns = 0;
 	map->height_px = 0;
 	map->width_px = 0;
 	map->no_path = NULL;

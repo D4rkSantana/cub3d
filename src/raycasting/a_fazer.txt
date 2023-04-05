@@ -1,8 +1,8 @@
-- tratar erro onde o mapa não é o ultimo elemento
+- tratar erro onde o mapa não é o ultimo element -- OK
 
-- tratar tamanho diferentes das linhas (completar os espaços vazios com algo)
+- tratar tamanho diferentes das linhas (completar os espaços vazios com algo) -- OK
 
-- adicionar o tamanho da linha e das colunas na struct do map
+- adicionar o tamanho da linha e das colunas na struct do map -- OK
 
 - corrigir o wall colligion
 
