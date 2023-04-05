@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 00:10:56 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/04 22:45:39 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/05 23:13:52 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,10 @@ typedef struct s_map
 	char	*so_path;
 	char	*we_path;
 	char	*ea_path;
-	char	*cl_floor;
-	char	*cl_ceilling;
+	char	*cl_floor;//retirar
+	int		color_floor;
+	int		color_sky;
+	char	*cl_ceilling;//retirar
 }	t_map;
 
 typedef struct s_player

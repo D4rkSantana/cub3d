@@ -6,54 +6,19 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 18:45:37 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/03 02:14:35 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/05 23:43:04 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static char	*creat_color(void)
+void	draw_pixel_color(t_image *img, int x, int y, int color)
 {
-	char	*color;
+	char	*tmp;
 
-	color = ft_calloc(sizeof(char), 4);
-	color[0] = (char)154;
-	color[1] = (char)205;
-	color[2] = (char)50;
-	return (color);
+	tmp = img->patch + (y * img->size_line + x * (img->bpp / 8));
+	*(unsigned int *) tmp = color;
 }
-
-void	draw_pixel_color(t_image *img, int x, int y, char *color)
-{
-	int	pos;
-
-	pos = (y * 4) + (img->size_line * x);
-	img->patch[pos] = color[0];
-	img->patch[pos + 1] = color[1];
-	img->patch[pos + 2] = color[2];
-}
-
-/*
-static void	render_player(t_data *data, t_image *img)
-{
-	int		i;
-	int		j;
-	char	*color;
-
-	i = 0;
-	color = creat_color();
-	while (i < PROP)
-	{
-		j = 0;
-		while (j < PROP)
-		{
-			draw_pixel_color(img, data->player->pos_y * PROP + j,
-					data->player->pos_x * PROP + i, color);
-			j++;
-		}
-		i++;
-	}
-}*/
 
 void	render(t_data *data)
 {

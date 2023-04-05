@@ -6,11 +6,28 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 21:49:39 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/14 22:33:47 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/05 23:45:45 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	convert_hex(char *color)
+{
+	char	**rgb_color;
+	int		rgb[3];
+	int		i;
+
+	rgb_color = ft_split(color, ',');
+	i = 0;
+	while (rgb_color[i])
+	{
+		rgb[i] = ft_atoi(rgb_color[i]);
+		i++;	
+	}
+	ft_matrix_strdel(rgb_color);
+	return ((rgb[0] << 16) + (rgb[1] << 8) + (rgb[2] << 0));
+}  
 
 static char	*extraction(char *element, int size_key)
 {
@@ -67,4 +84,7 @@ void	extract_contents(t_data *data, char **elements)
 	data->map->ea_path = extract_cont(elements, "EA");
 	data->map->cl_ceilling = extract_cont(elements, "C");
 	data->map->cl_floor = extract_cont(elements, "F");
+	printf("agui\n"); 
+	data->map->color_floor = convert_hex(data->map->cl_floor);
+	data->map->color_sky = convert_hex(data->map->cl_ceilling);
 }

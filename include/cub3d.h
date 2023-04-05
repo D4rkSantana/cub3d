@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/05 17:32:12 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/05 23:46:17 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int		check_contents(char **elements);
 int		check_extension(t_map *map);
 
 /* extract_content.c */
+int		convert_hex(char *color);
 void	extract_contents(t_data *data, char **elements);
 
 /* extract_map.c */
@@ -73,7 +74,7 @@ int		key_hook(int key, t_data *data);
 //int		draw_minimap(t_data *data, t_image *img);
 
 /* render.c */
-void	draw_pixel_color(t_image *img, int x, int y, char *color);
+void	draw_pixel_color(t_image *img, int x, int y, int color);
 void	render(t_data *data);
 
 /* get_player*/

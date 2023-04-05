@@ -6,61 +6,25 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 17:15:07 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/05 17:36:03 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/05 23:51:34 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-//funções creat_color somente para testes
-
-static char	*creat_color1(void)
-{
-	char	*color;
-
-	color = ft_calloc(sizeof(char), 4);
-	color[0] = (char)255;
-	color[1] = 0;
-	color[2] = 0;
-	return (color);
-}
-
-static char	*creat_color2(void)
-{
-	char	*color;
-
-	color = ft_calloc(sizeof(char), 4);
-	color[0] = (char)255;
-	color[1] = (char)255;
-	color[2] = (char)50;
-	return (color);
-}
-
-static char	*creat_color3(void)
-{
-	char	*color;
-
-	color = ft_calloc(sizeof(char), 4);
-	color[0] = (char)50;
-	color[1] = (char)50;
-	color[2] = (char)50;
-	return (color);
-}
-
-static void	draw_top(t_data *data, int x, char *color)
+static void	draw_top(t_data *data, int x)
 {
 	int	y;
 
 	y = 0;
     while (y < data->render->wall_top_pixel)
     {
-        //color_buffer[(WIN_WIDTH * y) + i] = 0xFF333333;
-		draw_pixel_color(data->image, y, x, color);
+		draw_pixel_color(data->image, x, y, data->map->color_sky);
         y++;
     }
 }
 
-static void	draw_wall(t_data *data, int x, char *color)
+static void	draw_wall(t_data *data, int x)
 {
 	int	y;
 
@@ -73,20 +37,19 @@ static void	draw_wall(t_data *data, int x, char *color)
         else
             color_buffer = 0xFFCCCCCC;
 		*/
-		draw_pixel_color(data->image,y, x, color);
+		draw_pixel_color(data->image, x, y, convert_hex("0,0,0"));
         y++;
     }
 }
 
-static void	draw_bottom(t_data *data, int x, char *color)
+static void	draw_bottom(t_data *data, int x)
 {
 	int	y;
 	
 	y = data->render->wall_bottom_pixel;
     while (y < WIN_HEIGHT)
     {
-		//color_buffer[(WIN_WIDTH * y) + i] = 0xFF777777;
-		draw_pixel_color(data->image,y, x, color);
+		draw_pixel_color(data->image, x, y, data->map->color_floor);
         y++;
 	}
 }
@@ -107,9 +70,6 @@ void    render_3d_projected_walls(t_data *data)
     int    x;
     int    y;
     int    color_buffer;
-	char	*color1 = creat_color1();
-	char	*color2 = creat_color2();
-	char	*color3 = creat_color3();
 
     x = 0;
     while (x < NUM_RAYS)
@@ -123,9 +83,9 @@ void    render_3d_projected_walls(t_data *data)
     	data->render->proj_wall_height = (TILE_SIZE / data->render->perp_dist);
     	data->render->wall_strip_height = (int)data->render->proj_wall_height;
         calcule_columns(data, x);
-        draw_top(data, x, color1);
-		draw_wall(data, x, color3);
-		draw_bottom(data, x, color2);
+        draw_top(data, x);
+		draw_wall(data, x);
+		draw_bottom(data, x);
         x++;
     }
 }

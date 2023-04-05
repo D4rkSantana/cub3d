@@ -6,10 +6,11 @@
 
 - corrigir o wall colligion
 
-- separar as funções do raycasting
+- separar as funções do raycasting -- Separado render_3d
 
 - voltar as interseção para double
 
 - cores em hexadecimal
 
-- criar uma função para normalizar os angulos
+- criar uma função para normalizar os angulos -- OK
+- aplicar função de normalizar o angulo
