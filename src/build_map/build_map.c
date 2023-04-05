@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 22:52:11 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/05 17:09:49 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/05 17:11:10 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,6 @@ int	build_map(t_data *data)
 		ft_matrix_strdel(elements);
 		return (1);
 	}
-	print_matrix(data->map->map_matrix);
 	//configure_aux(data);
 	ft_matrix_strdel(elements);
 	return (0);
