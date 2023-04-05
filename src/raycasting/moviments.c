@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moviments.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:19:43 by jefernan          #+#    #+#             */
-/*   Updated: 2023/04/02 18:39:58 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/04/06 00:03:35 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,19 +67,9 @@ void	rotate(t_data *data, int key)
 	float	new_angle;
 
 	if (key == KEY_LEFT)
-	{
-		new_angle = data->player->angle + PI / 180;
-		if (new_angle > 2 * PI)
-			new_angle = 0;
-		data->player->angle = new_angle;
-	}
+		data->player->angle = normalize_angle(data->player->angle + PI / 180);
 	if (key == KEY_RIGHT)
-	{
-		new_angle = data->player->angle - PI / 180;
-		if (new_angle < 0)
-			new_angle = 2 * PI;
-		data->player->angle = new_angle;
-	}	
+		data->player->angle = normalize_angle(data->player->angle - PI / 180);
 }
 
 int	check_player_position(t_data *data, double x, double y)

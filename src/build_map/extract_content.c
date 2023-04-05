@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 21:49:39 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/05 23:45:45 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/06 00:03:25 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,9 @@ int	convert_hex(char *color)
 	int		i;
 
 	rgb_color = ft_split(color, ',');
-	i = 0;
-	while (rgb_color[i])
-	{
+	i = -1;
+	while (rgb_color[++i])
 		rgb[i] = ft_atoi(rgb_color[i]);
-		i++;	
-	}
 	ft_matrix_strdel(rgb_color);
 	return ((rgb[0] << 16) + (rgb[1] << 8) + (rgb[2] << 0));
 }  

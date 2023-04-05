@@ -10,7 +10,9 @@
 
 - voltar as interseção para double
 
-- cores em hexadecimal
+- cores em hexadecimal -- OK
 
 - criar uma função para normalizar os angulos -- OK
-- aplicar função de normalizar o angulo
+- aplicar função de normalizar o angulo -- OK
+
+- colocar as mensagens de erro

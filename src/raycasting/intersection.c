@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 20:11:14 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/04 03:15:41 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/04/05 23:59:28 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,24 +62,18 @@ void	horizontal_intersection(double ray_angle, t_data *data, t_ray *ray)
 		ray->x_hrz_step *= -1;
 	if (ray->is_facing_right && ray->x_hrz_step < 0)
 		ray->x_hrz_step *= -1;
-	printf("antes\n");
 	while (intercep_x >= 0 && intercep_x < (WIN_WIDTH * TILE_SIZE) && intercep_y >= 0 && intercep_y < (WIN_HEIGHT * TILE_SIZE))
 	{
-		printf("entrou\n");
 		if (wall_collision(intercep_x, intercep_y, data) == 1)
 		{
-			printf("aaaa\n");
 			//encontrou parede -> ponto de colisão - hrz_wall_x - y
 			ray->hrz_wall_x = intercep_x;
 			ray->hrz_wall_y = intercep_y;
 			ray->found_hrz_wall = 1;//encontrou a parede
-			printf("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n");
 			break ;
 		}
-		printf("passou1\n");
 		if (wall_collision(intercep_x, intercep_y, data) == -1)
 			break ;
-		printf("passou2\n");
 		intercep_x += ray->x_hrz_step;
 		intercep_y += ray->y_hrz_step;
 	}
