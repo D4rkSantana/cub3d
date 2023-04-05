@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/02 15:53:46 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/04/05 17:32:12 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,10 @@ int		wall_collision(double x, double y, t_data *data);
 void	vertical_intersection(double ray_angle, t_data *data, t_ray *ray);
 void	horizontal_intersection(double ray_angle, t_data *data, t_ray *ray);
 
-/* new_raycastin */
+/* raycasting.c */
 void	raycasting(t_data *data);
+
+/* render_3d.c */
+void	render_3d_projected_walls(t_data *data);
 
 #endif /* CUB3D_H */
