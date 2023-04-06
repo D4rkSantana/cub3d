@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 01:00:46 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/02 15:45:35 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/04/06 17:51:07 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,10 @@ int	check_map(char **map)
 				|| map[index][count] == ' ' || map[index][count] == 'N'
 				|| map[index][count] == 'S' || map[index][count] == 'W'
 				|| map[index][count] == 'E'))
+			{
+				printf("Error\nInvalid caracter on map");
 				return (1);
+			}	
 			count++;
 		}
 		index++;

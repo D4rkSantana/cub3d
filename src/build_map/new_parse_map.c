@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_parse_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 21:57:37 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/14 22:37:37 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/06 17:47:36 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,10 @@ int	check_spaces(t_map *map)
 	while (map->map_matrix[i])
 	{
 		if (check_spaces_aux(map->map_matrix, i))
+		{
+			printf("Error\nInvalid map: Not surrounded by walls");
 			return (1);
+		}
 		i++;
 	}
 	return (0);
@@ -61,7 +64,10 @@ int	check_walls_aux(char **map)
 		len = ft_strlen(map[index]);
 		if (ft_strchr("NSEW0", map[index][0])
 				|| ft_strchr("NSEW0", map[index][len - 1]))
+		{
+			printf("Error\nInvalid map: Not surrounded by walls");
 			return (1);
+		}
 		index++;
 	}
 	return (0);
@@ -81,14 +87,20 @@ int	check_walls(t_map *map)
 	while (j < len)
 	{
 		if (ft_strchr("NSEW0", map->map_matrix[0][j]))
+		{
+			printf("Error\nInvalid map: Not surrounded by walls");
 			return (1);
+		}
 		j++;
 	}
 	len = ft_strlen(map->map_matrix[size_map - 1]);
 	while (j < len)
 	{
 		if (ft_strchr("NSEW0", map->map_matrix[size_map - 1][j]))
+		{
+			printf("Error\nInvalid map: Not surrounded by walls");
 			return (1);
+		}
 		j++;
 	}
 	return (0);

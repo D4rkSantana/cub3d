@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract_content.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 21:49:39 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/06 00:32:24 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/06 17:22:54 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	convert_hex(char *color)
 		rgb[i] = ft_atoi(rgb_color[i]);
 	ft_matrix_strdel(rgb_color);
 	return ((rgb[0] << 16) + (rgb[1] << 8) + (rgb[2] << 0));
-}  
+}
 
 static char	*extraction(char *element, int size_key)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 20:11:14 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/06 02:36:37 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/06 17:22:38 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	wall_collision(double x, double y, t_data *data)
 
 	i = floor(x / TILE_SIZE);
 	j = floor(y / TILE_SIZE);
-
-	if (x < 0 || i >= data->map->nb_columns || y < 0 || j >= data->map->nb_lines)
+	if (x < 0 || i >= data->map->nb_columns || y < 0
+		|| j >= data->map->nb_lines)
 		return (-1);
 	if (data->map->map_matrix[i][j] == '1')
 	{
@@ -37,9 +37,9 @@ static void	search_hrz_wall(double x, double y, t_data *data, t_ray *ray)
 
 	intercep_x = x;
 	intercep_y = y;
-	while (intercep_x < data->map->width_px && intercep_y < data->map->height_px)
+	while (intercep_x < data->map->width_px
+		&& intercep_y < data->map->height_px)
 	{
-		
 		if (wall_collision(intercep_x, intercep_y, data) == 1)
 		{
 			ray->hrz_wall_x = intercep_x;
@@ -61,7 +61,8 @@ static void	search_vert_wall(double x, double y, t_data *data, t_ray *ray)
 
 	intercep_x = x;
 	intercep_y = y;
-	while (intercep_x < data->map->width_px && intercep_y < data->map->height_px)
+	while (intercep_x < data->map->width_px
+		&& intercep_y < data->map->height_px)
 	{
 		if (wall_collision(intercep_x, intercep_y, data) == 1)
 		{
@@ -81,7 +82,7 @@ void	horizontal_intersection(double ray_angle, t_data *data, t_ray *ray)
 {
 	double	intercep_x;
 	double	intercep_y;
-	
+
 	if (ray->is_facing_down)
 	{
 		intercep_y = floor(data->player->pos_y / TILE_SIZE) * TILE_SIZE + 64;
@@ -90,9 +91,10 @@ void	horizontal_intersection(double ray_angle, t_data *data, t_ray *ray)
 	else if (ray->is_facing_up)
 	{
 		intercep_y = floor(data->player->pos_y / TILE_SIZE) * TILE_SIZE -1;
-		ray->y_hrz_step = TILE_SIZE * -1; 
+		ray->y_hrz_step = TILE_SIZE * -1;
 	}
-	intercep_x = data->player->pos_x + (data->player->pos_y - intercep_y) / tan(ray_angle);
+	intercep_x = data->player->pos_x + (data->player->pos_y - intercep_y)
+		/ tan(ray_angle);
 	ray->x_hrz_step = TILE_SIZE / tan(ray_angle);
 	search_hrz_wall(intercep_x, intercep_y, data, ray);
 }
@@ -112,7 +114,8 @@ void	vertical_intersection(double ray_angle, t_data *data, t_ray *ray)
 		intercep_x = floor(data->player->pos_x / TILE_SIZE) * TILE_SIZE - 1;
 		ray->x_vert_step = TILE_SIZE * -1;
 	}
-	intercep_y = data->player->pos_y + (data->player->pos_x - intercep_x) * tan(ray_angle);
+	intercep_y = data->player->pos_y + (data->player->pos_x - intercep_x)
+		* tan(ray_angle);
 	ray->y_vert_step = TILE_SIZE * tan(ray_angle);
 	search_vert_wall(intercep_x, intercep_y, data, ray);
 }

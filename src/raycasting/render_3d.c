@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_3d.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 17:15:07 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/06 02:08:48 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/06 17:29:13 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ static void	draw_top(t_data *data, int x)
 	int	y;
 
 	y = 0;
-    while (y < data->render->wall_top_pixel)
-    {
+	while (y < data->render->wall_top_pixel)
+	{
 		draw_pixel_color(data->image, x, y, data->map->color_sky);
-        y++;
-    }
+		y++;
+	}
 }
 
 static void	draw_wall(t_data *data, int x)
@@ -29,8 +29,8 @@ static void	draw_wall(t_data *data, int x)
 	int	y;
 
 	y = data->render->wall_top_pixel;
-    while (y < data->render->wall_bottom_pixel)
-       {
+	while (y < data->render->wall_bottom_pixel)
+	{
 		/*
         if (color_buffer[(WIN_WIDTH * y) + i] = data->rays[i].was_hit_vert)
             color_buffer = 0xFFFFFFFF;
@@ -38,54 +38,54 @@ static void	draw_wall(t_data *data, int x)
             color_buffer = 0xFFCCCCCC;
 		*/
 		draw_pixel_color(data->image, x, y, convert_hex("0,0,0"));
-        y++;
-    }
+		y++;
+	}
 }
 
 static void	draw_bottom(t_data *data, int x)
 {
 	int	y;
-	
+
 	y = data->render->wall_bottom_pixel;
-    while (y < WIN_HEIGHT)
-    {
+	while (y < WIN_HEIGHT)
+	{
 		draw_pixel_color(data->image, x, y, data->map->color_floor);
-        y++;
+		y++;
 	}
 }
 
 static void	calcule_columns(t_data *data, int x)
 {
-    data->render->wall_top_pixel = (WIN_HEIGHT / 2) - (data->render->wall_strip_height / 2);
-
+	data->render->wall_top_pixel = (WIN_HEIGHT / 2)
+		- (data->render->wall_strip_height / 2);
 	if (data->render->wall_top_pixel < 0)
-        data->render->wall_top_pixel = 0;
+		data->render->wall_top_pixel = 0;
 	data->render->wall_bottom_pixel = (WIN_HEIGHT / 2) + (data->render->wall_strip_height);
-    if (data->render->wall_bottom_pixel > WIN_HEIGHT)
-        data->render->wall_bottom_pixel = WIN_HEIGHT;
+	if (data->render->wall_bottom_pixel > WIN_HEIGHT)
+		data->render->wall_bottom_pixel = WIN_HEIGHT;
 }
 
-void    render_3d_projected_walls(t_data *data)
+void	render_3d_projected_walls(t_data *data)
 {
-    int    x;
-    int    y;
-    int    color_buffer;
+	int	x;
+	int	y;
+	int	color_buffer;
 
-    x = 0;
-    while (x < NUM_RAYS)
-    {
+	x = 0;
+	while (x < NUM_RAYS)
+	{
 		data->render->perp_dist = data->rays[x].distance;
 		if (tan(FOV_ANGLE / 2) != 0)
-			data->render->dist_proj_plane = (WIN_WIDTH / 2) / tan(FOV_ANGLE / 2);
+			data->render->dist_proj_plane = (WIN_WIDTH / 2)
+				/ tan(FOV_ANGLE / 2);
 		else
 			data->render->dist_proj_plane = 0;
-		
-    	data->render->proj_wall_height = (TILE_SIZE / data->render->perp_dist);
-    	data->render->wall_strip_height = (int)data->render->proj_wall_height;
-        calcule_columns(data, x);
-        draw_top(data, x);
+		data->render->proj_wall_height = (TILE_SIZE / data->render->perp_dist);
+		data->render->wall_strip_height = (int)data->render->proj_wall_height;
+		calcule_columns(data, x);
+		draw_top(data, x);
 		draw_wall(data, x);
 		draw_bottom(data, x);
-        x++;
-    }
+		x++;
+	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 00:54:38 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/06 02:30:47 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/06 17:24:02 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,21 @@ double	dist_between_points(double x1, double y1, double x2, double y2)
 	double	ret;
 
 	ret = sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2));
-	return (ret);	
+	return (ret);
 }
 
 static void	calc_dist(t_data *data, double ray_angle, t_ray *ray)
 {
 	if (ray->found_hrz_wall)
 		ray->hrz_dist = dist_between_points(data->player->pos_x,
-			data->player->pos_y, ray->hrz_wall_x, ray->hrz_wall_y);
+				data->player->pos_y, ray->hrz_wall_x, ray->hrz_wall_y);
 	else
 		ray->hrz_dist = MAX_INT;
 	if (ray->found_vert_wall)
 		ray->vert_dist = dist_between_points(data->player->pos_x,
-			data->player->pos_y, ray->vert_wall_x, ray->vert_wall_x);
+				data->player->pos_y, ray->vert_wall_x, ray->vert_wall_x);
 	else
 		ray->vert_dist = MAX_INT;
-
 	if (ray->vert_dist < ray->hrz_dist)
 	{
 		ray->distance = ray->vert_dist * cos(data->player->angle - ray_angle);

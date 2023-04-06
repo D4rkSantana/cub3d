@@ -15,4 +15,4 @@
 - criar uma função para normalizar os angulos -- OK
 - aplicar função de normalizar o angulo -- OK
 
-- colocar as mensagens de erro 
+- colocar as mensagens de erro ok

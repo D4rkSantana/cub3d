@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 21:53:29 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/05 17:06:01 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/06 17:51:20 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,11 @@ static int	is_line_map(char *element)
 	return (0);
 }
 
-
 int	check_position_map(char **elements)
 {
 	int	index;
 	int	map;
-	
+
 	index = 0;
 	map = 0;
 	while (elements[index] != NULL)
@@ -38,7 +37,7 @@ int	check_position_map(char **elements)
 			map = 1;
 		else if (map == 1)
 		{
-			printf("The map is not at the end of the file\n");
+			printf("Error\nThe map is not at the end of the file\n");
 			return (1);
 		}
 		index++;
@@ -89,7 +88,7 @@ static char	*complet_line(int columns, char *element)
 		if (index < size_element)
 			result[index] = element[index];
 		else
-			result[index] = ' '; 
+			result[index] = ' ';
 		index++;
 	}
 	result[index] = '\0';
@@ -133,7 +132,7 @@ void	extract_map(t_data *data, char **elements)
 	{
 		if (is_line_map(elements[index]))
 			result = ft_matrix_join(result,
-				complet_line(data->map->nb_columns, elements[index]));
+					complet_line(data->map->nb_columns, elements[index]));
 		index++;
 	}
 	data->map->map_matrix = result;
