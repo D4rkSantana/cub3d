@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 17:15:07 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/05 23:51:34 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/06 02:08:48 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void    render_3d_projected_walls(t_data *data)
     x = 0;
     while (x < NUM_RAYS)
     {
-		data->render->perp_dist = data->rays[x].distance * cos(data->rays[x].ray_angle - data->player->angle);
+		data->render->perp_dist = data->rays[x].distance;
 		if (tan(FOV_ANGLE / 2) != 0)
 			data->render->dist_proj_plane = (WIN_WIDTH / 2) / tan(FOV_ANGLE / 2);
 		else

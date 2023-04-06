@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:19:43 by jefernan          #+#    #+#             */
-/*   Updated: 2023/04/06 00:03:35 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/06 00:37:31 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ int	check_player_position(t_data *data, double x, double y)
 
 	map_x = (int)x / TILE_SIZE;
 	map_y = (int)y / TILE_SIZE;
-	if (data->map->map_matrix[map_y][map_x] == '1')
+	if (data->map->map_matrix[map_y][map_x] == '1'
+		|| data->map->map_matrix[map_y][map_x] == ' ')
 		return (1);
 	return (0);
 }

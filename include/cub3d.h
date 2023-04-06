@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/05 23:56:24 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/06 00:50:57 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,9 @@ void	horizontal_intersection(double ray_angle, t_data *data, t_ray *ray);
 
 /* raycasting.c */
 void	raycasting(t_data *data);
+
+/* project_rays.c */
+void	project_rays(t_data *data, double ray_angle, t_ray *ray);
 
 /* render_3d.c */
 void	render_3d_projected_walls(t_data *data);

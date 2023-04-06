@@ -8,11 +8,11 @@
 
 - separar as funções do raycasting -- Separado render_3d
 
-- voltar as interseção para double
+- voltar as interseção para double -- OK
 
 - cores em hexadecimal -- OK
 
 - criar uma função para normalizar os angulos -- OK
 - aplicar função de normalizar o angulo -- OK
 
-- colocar as mensagens de erro
+- colocar as mensagens de erro 

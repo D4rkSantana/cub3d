@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:20 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/05 17:00:55 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/06 00:26:47 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,15 +81,13 @@ int	main(int argc, char **argv)
 
 	if (check_args(argc, argv))
 		return (0);
-	printf("1\n");
 	data = init(argv[1]);
-	printf("2\n");
 	if (build_map(data))
 	{
 		destroy(data);
 		return (0);
 	}
-	printf("3\n");
+	get_player(data);
 	if (start_mlx(data))
 		return (0);
 	mlx_hook(data->win, KEY_PRESS, 1L << 0, key_hook, data);
