@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   render_3d.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 17:15:07 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/06 17:29:13 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/04/07 02:45:18 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	draw_top(t_data *data, int x)
+static void	draw_sky(t_data *data, int x)
 {
 	int	y;
 
@@ -56,11 +56,13 @@ static void	draw_bottom(t_data *data, int x)
 
 static void	calcule_columns(t_data *data, int x)
 {
-	data->render->wall_top_pixel = (WIN_HEIGHT / 2)
-		- (data->render->wall_strip_height / 2);
+	data->render->wall_top_pixel = (WIN_HEIGHT / 2) - (data->render->proj_wall_height / 2);
+	
 	if (data->render->wall_top_pixel < 0)
 		data->render->wall_top_pixel = 0;
-	data->render->wall_bottom_pixel = (WIN_HEIGHT / 2) + (data->render->wall_strip_height);
+
+	data->render->wall_bottom_pixel = (WIN_HEIGHT / 2) + (data->render->proj_wall_height / 2);
+
 	if (data->render->wall_bottom_pixel > WIN_HEIGHT)
 		data->render->wall_bottom_pixel = WIN_HEIGHT;
 }
@@ -74,16 +76,12 @@ void	render_3d_projected_walls(t_data *data)
 	x = 0;
 	while (x < NUM_RAYS)
 	{
-		data->render->perp_dist = data->rays[x].distance;
-		if (tan(FOV_ANGLE / 2) != 0)
-			data->render->dist_proj_plane = (WIN_WIDTH / 2)
-				/ tan(FOV_ANGLE / 2);
-		else
-			data->render->dist_proj_plane = 0;
-		data->render->proj_wall_height = (TILE_SIZE / data->render->perp_dist);
-		data->render->wall_strip_height = (int)data->render->proj_wall_height;
+		// data->render->perp_dist = ; RETIRAR DA STRUCT
+		 
+		data->render->proj_wall_height = ceil((TILE_SIZE / data->rays[x].distance) * data->render->dist_proj_plane);
+		//data->render->wall_strip_height = (int)data->render->proj_wall_height;
 		calcule_columns(data, x);
-		draw_top(data, x);
+		draw_sky(data, x);
 		draw_wall(data, x);
 		draw_bottom(data, x);
 		x++;

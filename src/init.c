@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:15:38 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/04 22:46:13 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/07 02:49:51 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,8 @@ static t_render	*init_render(void)
 	render = ft_calloc(sizeof(t_render), 1);
 	if (render == NULL)
 		return (NULL);
-	render->perp_dist = 0;
-	render->dist_proj_plane = 0;
+	render->dist_proj_plane = (WIN_WIDTH / 2) / tan(FOV_ANGLE / 2);
 	render->proj_wall_height = 0;
-	render->wall_strip_height = 0;
 	render->wall_bottom_pixel = 0;
 	render->wall_top_pixel = 0;
 	return (render);
@@ -101,7 +99,6 @@ static void	init_rays(t_data *data)
 		data->rays[index].wall_hitx = 0;
 		data->rays[index].wall_hity = 0;
 		data->rays[index].distance = 0;
-		data->rays[index].was_hit_vert = 0;
 		data->rays[index].found_vert_wall = 0;
 		data->rays[index].found_hrz_wall = 0;
 		data->rays[index].is_facing_down = 0;

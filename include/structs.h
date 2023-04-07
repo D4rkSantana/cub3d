@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 00:10:56 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/05 23:13:52 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/07 02:47:52 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ typedef struct s_ray
 	double	wall_hitx;
 	double	wall_hity;
 	double	distance;
-	int		was_hit_vert;
 	int		found_vert_wall;
 	int		found_hrz_wall;
 	double	is_facing_down;
@@ -76,10 +75,8 @@ typedef struct s_ray
 
 typedef struct s_render
 {
-	double	perp_dist;
 	double	dist_proj_plane;
 	double	proj_wall_height;
-	int		wall_strip_height;
 	int		wall_bottom_pixel;
 	int		wall_top_pixel;
 }	t_render;

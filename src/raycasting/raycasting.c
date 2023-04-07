@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 00:54:38 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/06 17:24:02 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/04/07 02:51:32 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,13 @@ static void	calc_dist(t_data *data, double ray_angle, t_ray *ray)
 		ray->hrz_dist = MAX_INT;
 	if (ray->found_vert_wall)
 		ray->vert_dist = dist_between_points(data->player->pos_x,
-				data->player->pos_y, ray->vert_wall_x, ray->vert_wall_x);
+				data->player->pos_y, ray->vert_wall_x, ray->vert_wall_y);
 	else
 		ray->vert_dist = MAX_INT;
 	if (ray->vert_dist < ray->hrz_dist)
-	{
 		ray->distance = ray->vert_dist * cos(data->player->angle - ray_angle);
-		ray->was_hit_vert = 1;
-	}
 	else
-	{
 		ray->distance = ray->hrz_dist * cos(data->player->angle - ray_angle);
-		ray->was_hit_vert = 0;
-	}
 }
 
 void	raycasting(t_data *data)

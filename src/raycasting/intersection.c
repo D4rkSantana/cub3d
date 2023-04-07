@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 20:11:14 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/06 17:22:38 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/04/07 03:04:31 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ int	wall_collision(double x, double y, t_data *data)
 
 	i = floor(x / TILE_SIZE);
 	j = floor(y / TILE_SIZE);
-	if (x < 0 || i >= data->map->nb_columns || y < 0
-		|| j >= data->map->nb_lines)
+
+	if (x >= data->map->width_px || y >= data->map->height_px)
 		return (-1);
-	if (data->map->map_matrix[i][j] == '1')
-	{
+	if (x < 0 || i >= data->map->nb_columns || y < 0 || j >= data->map->nb_lines)
+		return (-1);
+	if (data->map->map_matrix[j][i] == '1')
 		return (1);
-	}
 	else
 		return (0);
 }
@@ -37,8 +37,7 @@ static void	search_hrz_wall(double x, double y, t_data *data, t_ray *ray)
 
 	intercep_x = x;
 	intercep_y = y;
-	while (intercep_x < data->map->width_px
-		&& intercep_y < data->map->height_px)
+	while (intercep_x < data->map->width_px && intercep_y < data->map->height_px)
 	{
 		if (wall_collision(intercep_x, intercep_y, data) == 1)
 		{
@@ -93,8 +92,7 @@ void	horizontal_intersection(double ray_angle, t_data *data, t_ray *ray)
 		intercep_y = floor(data->player->pos_y / TILE_SIZE) * TILE_SIZE -1;
 		ray->y_hrz_step = TILE_SIZE * -1;
 	}
-	intercep_x = data->player->pos_x + (data->player->pos_y - intercep_y)
-		/ tan(ray_angle);
+	intercep_x = data->player->pos_x + (data->player->pos_y - intercep_y) / tan(ray_angle);
 	ray->x_hrz_step = TILE_SIZE / tan(ray_angle);
 	search_hrz_wall(intercep_x, intercep_y, data, ray);
 }

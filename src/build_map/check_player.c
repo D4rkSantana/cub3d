@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 01:00:46 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/06 17:51:07 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/04/07 01:50:43 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	check_map(char **map)
 				|| map[index][count] == 'S' || map[index][count] == 'W'
 				|| map[index][count] == 'E'))
 			{
-				printf("Error\nInvalid caracter on map");
+				printf("Error\nInvalid caracter on map\n");
 				return (1);
 			}	
 			count++;

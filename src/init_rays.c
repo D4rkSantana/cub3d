@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_rays.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 14:34:26 by jefernan          #+#    #+#             */
-/*   Updated: 2023/04/02 14:50:22 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/04/07 02:49:12 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	init_rays(t_data *data)
 		data->rays[index].wall_hitx = 0;
 		data->rays[index].wall_hity = 0;
 		data->rays[index].distance = 0;
-		data->rays[index].was_hit_vert = 0;
 		data->rays[index].is_facing_down = 0;
 		data->rays[index].is_facing_up = 0;
 		data->rays[index].is_facing_right = 0;
