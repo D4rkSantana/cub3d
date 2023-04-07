@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 20:11:14 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/07 03:04:31 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/07 14:57:45 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	horizontal_intersection(double ray_angle, t_data *data, t_ray *ray)
 	}
 	else if (ray->is_facing_up)
 	{
-		intercep_y = floor(data->player->pos_y / TILE_SIZE) * TILE_SIZE -1;
+		intercep_y = floor(data->player->pos_y / TILE_SIZE) * TILE_SIZE - 1;
 		ray->y_hrz_step = TILE_SIZE * -1;
 	}
 	intercep_x = data->player->pos_x + (data->player->pos_y - intercep_y) / tan(ray_angle);
