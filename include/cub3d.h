@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/06 00:50:57 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/08 03:12:22 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@
 
 /* init.c */
 t_data	*init(char *patch);
+
+/* init_rays.c */
+//void	init_rays(t_data *data);
 
 int		render_loop(t_data **data);
 

@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:15:38 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/07 02:49:51 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/08 03:11:52 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ static void	init_rays(t_data *data)
 		data->rays[index].wall_hitx = 0;
 		data->rays[index].wall_hity = 0;
 		data->rays[index].distance = 0;
+		data->rays[index].vertical_wall = 0;
 		data->rays[index].found_vert_wall = 0;
 		data->rays[index].found_hrz_wall = 0;
 		data->rays[index].is_facing_down = 0;

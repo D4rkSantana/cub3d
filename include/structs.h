@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 00:10:56 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/07 02:47:52 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/08 18:56:12 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ typedef struct s_ray
 	double	ray_angle;
 	double	hrz_wall_x;
 	double	hrz_wall_y;
-	int		y_hrz_step;
-	int		x_hrz_step;
-	int		x_vert_step;
-	int		y_vert_step;
+	double	y_hrz_step;
+	double	x_hrz_step;
+	double	x_vert_step;
+	double	y_vert_step;
 	double	vert_wall_x;
 	double	vert_wall_y;
 	double	hrz_dist;
@@ -65,6 +65,7 @@ typedef struct s_ray
 	double	wall_hitx;
 	double	wall_hity;
 	double	distance;
+	int		vertical_wall;
 	int		found_vert_wall;
 	int		found_hrz_wall;
 	double	is_facing_down;

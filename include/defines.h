@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 00:13:09 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/07 02:39:17 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/08 19:03:07 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@
 # define RIGHT 4
 
 # define PI 3.14159265
-# define MOVE_SPEED 2
+# define MOVE_SPEED 5
 
 # define FOV_ANGLE 1.0472
-# define WIN_WIDTH 600
-# define WIN_HEIGHT 600
+# define WIN_WIDTH 320
+# define WIN_HEIGHT 200
 # define NUM_RAYS 320
 # define TILE_SIZE 64
 # define MAX_INT 2147483647
