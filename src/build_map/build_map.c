@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 22:52:11 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/22 22:50:30 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/06 00:32:04 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	print_matrix(char **matrix)
 	printf(":Map:\n");
 	while (matrix[index] != NULL)
 	{
-		printf("[%d]%s\n", index, matrix[index]);
+		printf("[%d]%s|\n", index, matrix[index]);
 		index++;
 	}
 }
@@ -37,54 +37,6 @@ static void	print_contents(t_map *map)
 	printf("C:%s|\n", map->cl_ceilling);
 	printf("F:%s|\n", map->cl_floor);
 	print_matrix(map->map_matrix);
-}
-
-void	configure_player(t_data *data)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (data->map->map_matrix[i])
-	{
-		j = 0;
-		while (data->map->map_matrix[i][j])
-		{
-			if (data->map->map_matrix[i][j] == 'N'
-					|| data->map->map_matrix[i][j] == 'W'
-					|| data->map->map_matrix[i][j] == 'E'
-					|| data->map->map_matrix[i][j] == 'S')
-			{
-				data->map->map_matrix[i][j] = '0';
-				data->player->pos_x = j;
-				data->player->pos_y = i;
-				return ;
-			}
-			j++;
-		}
-		i++;
-	}
-}
-
-void	configure_aux(t_data *data)
-{
-	int	index;
-	int	width;
-	int	temp;
-
-	index = 0;
-	temp = 0;
-	width = 0;
-	data->height = ft_matrix_strlen(data->map->map_matrix) * PROP;
-	while (data->map->map_matrix[index])
-	{
-		temp = ft_strlen(data->map->map_matrix[index]);
-		if (temp > width)
-			width = temp;
-		index++;
-	}
-	data->width = width * PROP;
-	configure_player(data);
 }
 
 static int	check_refined_map(t_data *data)
@@ -122,7 +74,7 @@ int	build_map(t_data *data)
 		ft_matrix_strdel(elements);
 		return (1);
 	}
-	configure_aux(data);
+	//configure_aux(data);
 	ft_matrix_strdel(elements);
 	return (0);
 }

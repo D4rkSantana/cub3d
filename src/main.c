@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:20 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/22 22:51:57 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/06 17:23:21 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,15 @@ static int	start_mlx(t_data *data)
 		destroy(data);
 		exit(1);
 	}
-	data->win = mlx_new_window(data->mlx, data->width,  data->height, "Cub3d");
+	data->win = mlx_new_window(data->mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3d");
 	if (!data->win)
 	{
 		printf("Error\nNo graphical interface.\n");
 		destroy(data);
 		exit(1);
 	}
-	data->image->width = data->width;
-	data->image->height = data->height;
-	data->image->pont = mlx_new_image(data->mlx, data->width, data->height);
+	data->image->pont = mlx_new_image(data->mlx, WIN_WIDTH + 100,
+		WIN_HEIGHT + 100);
 	data->image->patch = mlx_get_data_addr(data->image->pont, &data->image->bpp,
 			&data->image->size_line, &data->image->endian);
 	return (0);
@@ -89,16 +88,13 @@ int	main(int argc, char **argv)
 		destroy(data);
 		return (0);
 	}
+	get_player(data);
 	if (start_mlx(data))
 		return (0);
-
 	mlx_hook(data->win, KEY_PRESS, 1L << 0, key_hook, data);
 	mlx_hook(data->win, DESTROY_NOTIFY, 0, close_game, data);
-
 	mlx_loop_hook(data->mlx, &render_loop, &data);
-
 	mlx_loop(data->mlx);
-
 	destroy(data);
 	return (0);
 }

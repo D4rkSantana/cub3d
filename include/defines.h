@@ -6,14 +6,12 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 00:13:09 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/22 22:56:49 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/08 19:03:07 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINES_H
 # define DEFINES_H
-
-# define PROP 20
 
 # define NO 1
 # define KEY_ESC 65307
@@ -33,8 +31,14 @@
 # define LEFT 3
 # define RIGHT 4
 
-# define SPRITE 64
 # define PI 3.14159265
-# define MOVE_SPEED 1
+# define MOVE_SPEED 5
+
+# define FOV_ANGLE 1.0472
+# define WIN_WIDTH 320
+# define WIN_HEIGHT 200
+# define NUM_RAYS 320
+# define TILE_SIZE 64
+# define MAX_INT 2147483647
 
 #endif /* DEFINES_H */

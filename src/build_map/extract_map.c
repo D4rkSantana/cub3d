@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 21:53:29 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/06 21:58:10 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/06 17:51:20 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,27 @@ static int	is_line_map(char *element)
 		index++;
 	if (element[index] == '1')
 		return (1);
+	return (0);
+}
+
+int	check_position_map(char **elements)
+{
+	int	index;
+	int	map;
+
+	index = 0;
+	map = 0;
+	while (elements[index] != NULL)
+	{
+		if (is_line_map(elements[index]))
+			map = 1;
+		else if (map == 1)
+		{
+			printf("Error\nThe map is not at the end of the file\n");
+			return (1);
+		}
+		index++;
+	}
 	return (0);
 }
 
@@ -45,30 +66,73 @@ int	check_integrity_map(char **elements)
 			return (1);
 		index++;
 	}
+	if (check_position_map(elements))
+		return (1);
 	if (map_active == 1)
 		return (0);
 	return (1);
 }
 
-void	extract_map(t_data *data, char **elements)
+static char	*complet_line(int columns, char *element)
 {
 	int		index;
-	int		find;
-	char	**result;
+	int		size_element;
+	char	*result;
 
 	index = 0;
-	find = 0;
+	size_element = ft_strlen(element);
 	result = NULL;
+	result = ft_calloc(sizeof(char), columns + 1);
+	while (index < columns)
+	{
+		if (index < size_element)
+			result[index] = element[index];
+		else
+			result[index] = ' ';
+		index++;
+	}
+	result[index] = '\0';
+	return (result);
+}
+
+static void	map_size(t_data *data, char **elements)
+{
+	int	index;
+	int	lines;
+	int	columns;
+
+	index = 0;
+	lines = 0;
+	columns = 0;
 	while (elements[index] != NULL)
 	{
 		if (is_line_map(elements[index]))
 		{
-			if (find == 0)
-				find = 1;
-			result = ft_matrix_join(result, elements[index]);
+			if (columns < ft_strlen(elements[index]))
+				columns = ft_strlen(elements[index]);
+			lines++;
 		}
-		else if (find == 1)
-			break ;
+		index++;
+	}
+	data->map->nb_columns = columns;
+	data->map->nb_lines = lines;
+	data->map->height_px = lines * TILE_SIZE;
+	data->map->width_px = columns * TILE_SIZE;
+}
+
+void	extract_map(t_data *data, char **elements)
+{
+	int		index;
+	char	**result;
+
+	index = 0;
+	result = NULL;
+	map_size(data, elements);
+	while (elements[index] != NULL)
+	{
+		if (is_line_map(elements[index]))
+			result = ft_matrix_join(result,
+					complet_line(data->map->nb_columns, elements[index]));
 		index++;
 	}
 	data->map->map_matrix = result;

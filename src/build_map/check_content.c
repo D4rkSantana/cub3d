@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_content.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 22:59:52 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/08 00:42:06 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/02 15:44:37 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,12 @@ static int	check_path(char *path)
 {
 	if (!(ft_strncmp(path, "./textures/", 11) == 0))
 	{
-		printf("Error, invalid texture dir\n");
+		printf("Error\nInvalid texture dir\n");
 		return (1);
 	}
 	if (!(ft_strncmp(path + ft_strlen(path) - 4, ".xpm", 4) == 0))
 	{
-		printf("Error, invalid texture extension\n");
+		printf("Error\nInvalid texture extension\n");
 		return (1);
 	}
 	return (0);
