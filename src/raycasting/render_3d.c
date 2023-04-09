@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 17:15:07 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/09 20:25:04 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/10 00:37:50 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ static void	draw_wall(t_data *data,t_ray *ray, int x)
 	off_x = calcule_off_x(data, ray);
 	while (y < ray->render->wall_bottom_pixel)
 	{
-		off_y = calcule_off_y(y - ray->render->wall_top_pixel, ray->render->proj_wall_height, ray);
-		//printf("x:%d y:%d\n", off_x, off_y);
+		off_y = calcule_off_y(y, ray->render->proj_wall_height, ray);
 		if (ray->is_facing_up == 1)
 		{
 			if (ray->vertical_wall == 0)
@@ -99,13 +98,8 @@ void	render_3d_projected_walls(t_data *data)
 	while (x < NUM_RAYS)
 	{
 		ray = &data->rays[x];
-		// ray->render->perp_dist = ; RETIRAR DA STRUCT
-		//ray->render->proj_wall_height = TILE_SIZE * WIN_HEIGHT / data->rays[x].distance;
-		//if (ray->render->proj_wall_height > WIN_HEIGHT)
-		//	ray->render->proj_wall_height = WIN_HEIGHT;
 		ray->render->proj_wall_height = (TILE_SIZE / ray->distance) * data->dist_proj_plane;
-		ray->render->wall_strip_height = (int)ray->render->proj_wall_height;
-		//data->rays[x].wall_strip_height = (int)ray->render->proj_wall_height;
+		ray->render->wall_strip_height = ceil(ray->render->proj_wall_height);
 		calcule_columns(data,ray, x);
 		draw_sky(data,ray, x);
 		draw_wall(data,ray, x);

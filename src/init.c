@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:15:38 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/09 20:13:56 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/09 23:53:20 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ static t_map	*init_map(char *patch)
 	map->so_path = NULL;
 	map->we_path = NULL;
 	map->ea_path = NULL;
-	map->cl_floor = NULL;
-	map->cl_ceilling = NULL;
+	map->str_floor = NULL;
+	map->str_sky = NULL;
 	return (map);
 }
 

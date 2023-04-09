@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_content.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 22:59:52 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/02 15:44:37 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/04/09 23:52:43 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ int	check_extension(t_map *map)
 	status += check_path(map->so_path);
 	status += check_path(map->we_path);
 	status += check_path(map->ea_path);
-	status += check_color(map->cl_ceilling);
-	status += check_color(map->cl_floor);
+	status += check_color(map->str_sky);
+	status += check_color(map->str_floor);
 	if (status != 0)
 		return (1);
 	return (0);

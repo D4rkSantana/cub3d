@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   destroy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:14:01 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/09 23:42:08 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/04/09 23:53:00 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	destroy_map(t_map *map)
 	ft_strdel(&map->so_path);
 	ft_strdel(&map->we_path);
 	ft_strdel(&map->ea_path);
-	ft_strdel(&map->cl_floor);
-	ft_strdel(&map->cl_ceilling);
+	ft_strdel(&map->str_floor);
+	ft_strdel(&map->str_sky);
 	ft_matrix_strdel(map->map_matrix);
 	free(map);
 	map = NULL;

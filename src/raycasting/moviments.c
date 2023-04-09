@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moviments.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 21:19:43 by jefernan          #+#    #+#             */
-/*   Updated: 2023/04/07 15:38:36 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/04/10 00:35:33 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ void	moviments_left_right(t_data *data, int key)
 void	rotate(t_data *data, int key)
 {
 	if (key == KEY_LEFT)
-		data->player->angle = normalize_angle(data->player->angle + PI / 180);
+		data->player->angle = normalize_angle(data->player->angle + (MOVE_SPEED * (PI / 180)));
 	if (key == KEY_RIGHT)
-		data->player->angle = normalize_angle(data->player->angle - PI / 180);
+		data->player->angle = normalize_angle(data->player->angle - (MOVE_SPEED * (PI / 180)));
 }
 
 int	check_player_position(t_data *data, double x, double y)

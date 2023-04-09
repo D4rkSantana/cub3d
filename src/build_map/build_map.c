@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 22:52:11 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/06 00:32:04 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/09 23:51:28 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ static void	print_contents(t_map *map)
 	printf("SO:%s|\n", map->so_path);
 	printf("WE:%s|\n", map->we_path);
 	printf("EA:%s|\n", map->ea_path);
-	printf("C:%s|\n", map->cl_ceilling);
-	printf("F:%s|\n", map->cl_floor);
+	printf("C:%s|\n", map->str_sky);
+	printf("F:%s|\n", map->str_floor);
 	print_matrix(map->map_matrix);
 }
 

@@ -17,7 +17,7 @@ LIBFT = ${LIBFT_PATH}/libft.a
 
 HEAD = -I./include
 SRC =	main.c read_map.c build_map.c extract_content.c check_content.c extract_map.c destroy.c \
-		init.c init_rays.c new_parse_map.c check_player.c render.c key_hook.c check_color.c \
+		init.c new_parse_map.c check_player.c render.c key_hook.c check_color.c \
 		get_player.c moviments.c raycasting.c intersection.c render_3d.c ray_tools.c project_rays.c\
 		texture.c \
 

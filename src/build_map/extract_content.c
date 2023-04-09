@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract_content.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 21:49:39 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/06 17:22:54 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/04/09 23:52:09 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ void	extract_contents(t_data *data, char **elements)
 	data->map->so_path = extract_cont(elements, "SO");
 	data->map->we_path = extract_cont(elements, "WE");
 	data->map->ea_path = extract_cont(elements, "EA");
-	data->map->cl_ceilling = extract_cont(elements, "C");
-	data->map->cl_floor = extract_cont(elements, "F");
-	data->map->color_floor = convert_hex(data->map->cl_floor);
-	data->map->color_sky = convert_hex(data->map->cl_ceilling);
+	data->map->str_sky = extract_cont(elements, "C");
+	data->map->str_floor = extract_cont(elements, "F");
+	data->map->color_floor = convert_hex(data->map->str_floor);
+	data->map->color_sky = convert_hex(data->map->str_sky);
 }
