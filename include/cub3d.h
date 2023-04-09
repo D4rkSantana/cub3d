@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/09 19:59:31 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/10 01:14:34 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		check_player_position(t_data *data, double x, double y);
 /* destroy.c */
 void	destroy_map(t_map *map);
 int		destroy(t_data *data);
-void	destroy_image(t_image *image);
+void	destroy_image(t_data *data);
 
 /* check_color.c */
 int		check_color(char *color);

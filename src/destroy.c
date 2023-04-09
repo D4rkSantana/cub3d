@@ -6,16 +6,17 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:14:01 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/09 23:53:00 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/10 01:20:25 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	destroy_image(t_image *image)
+void	destroy_image(t_data *data)
 {
-	ft_strdel(&image->patch);
-	free (image);
+	if (data->image->pont)
+		mlx_destroy_image(data->mlx, data->image->pont);
+	free (data->image);
 }
 
 void	destroy_map(t_map *map)
@@ -41,31 +42,7 @@ static void	destroy_player(t_player *player)
 	free (player);
 }
 
-int	destroy(t_data *data)
-{
-	data->close_game = 1;
-	if (data == NULL)
-		return (1);
-	destroy_player(data->player);
-	destroy_map(data->map);
-	if (data->image->pont)
-		mlx_destroy_image(data->mlx, data->image->pont);
-	if (data->image)
-		free (data->image);
-	if (data->win)
-		mlx_destroy_window(data->mlx, data->win);
-	if (data->mlx)
-	{
-		mlx_destroy_display(data->mlx);
-		free (data->mlx);
-	}
-	free(data);
-	data = NULL;
-	exit (0);
-	return (0);
-}
-
-void	free_images(t_data *data)
+void	destroy_texture(t_data *data)
 {
 	if (data->n_texture)
 	{
@@ -88,3 +65,65 @@ void	free_images(t_data *data)
 		free (data->w_texture);
 	}
 }
+
+void	destroy_rays(t_data *data)
+{
+	int	index;
+
+	index = 0;
+	while (index < NUM_RAYS)
+	{
+		free(data->rays[index].render);
+		free(data->rays[index].hrz);
+		free(data->rays[index].vert);
+		index++;
+	}
+}
+
+int	destroy(t_data *data)
+{
+	data->close_game = 1;
+	
+	if (data == NULL)
+		return (1);
+	destroy_rays(data);
+	destroy_player(data->player);
+	destroy_image(data);
+	destroy_texture(data);
+	destroy_map(data->map);
+	if (data->win)
+		mlx_destroy_window(data->mlx, data->win);
+	if (data->mlx)
+	{
+		mlx_destroy_display(data->mlx);
+		free (data->mlx);
+	}
+	free(data);
+	data = NULL;
+	exit (0);
+	return (0);
+}
+
+/*
+typedef struct s_data
+{
+	void		*mlx; OK
+	void		*win; OK
+	int			close_game;
+	double		dist_proj_plane;
+
+	t_map		*map; OK
+
+	t_image		*n_texture; OK
+	t_image		*s_texture; OK
+	t_image		*e_texture; OK
+	t_image		*w_texture; OK
+
+	t_image		*image; OK
+
+	t_player	*player; OK
+
+	//corrigir para NUM_RAY
+	t_ray		rays[320];
+}	t_data;
+*/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 21:53:29 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/06 17:51:20 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/04/10 01:31:05 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,16 +123,23 @@ static void	map_size(t_data *data, char **elements)
 void	extract_map(t_data *data, char **elements)
 {
 	int		index;
+	char	*temp;
 	char	**result;
 
 	index = 0;
 	result = NULL;
+	temp = NULL;
 	map_size(data, elements);
 	while (elements[index] != NULL)
 	{
 		if (is_line_map(elements[index]))
-			result = ft_matrix_join(result,
-					complet_line(data->map->nb_columns, elements[index]));
+		{
+			temp = complet_line(data->map->nb_columns, elements[index]);
+			result = ft_matrix_join(result, temp);
+			ft_strdel(&temp);
+			temp = NULL;
+		}
+			
 		index++;
 	}
 	data->map->map_matrix = result;
