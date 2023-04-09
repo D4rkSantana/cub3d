@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:15:38 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/08 03:11:52 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/09 20:13:56 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,26 @@ static t_render	*init_render(void)
 	render = ft_calloc(sizeof(t_render), 1);
 	if (render == NULL)
 		return (NULL);
-	render->dist_proj_plane = (WIN_WIDTH / 2) / tan(FOV_ANGLE / 2);
 	render->proj_wall_height = 0;
 	render->wall_bottom_pixel = 0;
 	render->wall_top_pixel = 0;
+	render->wall_strip_height = 0;
 	return (render);
+}
+
+t_inter	*init_inter(void)
+{
+	t_inter	*result;
+
+	result = NULL;
+	result = ft_calloc(sizeof(t_inter), 1);
+	result->found_wall = 0;
+	result->wall_x = 0;
+	result->wall_y = 0;
+	result->step_x = 0;
+	result->step_y = 0;
+	result->distance = 0;
+	return (result);
 }
 
 static void	init_rays(t_data *data)
@@ -85,23 +100,12 @@ static void	init_rays(t_data *data)
 	index = 0;
 	while (index < NUM_RAYS)
 	{
+		data->rays[index].hrz = init_inter();
+		data->rays[index].vert = init_inter();
+		data->rays[index].render = init_render();
 		data->rays[index].ray_angle = 0;
-		data->rays[index].hrz_wall_x = 0;
-		data->rays[index].hrz_wall_y = 0;
-		data->rays[index].y_hrz_step = 0;
-		data->rays[index].x_hrz_step = 0;
-		data->rays[index].x_vert_step = 0;
-		data->rays[index].y_vert_step = 0;
-		data->rays[index].vert_wall_x = 0;
-		data->rays[index].vert_wall_y = 0;
-		data->rays[index].hrz_dist = 0;
-		data->rays[index].vert_dist = 0;
-		data->rays[index].wall_hitx = 0;
-		data->rays[index].wall_hity = 0;
 		data->rays[index].distance = 0;
 		data->rays[index].vertical_wall = 0;
-		data->rays[index].found_vert_wall = 0;
-		data->rays[index].found_hrz_wall = 0;
 		data->rays[index].is_facing_down = 0;
 		data->rays[index].is_facing_up = 0;
 		data->rays[index].is_facing_right = 0;
@@ -121,7 +125,7 @@ t_data	*init(char *patch)
 	data->map = init_map(patch);
 	data->image = init_image();
 	data->player = init_player();
-	data->render = init_render();
+	data->dist_proj_plane = (WIN_WIDTH / 2) / tan(FOV_ANGLE / 2);
 	init_rays(data);
 	data->mlx = NULL;
 	data->win = NULL;

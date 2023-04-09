@@ -6,12 +6,13 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 14:34:26 by jefernan          #+#    #+#             */
-/*   Updated: 2023/04/07 02:49:12 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/09 20:20:55 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/*
 void	vertical(int index, t_data *data)
 {
 	data->rays[index].y_hrz_step = 0;
@@ -51,4 +52,4 @@ void	init_rays(t_data *data)
 		horizontal(index, data);
 		index++;
 	}
-}
+}*/

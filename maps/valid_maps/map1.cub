@@ -1,7 +1,7 @@
-NO ./textures/teste.xpm
-SO ./textures/teste.xpm
-WE ./textures/teste.xpm
-EA ./textures/teste.xpm
+NO ./textures/greystone.xpm
+SO ./textures/wood.xpm
+WE ./textures/wood.xpm
+EA ./textures/wood.xpm
 F 255,255,0
 C 225,255,0
 

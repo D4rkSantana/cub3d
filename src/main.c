@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:20 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/06 17:23:21 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/04/08 23:20:35 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ static int	start_mlx(t_data *data)
 		destroy(data);
 		exit(1);
 	}
-	data->image->pont = mlx_new_image(data->mlx, WIN_WIDTH + 100,
-		WIN_HEIGHT + 100);
+	data->image->pont = mlx_new_image(data->mlx, WIN_WIDTH, WIN_HEIGHT);
 	data->image->patch = mlx_get_data_addr(data->image->pont, &data->image->bpp,
 			&data->image->size_line, &data->image->endian);
+	load_textures(data);
 	return (0);
 }
 
