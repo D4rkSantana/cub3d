@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   destroy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:14:01 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/03/17 01:23:30 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/09 23:42:08 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,28 @@ int	destroy(t_data *data)
 	data = NULL;
 	exit (0);
 	return (0);
+}
+
+void	free_images(t_data *data)
+{
+	if (data->n_texture)
+	{
+		mlx_destroy_image (data->mlx, data->n_texture->pont);
+		free (data->n_texture);
+	}
+	if (data->s_texture)
+	{
+		mlx_destroy_image (data->mlx, data->s_texture->pont);
+		free (data->s_texture);
+	}
+	if (data->e_texture)
+	{
+		mlx_destroy_image (data->mlx, data->e_texture->pont);
+		free (data->e_texture);
+	}
+	if (data->w_texture)
+	{
+		mlx_destroy_image (data->mlx, data->w_texture->pont);
+		free (data->w_texture);
+	}
 }

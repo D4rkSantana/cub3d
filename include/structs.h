@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 00:10:56 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/09 20:13:23 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/09 23:10:08 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,8 @@ typedef struct s_map
 	char	*so_path;
 	char	*we_path;
 	char	*ea_path;
-	char	*cl_floor;//retirar
 	int		color_floor;
 	int		color_sky;
-	char	*cl_ceilling;//retirar
 }	t_map;
 
 typedef struct s_player
