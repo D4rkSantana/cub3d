@@ -3,14 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   check_content.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 22:59:52 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/10 01:06:06 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/04/10 20:31:51 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static int    check_space(char **elements, char *key)
+{
+    int    size;
+    int    index;
+
+    index = 0;
+    size = ft_strlen(key);
+    if (elements[index][size] != ' ')
+    {
+        printf("Error\nInvalid: %s\n", elements[index]);
+        return (1);
+    }
+    return (0);
+}
 
 static int	check_cont(char **elements, char *key)
 {
@@ -39,21 +54,21 @@ static int	check_cont(char **elements, char *key)
 	return (1);
 }
 
-int	check_contents(char **elements)
+int    check_contents(char **elements)
 {
-	if (check_cont(elements, "NO"))
-		return (1);
-	if (check_cont(elements, "SO"))
-		return (1);
-	if (check_cont(elements, "WE"))
-		return (1);
-	if (check_cont(elements, "EA"))
-		return (1);
-	if (check_cont(elements, "F"))
-		return (1);
-	if (check_cont(elements, "C"))
-		return (1);
-	return (0);
+    if (check_cont(elements, "NO") || check_space(elements, "NO"))
+        return (1);
+    if (check_cont(elements, "SO") || check_space(elements, "SO"))
+        return (1);
+    if (check_cont(elements, "WE") || check_space(elements, "WE"))
+        return (1);
+    if (check_cont(elements, "EA") || check_space(elements, "EA"))
+        return (1);
+    if (check_cont(elements, "F"))
+        return (1);
+    if (check_cont(elements, "C"))
+        return (1);
+    return (0);
 }
 
 static int	check_path(char *path)

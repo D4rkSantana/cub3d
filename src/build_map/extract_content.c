@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract_content.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 21:49:39 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/10 01:51:41 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/04/10 20:33:43 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,40 +45,49 @@ static char	*extraction(char *element, int size_key)
 	return (result);
 }
 
-static char	*extract_cont(char **elements, char *key)
-{	
-	int		index;
-	int		count;
-	int		size;
-	char	*result;
+static char    *extract_cont(char **elements, char *key, int i)
+{    
+    int        index;
+    int        count;
+    int        size;
+    char    *result;
 
-	index = 0;
-	size = ft_strlen(key);
-	result = NULL;
-	while (elements[index] != NULL)
-	{
-		count = 0;
-		if (size + 1 < ft_strlen(elements[index]))
-		{
-			while (key[count] == elements[index][count] && count < size)
-				count++;
-			if (count == size && elements[index][count] == ' ')
-			{
-				result = extraction(elements[index], size + 1);
-				break ;
-			}
-		}
-		index++;
-	}
-	return (result);
+    index = 0;
+    size = ft_strlen(key);
+    result = NULL;
+    while (elements[index] != NULL)
+    {
+        count = 0;
+        i = size;
+        if (size + 1 < ft_strlen(elements[index]))
+        {
+            while (key[count] == elements[index][count] && count < size)
+                count++;
+            while (elements[index][i + 1] == ' ')
+                i++;
+            if (count == size && elements[index][count] == ' ')
+            {
+                if (i > size)
+                    result = extraction(elements[index], (size + i) - 1);
+                else
+                    result = extraction(elements[index], size + 1);
+                break ;
+            }
+        }
+        index++;
+    }
+    return (result);
 }
 
 void	extract_contents(t_data *data, char **elements)
 {
-	data->map->no_path = extract_cont(elements, "NO");
-	data->map->so_path = extract_cont(elements, "SO");
-	data->map->we_path = extract_cont(elements, "WE");
-	data->map->ea_path = extract_cont(elements, "EA");
-	data->map->str_sky = extract_cont(elements, "C");
-	data->map->str_floor = extract_cont(elements, "F");
+	int	i;
+
+	i = 0;
+	data->map->no_path = extract_cont(elements, "NO", 1);
+	data->map->so_path = extract_cont(elements, "SO", 1);
+	data->map->we_path = extract_cont(elements, "WE", 1);
+	data->map->ea_path = extract_cont(elements, "EA", 1);
+	data->map->str_sky = extract_cont(elements, "C", 1);
+	data->map->str_floor = extract_cont(elements, "F", 1);
 }
