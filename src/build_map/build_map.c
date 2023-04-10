@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 22:52:11 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/09 23:51:28 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/10 01:51:50 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,12 @@ static int	check_refined_map(t_data *data)
 	return (0);
 }
 
+static void	configure_aux(t_data *data)
+{
+	data->map->color_floor = convert_hex(data->map->str_floor);
+	data->map->color_sky = convert_hex(data->map->str_sky);
+}
+
 int	build_map(t_data *data)
 {
 	char	**elements;
@@ -74,7 +80,7 @@ int	build_map(t_data *data)
 		ft_matrix_strdel(elements);
 		return (1);
 	}
-	//configure_aux(data);
+	configure_aux(data);
 	ft_matrix_strdel(elements);
 	return (0);
 }

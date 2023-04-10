@@ -4,6 +4,11 @@ CC			= gcc
 RM			= rm -rf
 MKDIR		= mkdir -p
 
+GREEN		:=	\033[1;32m
+RED			:=	\033[1;31m
+WHT			:=	\033[1;37m
+EOC			:=	\033[1;0m
+
 vpath %.c src ./src/build_map ./src/key_hook ./src/raycasting
 
 FLAGS = -Wall -Wextra -Werror
@@ -28,6 +33,11 @@ all: ${NAME}
 
 ${NAME}: ${MINILIBX} $(OBJ) ${OBJ_DIR} ${LIBFT}
 		@ $(CC) $(OBJ) ${LIBFT} ${MINILIBX} $(FLAGS) ${MLXFLAGS} -no-pie -o ${NAME}
+		@ echo "\e[0;34m"
+		@ echo "=========================="
+		@ echo "  Compiled successfully!"
+		@ echo "=========================="
+		@ echo "\033[1;0m"
 
 $(MINILIBX):
 		@ make -C ${MINILIBX_PATH}
@@ -46,11 +56,11 @@ clean:
 		@ ${RM} ${OBJ_DIR}
 		@make clean -C $(MINILIBX_PATH)
 		@make clean -C $(LIBFT_PATH)
-		@ echo "Objects removed."
+		@ echo "\e[0;32m  Objects removed. \033[1;0m"
 
 fclean:		clean
 			@${RM} ${NAME}
-			@ echo "Program has been cleaned!"
+			@ echo " \e[0;32m Program has been cleaned!\033[1;0m"
 
 re:			fclean all
 
