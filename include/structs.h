@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 00:10:56 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/11 16:55:02 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/04/11 17:35:23 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
+
+# include "defines.h"
 
 typedef struct s_image
 {
@@ -94,7 +96,7 @@ typedef struct s_data
 	t_image		*w_texture;
 	t_image		*image;
 	t_player	*player;
-	t_ray		rays[320]; //Mudar para num rays
+	t_ray		rays[NUM_RAYS];
 }	t_data;
 
 #endif /* CUB3D_H */
