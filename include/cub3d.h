@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/11 16:37:26 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/04/11 16:54:27 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ int		check_player(char **map);
 int		render_loop(t_data **data);
 
 /* texture.c */
-int		calcule_off_y(int y, double wall_height, t_ray *ray);
-int		calcule_off_x(t_data *data, t_ray *ray);
+int		calculate_off_y(int y, double wall_height, t_ray *ray);
+int		calculate_off_x(t_data *data, t_ray *ray);
 
 /* moviments.c */
 void	moviments_up_down(t_data *data, int key);

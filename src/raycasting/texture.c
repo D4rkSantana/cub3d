@@ -6,13 +6,13 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 21:17:05 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/11 16:46:10 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/04/11 16:54:08 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	calcule_off_x(t_data *data, t_ray *ray)
+int	calculate_off_x(t_data *data, t_ray *ray)
 {
 	int	offset_x;
 
@@ -23,7 +23,7 @@ int	calcule_off_x(t_data *data, t_ray *ray)
 	return (offset_x);
 }
 
-int	calcule_off_y(int y, double wall_height, t_ray *ray)
+int	calculate_off_y(int y, double wall_height, t_ray *ray)
 {
 	int	offset_y;
 	int	distance_top;

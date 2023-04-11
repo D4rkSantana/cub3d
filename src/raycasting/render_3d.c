@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 17:15:07 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/11 16:49:36 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/04/11 16:53:44 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ static void	draw_wall(t_data *data, t_ray *ray, int x)
 	int	off_x;
 
 	y = ray->render->wall_top_pixel;
-	off_x = calcule_off_x(data, ray);
+	off_x = calculate_off_x(data, ray);
 	while (y < ray->render->wall_bottom_pixel)
 	{
-		off_y = calcule_off_y(y, ray->render->proj_wall_height, ray);
+		off_y = calculate_off_y(y, ray->render->proj_wall_height, ray);
 		if (ray->is_facing_up == 1)
 		{
 			if (ray->vertical_wall == 0)
@@ -81,7 +81,7 @@ static void	draw_bottom(t_data *data, t_ray *ray, int x)
 	}
 }
 
-static void	calcule_columns(t_data *data, t_ray *ray, int x)
+static void	calculate_columns(t_data *data, t_ray *ray, int x)
 {
 	ray->render->wall_top_pixel = (WIN_HEIGHT / 2)
 		- (ray->render->proj_wall_height / 2);
@@ -106,7 +106,7 @@ void	render_3d_projected_walls(t_data *data)
 		ray->render->proj_wall_height = (TILE_SIZE / ray->distance)
 			* data->dist_proj_plane;
 		ray->render->wall_strip_height = ceil(ray->render->proj_wall_height);
-		calcule_columns(data, ray, x);
+		calculate_columns(data, ray, x);
 		draw_sky(data, ray, x);
 		draw_wall(data, ray, x);
 		draw_bottom(data, ray, x);

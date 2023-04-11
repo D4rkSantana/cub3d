@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 00:10:56 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/11 16:38:03 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/04/11 16:55:02 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ typedef struct s_data
 	t_image		*w_texture;
 	t_image		*image;
 	t_player	*player;
-	t_ray		rays[NUM_RAYS];
+	t_ray		rays[320]; //Mudar para num rays
 }	t_data;
 
 #endif /* CUB3D_H */
