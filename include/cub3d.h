@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/11 19:41:27 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/04/11 22:17:59 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ int		check_player(char **map);
 int		render_loop(t_data **data);
 
 /* texture.c */
-int		calculate_off_y(int y, double wall_height, t_ray *ray);
-int		calculate_off_x(t_data *data, t_ray *ray);
+int		calculate_off_y(int y, double wall_height);
+int		calculate_off_x(t_ray *ray);
 
 /* moviments.c */
 void	moviments_up_down(t_data *data, int key);

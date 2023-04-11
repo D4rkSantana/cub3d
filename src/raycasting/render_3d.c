@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_3d.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 17:15:07 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/11 16:53:44 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/04/11 22:17:05 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static void	draw_bottom(t_data *data, t_ray *ray, int x)
 	}
 }
 
-static void	calculate_columns(t_data *data, t_ray *ray, int x)
+static void	calculate_columns(t_ray *ray)
 {
 	ray->render->wall_top_pixel = (WIN_HEIGHT / 2)
 		- (ray->render->proj_wall_height / 2);
@@ -96,7 +96,6 @@ static void	calculate_columns(t_data *data, t_ray *ray, int x)
 void	render_3d_projected_walls(t_data *data)
 {
 	int		x;
-	int		y;
 	t_ray	*ray;
 
 	x = 0;
@@ -106,7 +105,7 @@ void	render_3d_projected_walls(t_data *data)
 		ray->render->proj_wall_height = (TILE_SIZE / ray->distance)
 			* data->dist_proj_plane;
 		ray->render->wall_strip_height = ceil(ray->render->proj_wall_height);
-		calculate_columns(data, ray, x);
+		calculate_columns(ray);
 		draw_sky(data, ray, x);
 		draw_wall(data, ray, x);
 		draw_bottom(data, ray, x);

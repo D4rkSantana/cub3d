@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 20:11:14 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/11 02:54:11 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/11 22:16:16 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ void	horizontal_intersection(t_data *data, t_ray *ray)
 	double	intercep_x;
 	double	intercep_y;
 
+	intercep_x = 0;
+	intercep_y = 0;
 	if (tan(ray->ray_angle) == 0)
 	{
 		ray->hrz->found_wall = 0;
@@ -112,6 +114,8 @@ void	vertical_intersection(t_data *data, t_ray *ray)
 	double	intercep_x;
 	double	intercep_y;
 
+	intercep_x = 0;
+	intercep_y = 0;
 	if (cos(ray->ray_angle) == 0)
 	{
 		ray->vert->found_wall = 0;

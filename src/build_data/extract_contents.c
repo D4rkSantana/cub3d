@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract_contents.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 21:30:48 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/11 16:43:42 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/04/11 22:15:22 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	map_size(t_data *data, char **file)
 {
 	int	index;
 	int	lines;
-	int	columns;
+	size_t	columns;
 
 	index = 0;
 	lines = 0;
@@ -107,8 +107,8 @@ static char	*extraction(char *line, int size_key)
 char	*extract_content(char **file, char *key, int i)
 {
 	int		index;
-	int		count;
-	int		size;
+	size_t		count;
+	size_t		size;
 	char	*result;
 
 	index = 0;
