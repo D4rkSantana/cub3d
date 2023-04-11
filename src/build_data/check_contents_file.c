@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 21:31:31 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/11 16:43:53 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/04/11 19:06:20 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,7 @@ static int	check_position_map(char **file)
 		if (is_line_map(file[index]))
 			map = 1;
 		else if (map == 1)
-		{
-			printf("Error\nThe map is not at the end of the file\n");
 			return (1);
-		}
 		index++;
 	}
 	return (0);

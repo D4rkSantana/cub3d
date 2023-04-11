@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:20 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/11 02:48:38 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/11 17:17:30 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,13 +147,13 @@ int	main(int argc, char **argv)
 		destroy(data);
 		return (0);
 	}
-	get_player(data);
-	if (start_mlx(data))
-		return (0);
-	mlx_hook(data->win, KEY_PRESS, 1L << 0, key_hook, data);
-	mlx_hook(data->win, DESTROY_NOTIFY, 0, close_game, data);
-	mlx_loop_hook(data->mlx, &render_loop, &data);
-	mlx_loop(data->mlx);
+	// get_player(data);
+	// if (start_mlx(data))
+	// 	return (0);
+	// mlx_hook(data->win, KEY_PRESS, 1L << 0, key_hook, data);
+	// mlx_hook(data->win, DESTROY_NOTIFY, 0, close_game, data);
+	// mlx_loop_hook(data->mlx, &render_loop, &data);
+	// mlx_loop(data->mlx);
 	destroy(data);
 	return (0);
 }

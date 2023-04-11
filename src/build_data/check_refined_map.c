@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 22:36:45 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/11 16:38:53 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/04/11 19:11:39 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,7 @@ static int	check_spaces(t_map *map)
 	while (map->map_matrix[i])
 	{
 		if (check_spaces_aux(map->map_matrix, i))
-		{
-			printf("Error\nInvalid map: Not surrounded by walls");
 			return (1);
-		}
 		i++;
 	}
 	return (0);
@@ -64,10 +61,7 @@ static int	check_walls_aux(char **map)
 		len = ft_strlen(map[index]);
 		if (ft_strchr("NSEW0", map[index][0])
 				|| ft_strchr("NSEW0", map[index][len - 1]))
-		{
-			printf("Error\nInvalid map: Not surrounded by walls");
 			return (1);
-		}
 		index++;
 	}
 	return (0);
