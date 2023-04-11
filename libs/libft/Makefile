@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/26 12:00:47 by esilva-s          #+#    #+#              #
-#    Updated: 2023/01/26 18:51:43 by esilva-s         ###   ########.fr        #
+#    Updated: 2023/04/11 22:07:31 by jefernan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,10 +42,10 @@ $(NAME): libft.h
 all: $(NAME)
 
 clean:
-	$(RM) $(OBJ) $(BONUS_OBJ)
+	@$(RM) $(OBJ) $(BONUS_OBJ)
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re: fclean all
 

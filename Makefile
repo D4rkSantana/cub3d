@@ -9,9 +9,6 @@ vpath %.c src ./src/build_data ./src/key_hook ./src/raycasting
 FLAGS = -Wall -Wextra -Werror
 MLX_LIB = -lbsd -lmlx -lXext -lX11 -lm -lz
 
-MINILIBX_PATH = ./libs/minilibx
-MINILIBX = ${MINILIBX_PATH}/libmlx_Linux.a
-
 LIBFT_PATH = ./libs/libft
 LIBFT = ${LIBFT_PATH}/libft.a
 
@@ -49,9 +46,6 @@ ${NAME}: $(OBJ) ${OBJ_DIR} ${LIBFT}
 		@ echo "  Compiled successfully!"
 		@ echo "=========================="
 		@ echo "\033[1;0m"
-
-$(MINILIBX):
-		@ make -C ${MINILIBX_PATH}
 
 ${LIBFT}:
 		@ make -C ${LIBFT_PATH}
