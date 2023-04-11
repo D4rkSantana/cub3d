@@ -7,7 +7,7 @@ MKDIR		= mkdir -p
 vpath %.c src ./src/build_data ./src/key_hook ./src/raycasting
 
 FLAGS = -Wall -Wextra -Werror
-MLXFLAGS = -Imlx -lX11 -lXext -lm
+MLX_LIB = -lbsd -lmlx -lXext -lX11 -lm -lz
 
 MINILIBX_PATH = ./libs/minilibx
 MINILIBX = ${MINILIBX_PATH}/libmlx_Linux.a
@@ -15,7 +15,7 @@ MINILIBX = ${MINILIBX_PATH}/libmlx_Linux.a
 LIBFT_PATH = ./libs/libft
 LIBFT = ${LIBFT_PATH}/libft.a
 
-HEAD = -I./include
+HEAD = -I./include/
 
 MAIN = main.c
 
@@ -42,8 +42,8 @@ OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 
 all: ${NAME}
 
-${NAME}: ${MINILIBX} $(OBJ) ${OBJ_DIR} ${LIBFT}
-		@ $(CC) $(OBJ) ${LIBFT} ${MINILIBX} $(FLAGS) ${MLXFLAGS} -no-pie -o ${NAME}
+${NAME}: $(OBJ) ${OBJ_DIR} ${LIBFT}
+		@$(CC) $(FLAGS ) $(HEAD) -o $(NAME) $(OBJ) $(MLX_LIB) $(LIBFT)
 		@ echo "\e[0;34m"
 		@ echo "=========================="
 		@ echo "  Compiled successfully!"
@@ -58,14 +58,13 @@ ${LIBFT}:
 
 $(OBJ_DIR)/%.o: %.c
 	@ ${MKDIR} $(OBJ_DIR)
-	@ $(CC) $(CFLAGS) $(HEAD) -c $< -o $@
+	@ $(CC) $(FLAGS) $(HEAD) -c $< -o $@
 
 norm:
 	@norminette ./src ./include | grep "Error" | cat
 
 clean:
 		@ ${RM} ${OBJ_DIR}
-		@make clean -C $(MINILIBX_PATH)
 		@make clean -C $(LIBFT_PATH)
 		@ echo "\e[0;32m  Objects removed. \033[1;0m"
 

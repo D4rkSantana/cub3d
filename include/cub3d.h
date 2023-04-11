@@ -6,7 +6,7 @@
 /*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:53 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/11 16:54:27 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/04/11 19:41:27 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <math.h>
-# include "../libs/minilibx/mlx.h"
+# include <mlx.h>
 # include "../libs/libft/libft.h"
 
 /* init.c */
