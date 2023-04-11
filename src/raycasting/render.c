@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 18:45:37 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/11 02:54:57 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/11 23:45:54 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,6 @@ int	copycolor(t_image *img, int x, int y)
 
 void	render(t_data *data)
 {
-	int	x;
-	int	y;
-
-	x = data->player->pos_x / TILE_SIZE;
-	y = data->player->pos_y / TILE_SIZE;
 	raycasting(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->image->pont, 0, 0);
 }

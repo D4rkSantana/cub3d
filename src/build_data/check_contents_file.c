@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_contents_file.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 21:31:31 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/11 19:06:20 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/04/12 00:05:11 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-// check position map
 
 static int	check_position_map(char **file)
 {
@@ -31,8 +29,6 @@ static int	check_position_map(char **file)
 	}
 	return (0);
 }
-
-// check integrity
 
 int	check_integrity_map(char **file)
 {
@@ -60,8 +56,6 @@ int	check_integrity_map(char **file)
 	return (1);
 }
 
-//check contents
-
 static int	check_contents(char **file, char *key)
 {
 	int	index;
@@ -88,8 +82,6 @@ static int	check_contents(char **file, char *key)
 		return (0);
 	return (1);
 }
-
-// Principal
 
 int	check_contents_file(char **file)
 {

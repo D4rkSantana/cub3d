@@ -44,7 +44,7 @@ OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 all: ${NAME}
 
 ${NAME}: $(OBJ) ${OBJ_DIR} ${LIBFT}
-		@$(CC) $(FLAGS ) $(HEAD) -o $(NAME) $(OBJ) $(MLX_LIB) $(LIBFT)
+		@$(CC) $(FLAGS ) $(HEAD) -no-pie -o $(NAME) $(OBJ) $(MLX_LIB) $(LIBFT)
 		@ echo "\e[0;34m"
 		@ echo "=========================="
 		@ echo "  Compiled successfully!"

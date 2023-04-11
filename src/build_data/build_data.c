@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   build_data.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 21:30:11 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/11 16:44:01 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/04/12 00:04:51 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-/* check refined contents */
 static int	check_refined_contents(t_data *data)
 {
 	if (check_refined_texture(data))
@@ -26,9 +25,6 @@ static int	check_refined_contents(t_data *data)
 
 static void	extract_contents(t_data *data, char **file)
 {
-	int	i;
-
-	i = 0;
 	data->map->no_path = extract_content(file, "NO ", 1);
 	data->map->so_path = extract_content(file, "SO ", 1);
 	data->map->we_path = extract_content(file, "WE ", 1);
@@ -43,8 +39,6 @@ static void	configure_aux(t_data *data)
 	data->map->color_floor = convert_hex(data->map->str_floor);
 	data->map->color_sky = convert_hex(data->map->str_sky);
 }
-
-//======================================================================
 
 int	build_data(t_data *data)
 {

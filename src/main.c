@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:20 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/11 23:10:41 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/11 23:55:45 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	check_args(int argc, char **argv)
 
 	if (argc < 2)
 	{
-		printf("Wrong numbers of arguments\n");
+		printf("Error\nWrong numbers of arguments\n");
 		return (1);
 	}
 	else
@@ -77,17 +77,6 @@ static int	close_game(t_data *data)
 	destroy(data);
 	return (0);
 }
-
-/*
-Main
-
-check args
-init data
-build data
-build mlx
-destroy
-
-*/
 
 int	main(int argc, char **argv)
 {

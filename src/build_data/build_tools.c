@@ -6,13 +6,11 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 21:34:06 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/10 23:23:19 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/12 00:04:55 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-//Verifica se a string é linha valida de um mapa
 
 int	is_line_map(char *element)
 {
