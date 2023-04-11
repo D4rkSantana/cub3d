@@ -16,22 +16,26 @@ HEAD = -I./include/
 
 MAIN = main.c
 
-INIT = init.c
+INIT = init.c init_aux.c
 
-DESTROY = destroy.c
+DESTROY = destroy.c destroy_aux.c
 
 BUILD_DATA =	build_data.c build_tools.c read_file.c check_contents_file.c extract_contents.c \
-				check_refined_texture.c check_refined_color.c check_refined_map.c check_player.c \
+				check_refined_texture.c check_refined_color.c check_refined_map_aux.c \
+				check_refined_map.c load_texture.c extract_contents_aux.c \
 
-RENDER = render.c raycasting.c project_rays.c intersection.c ray_tools.c render_3d.c texture.c
+RENDER =	render.c raycasting.c project_rays.c intersection.c ray_tools.c render_3d.c \
+			draw_wall.c offset.c \
 
 TOOLS =	key_hook.c get_player.c moviments.c
 
 SRC =	main.c \
-		init.c destroy.c \
+		init.c init_aux.c destroy.c destroy_aux.c \
 		build_data.c build_tools.c read_file.c check_contents_file.c extract_contents.c \
-		check_refined_texture.c check_refined_color.c check_refined_map.c check_player.c \
-		render.c raycasting.c project_rays.c intersection.c ray_tools.c render_3d.c texture.c \
+		check_refined_texture.c check_refined_color.c check_refined_map.c check_refined_map_aux.c \
+		load_texture.c extract_contents_aux.c \
+		render.c raycasting.c project_rays.c intersection.c ray_tools.c render_3d.c \
+		offset.c draw_wall.c\
 		key_hook.c get_player.c moviments.c \
 
 OBJ_DIR	 =	obj

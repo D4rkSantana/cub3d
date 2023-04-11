@@ -6,84 +6,11 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 21:30:48 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/11 22:15:22 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/11 23:39:37 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-static char	*complet_line(int columns, char *line)
-{
-	int		index;
-	int		size_line;
-	char	*result;
-
-	index = 0;
-	size_line = ft_strlen(line);
-	result = NULL;
-	result = ft_calloc(sizeof(char), columns + 1);
-	while (index < columns)
-	{
-		if (index < size_line)
-			result[index] = line[index];
-		else
-			result[index] = ' ';
-		index++;
-	}
-	result[index] = '\0';
-	return (result);
-}
-
-static void	map_size(t_data *data, char **file)
-{
-	int	index;
-	int	lines;
-	size_t	columns;
-
-	index = 0;
-	lines = 0;
-	columns = 0;
-	while (file[index] != NULL)
-	{
-		if (is_line_map(file[index]))
-		{
-			if (columns < ft_strlen(file[index]))
-				columns = ft_strlen(file[index]);
-			lines++;
-		}
-		index++;
-	}
-	data->map->nb_columns = columns;
-	data->map->nb_lines = lines;
-	data->map->height_px = lines * TILE_SIZE;
-	data->map->width_px = columns * TILE_SIZE;
-}
-
-void	extract_map(t_data *data, char **file)
-{
-	int		index;
-	char	*temp;
-	char	**result;
-
-	index = 0;
-	result = NULL;
-	temp = NULL;
-	map_size(data, file);
-	while (file[index] != NULL)
-	{
-		if (is_line_map(file[index]))
-		{
-			temp = complet_line(data->map->nb_columns, file[index]);
-			result = ft_matrix_join(result, temp);
-			ft_strdel(&temp);
-			temp = NULL;
-		}
-		index++;
-	}
-	data->map->map_matrix = result;
-}
-
-// extração dos argumentos do arquivo
 
 static char	*extraction(char *line, int size_key)
 {
@@ -104,11 +31,24 @@ static char	*extraction(char *line, int size_key)
 	return (result);
 }
 
+static int	search_line(char *key, char *line)
+{
+	size_t	count;
+	size_t	size;
+
+	count = 0;
+	size = ft_strlen(key);
+	while (key[count] == line[count] && count < size)
+			count++;
+	if (count == size)
+		return (1);
+	return (0);
+}
+
 char	*extract_content(char **file, char *key, int i)
 {
 	int		index;
-	size_t		count;
-	size_t		size;
+	size_t	size;
 	char	*result;
 
 	index = 0;
@@ -116,16 +56,13 @@ char	*extract_content(char **file, char *key, int i)
 	result = NULL;
 	while (file[index] != NULL)
 	{
-		count = 0;
 		i = size;
 		if (!(size + 1 < ft_strlen(file[index])))
 		{
 			index++;
 			continue ;
 		}
-		while (key[count] == file[index][count] && count < size)
-			count++;
-		if (count == size)
+		if (search_line(key, file[index]))
 		{
 			while (file[index][i] == ' ')
 				i++;
