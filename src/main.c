@@ -6,7 +6,7 @@
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:49:20 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/11 20:55:29 by esilva-s         ###   ########.fr       */
+/*   Updated: 2023/04/11 22:33:45 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,11 @@ static int	start_mlx(t_data *data)
 		destroy(data);
 		exit(1);
 	}
+	if (load_textures(data))
+	{
+		destroy(data);
+		exit(1);
+	}
 	data->win = mlx_new_window(data->mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3d");
 	if (!data->win)
 	{
@@ -81,11 +86,6 @@ static int	start_mlx(t_data *data)
 	data->image->pont = mlx_new_image(data->mlx, WIN_WIDTH, WIN_HEIGHT);
 	data->image->patch = mlx_get_data_addr(data->image->pont, &data->image->bpp,
 			&data->image->size_line, &data->image->endian);
-	if (load_textures(data))
-	{
-		destroy(data);
-		exit(1);
-	}
 	return (0);
 }
 

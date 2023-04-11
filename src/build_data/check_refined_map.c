@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_refined_map.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 22:36:45 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/11 19:11:39 by jefernan         ###   ########.fr       */
+/*   Updated: 2023/04/11 22:46:36 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,30 @@ static int	check_walls(t_map *map)
 	return (0);
 }
 
+static int	check_characters_map(char **map)
+{
+	int		index;
+	int		count;
+	char	temp;
+
+	index = 0;
+	while (map[index] != NULL)
+	{
+		count = 0;
+		while (map[index][count])
+		{
+			temp = map[index][count];
+			if (temp == ' ' || temp == '1' || temp == '0'
+				|| temp == 'N' || temp == 'E' || temp == 'W' || temp == 'S' )
+				count++;
+			else
+				return (1);
+		}
+		index++;
+	}
+	return (0);
+}
+
 int	check_refined_map(t_data *data)
 {
 	if (check_walls(data->map))
@@ -109,6 +133,11 @@ int	check_refined_map(t_data *data)
 	if (check_player(data->map->map_matrix))
 	{
 		printf("Error\nThe player is wrong\n");
+		return (1);
+	}
+	if (check_characters_map(data->map->map_matrix))
+	{
+		printf("Error\nWrong character in map\n");
 		return (1);
 	}
 	return (0);
