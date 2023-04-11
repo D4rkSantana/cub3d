@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_color.c                                      :+:      :+:    :+:   */
+/*   check_refined_color.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/07 23:29:59 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/02 15:44:31 by jefernan         ###   ########.fr       */
+/*   Created: 2023/04/10 22:35:25 by esilva-s          #+#    #+#             */
+/*   Updated: 2023/04/11 02:29:34 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	check_node(char *node)
 	return (0);
 }
 
-int	check_color(char *color)
+static int	check_color(char *color)
 {
 	char	**rgb_color;
 	int		index;
@@ -56,5 +56,20 @@ int	check_color(char *color)
 		index++;
 	}
 	ft_matrix_strdel(rgb_color);
+	return (0);
+}
+
+int	check_refined_color(t_data *data)
+{
+	if (check_color(data->map->str_sky))
+	{
+		printf("Error\nSky color is wrong\n");
+		return (1);
+	}
+	if (check_color(data->map->str_floor))
+	{
+		printf("Error\nThe floor color is wrong\n");
+		return (1);
+	}
 	return (0);
 }

@@ -1,0 +1,138 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   extract_contents.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/10 21:30:48 by esilva-s          #+#    #+#             */
+/*   Updated: 2023/04/11 16:43:42 by jefernan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "cub3d.h"
+
+static char	*complet_line(int columns, char *line)
+{
+	int		index;
+	int		size_line;
+	char	*result;
+
+	index = 0;
+	size_line = ft_strlen(line);
+	result = NULL;
+	result = ft_calloc(sizeof(char), columns + 1);
+	while (index < columns)
+	{
+		if (index < size_line)
+			result[index] = line[index];
+		else
+			result[index] = ' ';
+		index++;
+	}
+	result[index] = '\0';
+	return (result);
+}
+
+static void	map_size(t_data *data, char **file)
+{
+	int	index;
+	int	lines;
+	int	columns;
+
+	index = 0;
+	lines = 0;
+	columns = 0;
+	while (file[index] != NULL)
+	{
+		if (is_line_map(file[index]))
+		{
+			if (columns < ft_strlen(file[index]))
+				columns = ft_strlen(file[index]);
+			lines++;
+		}
+		index++;
+	}
+	data->map->nb_columns = columns;
+	data->map->nb_lines = lines;
+	data->map->height_px = lines * TILE_SIZE;
+	data->map->width_px = columns * TILE_SIZE;
+}
+
+void	extract_map(t_data *data, char **file)
+{
+	int		index;
+	char	*temp;
+	char	**result;
+
+	index = 0;
+	result = NULL;
+	temp = NULL;
+	map_size(data, file);
+	while (file[index] != NULL)
+	{
+		if (is_line_map(file[index]))
+		{
+			temp = complet_line(data->map->nb_columns, file[index]);
+			result = ft_matrix_join(result, temp);
+			ft_strdel(&temp);
+			temp = NULL;
+		}
+		index++;
+	}
+	data->map->map_matrix = result;
+}
+
+// extração dos argumentos do arquivo
+
+static char	*extraction(char *line, int size_key)
+{
+	int		index;
+	int		size;
+	char	*result;
+
+	index = 0;
+	size = ft_strlen(line);
+	result = NULL;
+	result = ft_calloc(sizeof(char), size - size_key + 2);
+	while (index < size -1 && index + size_key < size)
+	{
+		result[index] = line[index + size_key];
+		index++;
+	}
+	result[index] = '\0';
+	return (result);
+}
+
+char	*extract_content(char **file, char *key, int i)
+{
+	int		index;
+	int		count;
+	int		size;
+	char	*result;
+
+	index = 0;
+	size = ft_strlen(key);
+	result = NULL;
+	while (file[index] != NULL)
+	{
+		count = 0;
+		i = size;
+		if (!(size + 1 < ft_strlen(file[index])))
+		{
+			index++;
+			continue ;
+		}
+		while (key[count] == file[index][count] && count < size)
+			count++;
+		if (count == size)
+		{
+			while (file[index][i] == ' ')
+				i++;
+			result = extraction(file[index], i);
+			break ;
+		}
+		index++;
+	}
+	return (result);
+}

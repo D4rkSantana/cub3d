@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_parse_map.c                                    :+:      :+:    :+:   */
+/*   check_refined_map.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jefernan <jefernan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/06 21:57:37 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/07 01:48:17 by esilva-s         ###   ########.fr       */
+/*   Created: 2023/04/10 22:36:45 by esilva-s          #+#    #+#             */
+/*   Updated: 2023/04/11 16:38:53 by jefernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	check_spaces_aux(char **map, int i)
 	return (0);
 }
 
-int	check_spaces(t_map *map)
+static int	check_spaces(t_map *map)
 {
 	int	i;
 
@@ -53,7 +53,7 @@ int	check_spaces(t_map *map)
 	return (0);
 }
 
-int	check_walls_aux(char **map)
+static int	check_walls_aux(char **map)
 {
 	int	index;
 	int	len;
@@ -73,7 +73,7 @@ int	check_walls_aux(char **map)
 	return (0);
 }
 
-int	check_walls(t_map *map)
+static int	check_walls(t_map *map)
 {
 	int	x;
 	int	len;
@@ -87,21 +87,35 @@ int	check_walls(t_map *map)
 	while (x < len)
 	{
 		if (ft_strchr("NSEW0", map->map_matrix[0][x]))
-		{
-			printf("Error\nInvalid map: Not surrounded by walls");
 			return (1);
-		}
 		x++;
 	}
 	len = ft_strlen(map->map_matrix[size_map - 1]);
 	while (x < len)
 	{
 		if (ft_strchr("NSEW0", map->map_matrix[size_map - 1][x]))
-		{
-			printf("Error\nInvalid map: Not surrounded by walls");
 			return (1);
-		}
 		x++;
+	}
+	return (0);
+}
+
+int	check_refined_map(t_data *data)
+{
+	if (check_walls(data->map))
+	{
+		printf("Error\nMap walls are wrong\n");
+		return (1);
+	}
+	if (check_spaces(data->map))
+	{
+		printf("Error\nThe walls of the map are not correctly closed\n");
+		return (1);
+	}
+	if (check_player(data->map->map_matrix))
+	{
+		printf("Error\nThe player is wrong\n");
+		return (1);
 	}
 	return (0);
 }

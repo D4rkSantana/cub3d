@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: esilva-s <esilva-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/08 01:00:46 by esilva-s          #+#    #+#             */
-/*   Updated: 2023/04/07 01:50:43 by esilva-s         ###   ########.fr       */
+/*   Created: 2023/04/10 22:51:42 by esilva-s          #+#    #+#             */
+/*   Updated: 2023/04/11 02:32:44 by esilva-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,35 +42,6 @@ int	check_player(char **map)
 		index++;
 	}
 	if (qt_persons != 1)
-	{
-		printf("Error\nInvalid number of player\n");
 		return (1);
-	}
-	return (0);
-}
-
-int	check_map(char **map)
-{
-	int	index;
-	int	count;
-
-	index = 0;
-	while (map[index] != NULL)
-	{
-		count = 0;
-		while (map[index][count] != '\0')
-		{
-			if (!(map[index][count] == '1' || map[index][count] == '0'
-				|| map[index][count] == ' ' || map[index][count] == 'N'
-				|| map[index][count] == 'S' || map[index][count] == 'W'
-				|| map[index][count] == 'E'))
-			{
-				printf("Error\nInvalid caracter on map\n");
-				return (1);
-			}	
-			count++;
-		}
-		index++;
-	}
 	return (0);
 }

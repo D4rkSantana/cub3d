@@ -4,7 +4,7 @@ CC			= gcc
 RM			= rm -rf
 MKDIR		= mkdir -p
 
-vpath %.c src ./src/build_map ./src/key_hook ./src/raycasting
+vpath %.c src ./src/build_data ./src/key_hook ./src/raycasting
 
 FLAGS = -Wall -Wextra -Werror
 MLXFLAGS = -Imlx -lX11 -lXext -lm
@@ -16,9 +16,26 @@ LIBFT_PATH = ./libs/libft
 LIBFT = ${LIBFT_PATH}/libft.a
 
 HEAD = -I./include
-SRC =	main.c read_map.c build_map.c extract_content.c check_content.c extract_map.c destroy.c \
-		init.c init_rays.c new_parse_map.c check_player.c render.c key_hook.c check_color.c \
-		get_player.c moviments.c raycasting.c intersection.c render_3d.c ray_tools.c project_rays.c\
+
+MAIN = main.c
+
+INIT = init.c
+
+DESTROY = destroy.c
+
+BUILD_DATA =	build_data.c build_tools.c read_file.c check_contents_file.c extract_contents.c \
+				check_refined_texture.c check_refined_color.c check_refined_map.c check_player.c \
+
+RENDER = render.c raycasting.c project_rays.c intersection.c ray_tools.c render_3d.c texture.c
+
+TOOLS =	key_hook.c get_player.c moviments.c
+
+SRC =	main.c \
+		init.c destroy.c \
+		build_data.c build_tools.c read_file.c check_contents_file.c extract_contents.c \
+		check_refined_texture.c check_refined_color.c check_refined_map.c check_player.c \
+		render.c raycasting.c project_rays.c intersection.c ray_tools.c render_3d.c texture.c \
+		key_hook.c get_player.c moviments.c \
 
 OBJ_DIR	 =	obj
 OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
@@ -27,6 +44,11 @@ all: ${NAME}
 
 ${NAME}: ${MINILIBX} $(OBJ) ${OBJ_DIR} ${LIBFT}
 		@ $(CC) $(OBJ) ${LIBFT} ${MINILIBX} $(FLAGS) ${MLXFLAGS} -no-pie -o ${NAME}
+		@ echo "\e[0;34m"
+		@ echo "=========================="
+		@ echo "  Compiled successfully!"
+		@ echo "=========================="
+		@ echo "\033[1;0m"
 
 $(MINILIBX):
 		@ make -C ${MINILIBX_PATH}
@@ -45,11 +67,11 @@ clean:
 		@ ${RM} ${OBJ_DIR}
 		@make clean -C $(MINILIBX_PATH)
 		@make clean -C $(LIBFT_PATH)
-		@ echo "Objects removed."
+		@ echo "\e[0;32m  Objects removed. \033[1;0m"
 
 fclean:		clean
 			@${RM} ${NAME}
-			@ echo "Program has been cleaned!"
+			@ echo " \e[0;32m Program has been cleaned!\033[1;0m"
 
 re:			fclean all
 
